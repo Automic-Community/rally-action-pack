@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE">
+<HEADER state="1">
+<Title>Escape argument values</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! We escape characters based on Platform for java Strings
+
+: SWITCH &$PLATFORM#
+:   CASE "WINDOWS"
+:     SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, "%", "%%")
+:   CASE "UNIX"
+:     SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, "\", "\\")
+:     SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, "$", "\$")
+:     SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, "`", "\`")
+:   OTHER
+: ENDSWITCH
+
+! Escape double-quotes
+: SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, '"', '\"')
+
+! then we add double-quotes to String to preserve spaces in value
+: SET &UC4RB_AC_ESCAPED_STRING# = STR_CAT('"', &UC4RB_AC_ESCAPED_STRING#)
+: SET &UC4RB_AC_ESCAPED_STRING# = STR_CAT(&UC4RB_AC_ESCAPED_STRING#, '"')]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[It escapes the Service Virtualization input parameters and wrap the parameter surrounded by quotes(").
+]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

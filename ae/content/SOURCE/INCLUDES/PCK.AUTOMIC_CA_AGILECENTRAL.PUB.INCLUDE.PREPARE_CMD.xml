@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.PREPARE_CMD">
+<HEADER state="1">
+<Title>prepare java command</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[
+! Add read action, URL and skip SSL validation  to java arguments
+: SET &UC4RB_AC_CMD# = 'java -jar "&UC4RB_AC_PATH_JAR#"'
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -action &ACTION_NAME#")
+
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_BASE_URL#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -baseurl &UC4RB_AC_ESCAPED_STRING#")
+
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_USERNAME#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -username &UC4RB_AC_ESCAPED_STRING#")
+
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -ssl &UC4RB_AC_SSL_VALIDATION#")
+
+! Access key is decrypted
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
+: SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = "&UC4RB_AC_PASSWORD#"
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
+: IF &$PLATFORM# EQ "UNIX"
+    export UC4_DECRYPTED_PWD
+: ENDIF
+
+! Load package parameters
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.LOAD_PCK_PARAMETERS
+
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[This include is used add arguments which are common for all actions.This along with action specific arguments are passed to the java command while calling the Service Virtualization tool jar.
+It can be used for both Windows and Unix environment]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

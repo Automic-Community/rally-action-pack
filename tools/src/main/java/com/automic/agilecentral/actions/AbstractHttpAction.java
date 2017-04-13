@@ -57,6 +57,8 @@ public abstract class AbstractHttpAction extends AbstractAction {
 		AgileCentralValidator.checkNotEmpty(username, "Username for Login into CA Agile Central");
 
 		this.password = System.getenv(Constants.ENV_PASSWORD);
+		
+		AgileCentralValidator.checkNotEmpty(password, "Password for Login into CA Agile Central");
 
 		try {
 			this.baseUrl = new URI(temp);

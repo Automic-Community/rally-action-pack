@@ -1,0 +1,4 @@
+*** Variables ***
+#---- AE Actions-------------------------
+${_CREATE_WORK_ITEM_ACTION}    PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_WORK_ITEM
+

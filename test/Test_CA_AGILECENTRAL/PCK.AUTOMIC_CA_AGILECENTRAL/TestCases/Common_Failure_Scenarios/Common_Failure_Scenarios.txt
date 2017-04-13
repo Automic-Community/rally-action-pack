@@ -1,0 +1,83 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        common_failure_scenarios
+Test Template     Common Failure Scenarios Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    ServerURL               Username       Password       API_Token       SkipSSL    WorkspaceName        ProjectName        WorkItemName        Description       ScheduleState        CustomFields
+Assertion with Invalid Server URL
+                      [Tags]    main_scenarios
+                      NOK       Invalid                 ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid Username
+                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid Password
+                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid API Token
+                      NOK       ${AgileCentral_URL }    ${Username}    ${Password}    Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assert Server URL as mandatory field
+                      NOK       ${EMPTY}                ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assert Username as mandatory field
+                      NOK       ${AgileCentral_URL }    ${EMPTY}       ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assert Password as mandatory field
+                      NOK       ${AgileCentral_URL }    ${Username}    ${EMPTY}       ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assert API Token as mandatory field
+                      NOK       ${AgileCentral_URL }    ${Username}    ${Password}    ${EMPTY}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "COMMON FAILURE SCENARIOS"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Common Failure Scenarios Template
+    [Arguments]    ${OK_NOK}    ${ServerURL}    ${Username}    ${Password}    ${API_Token}    ${SkipSSL}
+    ...    ${WorkspaceName} ${ProjectName} ${WorkItemName} ${Description} ${ScheduleState} ${CustomFields}
+    [Documentation]    This test executes the common failure scenarios for action pack with create work item action.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
+    ...    -${ServerURL}: This field specifies address to the AC server.
+    ...    -${Username}: This field specifies username for authentication
+    ...    -${Password}: This field specifies password for authentication
+    ...    -${API_Token}: This field specifies the api token.
+    ...    -${SkipSSL}: This field specifies if you want to skip SSL validation.
+    ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
+    ...    -${ProjectName}: This field specifies a new project name to the work item.
+    ...    -${WorkItemName}: This field specifies a new work item name.
+    ...    -${Description}: This field specifies new description to your work item.
+    ...    -${ScheduleState}: This field specifies new schedule state to the work item.
+    ...    -${CustomFields}: This field specifies list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
+    Generate String
+    Init Action    ${_CREATE_WORK_ITEM_ACTION}
+    Run Keyword If    '${ServerURL}' == 'Invalid'    Action Set    &UC4RB_AC_BASE_URL#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_BASE_URL#    ${ServerURL}
+    Run Keyword If    '${Username}' == 'Invalid'    Action Set    &UC4RB_AC_USERNAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_USERNAME#    ${Username}
+    Run Keyword If    '${Password}' == 'Invalid'    Action Set    &UC4RB_AC_PASSWORD#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_PASSWORD#    ${Password}
+    Run Keyword If    '${API_Token}' == 'Invalid'    Action Set    &UC4RB_TDM_PASSWORD#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_TDM_PASSWORD#    ${API_Token}
+    Action Set    &UC4RB_AC_SSL_VALIDATION#    ${SkipSSL}
+    Action Set    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
+    Action Set    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}
+    Action Set    &UC4RB_AC_ITEM_NAME#    ${WorkItemName}
+    Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
+    Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${CustomFields}
+    Action Execute
+    Assert Failure
+
+Teardown
+    Log    *******End Test "COMMON FAILURE SCENARIOS"*******

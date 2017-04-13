@@ -1,0 +1,18 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+#----Global Variables----------------------------------------------------------------------------------------
+${BAgileCentral_URL }    https://rally1.rallydev.com
+${Username}       administrator
+${Password}       xxx
+${API_Token}      xxx
+${SkipSSL}        YES
+${Workspace_Name}    xxx
+${Project_Name}    xxx
+${Work_ItemName}    xxx
+${Description}    xxx
+${Schedule_State}    xxx
+${Custom_Fields}    xxx
+

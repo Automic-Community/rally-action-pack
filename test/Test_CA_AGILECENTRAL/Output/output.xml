@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.8.6 (Jython 2.5.3 on java1.8.0_121)" generated="20170321 17:57:00.543">
+<suite source="E:\src\TDM_test\pck.automic_ca_tdm\test\Test_CA_TDM" name="Test CA TDM" id="s1">
+<suite source="E:\src\TDM_test\pck.automic_ca_tdm\test\Test_CA_TDM\PCK.AUTOMIC_CA_TDM" name="PCK.AUTOMIC CA TDM" id="s1-s1">
+<suite source="E:\src\TDM_test\pck.automic_ca_tdm\test\Test_CA_TDM\PCK.AUTOMIC_CA_TDM\TestCases" name="TestCases" id="s1-s1-s1">
+<suite source="E:\src\TDM_test\pck.automic_ca_tdm\test\Test_CA_TDM\PCK.AUTOMIC_CA_TDM\TestCases\Get_Publish_Job_Status" name="Get Publish Job Status" id="s1-s1-s1-s1">
+<suite source="E:\src\TDM_test\pck.automic_ca_tdm\test\Test_CA_TDM\PCK.AUTOMIC_CA_TDM\TestCases\Get_Publish_Job_Status\Get_Publish_Job_Status.txt" name="Get Publish Job Status" id="s1-s1-s1-s1-s1">
+<kw type="setup" name="Startup">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:01.944">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>*******Start Test "Get Publish Job Status"*******</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:01.948">Arguments: [ u'*******Start Test "Get Publish Job Status"*******' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:01.949">*******Start Test "Get Publish Job Status"*******</msg>
+<msg level="TRACE" timestamp="20170321 17:57:01.950">Return: None</msg>
+<status endtime="20170321 17:57:01.950" starttime="20170321 17:57:01.946" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>*******Connect to AE*******</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:01.954">Arguments: [ u'*******Connect to AE*******' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:01.956">*******Connect to AE*******</msg>
+<msg level="TRACE" timestamp="20170321 17:57:01.958">Return: None</msg>
+<status endtime="20170321 17:57:01.958" starttime="20170321 17:57:01.953" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Connect AE">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:01.964">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Connect">
+<doc></doc>
+<arguments>
+<arg>${_AE_HOST}</arg>
+<arg>${_AE_PORT}</arg>
+<arg>${_AE_USER}</arg>
+<arg>${_AE_PASS}</arg>
+<arg>${_AE_TEMP_FOLD}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:01.971">Arguments: [ u'192.168.168.93' | u'2217' | u'100/USER/USER' | u'test' | u'TEST_CA_TDM' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:01.980">Connect to AE, host = 192.168.168.93, user = 100/USER/USER</msg>
+<msg level="INFO" timestamp="20170321 17:57:01.994">SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.</msg>
+<msg level="TRACE" timestamp="20170321 17:57:01.996">Return: None</msg>
+<status endtime="20170321 17:57:01.996" starttime="20170321 17:57:01.966" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:01.999">Return: None</msg>
+<status endtime="20170321 17:57:01.999" starttime="20170321 17:57:01.961" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.005">Return: None</msg>
+<status endtime="20170321 17:57:02.002" starttime="20170321 17:57:01.941" status="PASS"></status>
+</kw>
+<test name="Get Publish Job Status with valid Job ID" id="s1-s1-s1-s1-s1-t1">
+<kw type="kw" name="Get Publish Job Status Template">
+<doc>This action is used to get the status of a job.</doc>
+<arguments>
+<arg>OK</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.023">Arguments: [ ${OK_NOK}=u'OK' | ${JobID}=u'166' ]</msg>
+<kw type="kw" name="keywords.Init Action">
+<doc></doc>
+<arguments>
+<arg>${_GET_PUBLISH_JOB_STATUS_ACTION}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.027">Arguments: [ ${actionName}=u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Create">
+<doc></doc>
+<arguments>
+<arg>${actionName}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.029">Arguments: [ u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.032">Create action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.034">Return: None</msg>
+<status endtime="20170321 17:57:02.033" starttime="20170321 17:57:02.028" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Set Overwrite Agent">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.038">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'WIN'</arg>
+<arg>Set Overwrite Agent WIN</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.042">Arguments: [ u"'WIN' == 'WIN'" | u'Set Overwrite Agent WIN' ]</msg>
+<kw type="kw" name="keywords.Set Overwrite Agent WIN">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.048">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;AGENT#</arg>
+<arg>${_PROMPTSET_AGENT_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.052">Arguments: [ u'&amp;AGENT#' | u'WIN01' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.055">Set prompt set: &amp;AGENT# = WIN01</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.057">Return: None</msg>
+<status endtime="20170321 17:57:02.056" starttime="20170321 17:57:02.049" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;LOGIN#</arg>
+<arg>${_PROMPTSET_LOGIN_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.060">Arguments: [ u'&amp;LOGIN#' | u'LOGIN' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.063">Set prompt set: &amp;LOGIN# = LOGIN</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.064">Return: None</msg>
+<status endtime="20170321 17:57:02.064" starttime="20170321 17:57:02.058" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.066">Return: None</msg>
+<status endtime="20170321 17:57:02.066" starttime="20170321 17:57:02.045" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.069">Return: None</msg>
+<status endtime="20170321 17:57:02.069" starttime="20170321 17:57:02.039" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'UNIX'</arg>
+<arg>Set Overwrite Agent UNIX</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.073">Arguments: [ u"'WIN' == 'UNIX'" | u'Set Overwrite Agent UNIX' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.076">Return: None</msg>
+<status endtime="20170321 17:57:02.076" starttime="20170321 17:57:02.071" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.078">Return: None</msg>
+<status endtime="20170321 17:57:02.078" starttime="20170321 17:57:02.036" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.080">Return: None</msg>
+<status endtime="20170321 17:57:02.079" starttime="20170321 17:57:02.024" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Connect To TDM">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.084">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_BASE_URL#</arg>
+<arg>${TDM_URL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.086">Arguments: [ u'&amp;UC4RB_TDM_BASE_URL#' | u'https://192.168.44.75:8443' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.090">Set prompt set: &amp;UC4RB_TDM_BASE_URL# = https://192.168.44.75:8443</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.091">Return: None</msg>
+<status endtime="20170321 17:57:02.091" starttime="20170321 17:57:02.085" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_USERNAME#</arg>
+<arg>${Username}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.094">Arguments: [ u'&amp;UC4RB_TDM_USERNAME#' | u'administrator' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.097">Set prompt set: &amp;UC4RB_TDM_USERNAME# = administrator</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.098">Return: None</msg>
+<status endtime="20170321 17:57:02.098" starttime="20170321 17:57:02.092" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_PASSWORD#</arg>
+<arg>${Password}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.101">Arguments: [ u'&amp;UC4RB_TDM_PASSWORD#' | u'marmite' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.105">Set prompt set: &amp;UC4RB_TDM_PASSWORD# = marmite</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.106">Return: None</msg>
+<status endtime="20170321 17:57:02.106" starttime="20170321 17:57:02.100" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_SSL_VALIDATION#</arg>
+<arg>${SkipSSL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.109">Arguments: [ u'&amp;UC4RB_TDM_SSL_VALIDATION#' | u'YES' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.113">Set prompt set: &amp;UC4RB_TDM_SSL_VALIDATION# = YES</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.114">Return: None</msg>
+<status endtime="20170321 17:57:02.114" starttime="20170321 17:57:02.108" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.116">Return: None</msg>
+<status endtime="20170321 17:57:02.116" starttime="20170321 17:57:02.082" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${Job_ID}' == 'Invalid'</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Generated_Name}_${Time}</arg>
+<arg>ELSE</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.122">Arguments: [ u"'166' == 'Invalid'" | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Generated_Name}_${Time}' | u'ELSE' | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Job_ID}' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.128">Arguments: [ u'&amp;UC4RB_TDM_JOBID#' | u'166' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.132">Set prompt set: &amp;UC4RB_TDM_JOBID# = 166</msg>
+<msg level="TRACE" timestamp="20170321 17:57:02.133">Return: None</msg>
+<status endtime="20170321 17:57:02.133" starttime="20170321 17:57:02.126" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:02.135">Return: None</msg>
+<status endtime="20170321 17:57:02.135" starttime="20170321 17:57:02.119" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Execute">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:02.138">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:02.142">Execute action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992220332199158358061070871</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:02.144">Create wrapper workflow which include testing action...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:03.030">Assign all required parameters...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:03.421">Execute workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:03.490">Waiting for workflow running, runId = 1249126, timeout = 300</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:08.529">... 1 waiting, 0 ended, 0 running backup, 0 rollback, 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:08.561">Deactivate task, runId = 1249126</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:08.580">RunId = 1249126</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:08.582">Execute done</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.586">Export results of 1249126...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:09.699">Report = 20170321/175703.951 - U02001096 Job '1248139' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'.
+20170321/175703.951 - U02001096 Job '1248139' uses client-wide resource '100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\tdm-tool.JAR'.
+
+c:\&gt;e:\Automic_113\Automation.Platform\Agents\windows\bin\UCXJWX6M.EXE JNR=0001248139 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" 
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' started
+UCMDJP: *********************************************************************
+UCMDJP: ** JOB 0001248139 (ProcID:0000022136) START AT 21.03.2017/17:57:04 **
+UCMDJP: **                                    UTC TIME 21.03.2017/12:27:04 **
+UCMDJP: *********************************************************************
+Connected with agent 'WIN01'
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' terminated normally
+""
+""
+"********************************"
+"**      EXECUTION START       **"
+"********************************"
+""
+
+******     Input Parameters     ******
+
+Parameter [TDM Portal URL] = https://192.168.44.75:8443
+Parameter [Username for Login into TDM Portal] = administrator
+Parameter [Skip SSL validation] = YES
+Parameter [Id of the Job] = 166
+
+Using Connection timeout as 30000 (ms)
+Using Read timeout as 60000 (ms)
+Calling url https://192.168.44.75:8443/TestDataManager/user/login
+Response Code [200] Message : [OK]
+Calling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166
+Response Code [200] Message : [OK]
+{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\ProgramData\\CA\\CA Test Data Manager Portal\\Jobs\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}
+UC4RB_TDM_JOBSTATUS ::=Completed
+Calling url https://192.168.44.75:8443/TestDataManager/user/logout
+Response Code [200] Message : [OK]
+PUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK
+****** Execution ends with response code : 0
+"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' started
+UCMDJP: *********************************************************************
+UCMDJP: ** JOB 0001248139 (ProcID:0000022136) ENDED AT 21.03.2017/17:57:07 **
+UCMDJP: **                                    UTC TIME 21.03.2017/12:27:07 **
+UCMDJP: ** --------------------------------------------------------------- **
+UCMDJP: **                                    USED:      0.000 CPU         **
+UCMDJP: *********************************************************************
+Connected with agent 'WIN01'
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' terminated normally
+</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.708">Variables: </msg>
+<msg level="INFO" timestamp="20170321 17:57:09.711">System time = 0,02</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.713">&amp;UC4RB_TDM_SSL_VALIDATION# = YES</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.715">End = 2017-03-21T12:27:07</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.717">Status = ENDED_OK - ended normally</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.719">Event ID = 1248139</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.722">&amp;UC4RB_TDM_JOBSTATUS# = Completed</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.731">Consumption = 1</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.733">Status text = Job ended</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.735">&amp;UC4RB_TDM_USERNAME# = administrator</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.738">Post proc. = 2017-03-21T12:27:07</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.741">&amp;UC4RB_TDM_PASSWORD# = marmite</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.743">Start = 2017-03-21T12:27:04</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.745">Runtime =    0:00:03</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.747">RunID = 1248139</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.749">CPU time = 0,02</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.752">Title = Get publish job status</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.754">User time = 0,00</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.756">&amp;UC4RB_TDM_JOBID# = 166</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.759">Login = (nagarro\jyotiyaduvanshi)</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.761">User = USER/USER</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.763">Enable Rollback = No</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.765">Activation = 2017-03-21T12:27:03</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.771">Job Status = ENDED_OK - ended normally</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.774">&amp;LOGIN# = LOGIN</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.776">Object name = PCK.AUTOMIC_CA_TDM.PRV.JOB.GET_PUBLISH_JOB_STATUS@GENERIC</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.778">Activator = 1249127</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.786">&amp;UC4RB_USE_SUDO# = None</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.788">&amp;UC4RB_AGENT_OS# = WINDOWS</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.790">Start type = JOBP</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.792">&amp;AGENT# = WIN01</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.795">&amp;UC4RB_TDM_BASE_URL# = https://192.168.44.75:8443</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.797">Parent = 1249127</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.799">Process ID = 22136</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.801">&amp;UC4RB_SUDO_USER# = </msg>
+<msg level="INFO" timestamp="20170321 17:57:09.803">Return code = 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.805">Version = 1</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.807">&amp;UC4RB_SUDO_PASSWORD# = </msg>
+<msg level="INFO" timestamp="20170321 17:57:09.809">Express = Deactivated</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.812">Queue = CLIENT_QUEUE</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.814">Host = WIN01</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:09.815">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.817">Deactivate task, runId = 1249126</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.835">Export result done</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.838">Clean up workflow 1249126...</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.841">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.843">Deactivate task, runId = 1249126</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.858">Clean up workflow done</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.859">Return: None</msg>
+<status endtime="20170321 17:57:09.859" starttime="20170321 17:57:02.137" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Assert Success</arg>
+<arg>ELSE IF</arg>
+<arg>'${OK_NOK}' == 'NOK'</arg>
+<arg>Assert Failure</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.862">Arguments: [ u"'OK' == 'OK'" | u'Assert Success' | u'ELSE IF' | u"'${OK_NOK}' == 'NOK'" | u'Assert Failure' ]</msg>
+<kw type="kw" name="keywords.Assert Success">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.867">Arguments: [  ]</msg>
+<kw type="kw" name="keywords.Action Report Should Be Found">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.870">Arguments: [  ]</msg>
+<kw type="kw" name="${report} = com.automic.robot.itpa.ItpaLibrary.Action Get Report">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.873">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.876">Load action last report, action = PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992220332199158358061070871, runId = 1249126</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.877">Return: u'20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248139 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) START AT 21.03.2017/17:57:04 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:04 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) ENDED AT 21.03.2017/17:57:07 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:07 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n'</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.880">${report} = 20170321/175703.951 - U02001096 Job '1248139' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'....</msg>
+<status endtime="20170321 17:57:09.877" starttime="20170321 17:57:09.872" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Not Be Empty">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${report}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.882">Arguments: [ u'20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248139 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) START AT 21.03.2017/17:57:04 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:04 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) ENDED AT 21.03.2017/17:57:07 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:07 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.886">Length is 3378</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.887">Return: None</msg>
+<status endtime="20170321 17:57:09.887" starttime="20170321 17:57:09.881" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.888">Return: None</msg>
+<status endtime="20170321 17:57:09.888" starttime="20170321 17:57:09.868" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Report Should Contain">
+<doc></doc>
+<arguments>
+<arg>EXECUTED SUCCESSFULLY</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.891">Arguments: [ ${text}=u'EXECUTED SUCCESSFULLY' ]</msg>
+<kw type="kw" name="${report} = com.automic.robot.itpa.ItpaLibrary.Action Get Report">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.894">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.896">Load action last report, action = PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992220332199158358061070871, runId = 1249126</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.897">Return: u'20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248139 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) START AT 21.03.2017/17:57:04 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:04 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) ENDED AT 21.03.2017/17:57:07 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:07 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n'</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.900">${report} = 20170321/175703.951 - U02001096 Job '1248139' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'....</msg>
+<status endtime="20170321 17:57:09.897" starttime="20170321 17:57:09.893" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Contain">
+<doc>Fails if `item1` does not contain `item2` one or more times.</doc>
+<arguments>
+<arg>${report}</arg>
+<arg>${text}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.903">Arguments: [ u'20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175703.951 - U02001096 Job \'1248139\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248139 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) START AT 21.03.2017/17:57:04 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:04 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248139 (ProcID:0000022136) ENDED AT 21.03.2017/17:57:07 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:07 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n' | u'EXECUTED SUCCESSFULLY' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.907">Return: None</msg>
+<status endtime="20170321 17:57:09.907" starttime="20170321 17:57:09.902" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.909">Return: None</msg>
+<status endtime="20170321 17:57:09.909" starttime="20170321 17:57:09.889" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Return Status Should Be">
+<doc></doc>
+<arguments>
+<arg>${ENDED_OK}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.913">Arguments: [ ${status}=u'ENDED_OK - ended normally' ]</msg>
+<kw type="kw" name="${returnStatus} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>Status</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.914">Arguments: [ u'Status' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.915">Get action variable: Status</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.916">Return: u'ENDED_OK - ended normally'</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.917">${returnStatus} = ENDED_OK - ended normally</msg>
+<status endtime="20170321 17:57:09.916" starttime="20170321 17:57:09.913" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${returnStatus}</arg>
+<arg>${status}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.919">Arguments: [ u'ENDED_OK - ended normally' | u'ENDED_OK - ended normally' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.919">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.920">Return: None</msg>
+<status endtime="20170321 17:57:09.920" starttime="20170321 17:57:09.917" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.921">Return: None</msg>
+<status endtime="20170321 17:57:09.921" starttime="20170321 17:57:09.911" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Return Code Should Be">
+<doc></doc>
+<arguments>
+<arg>${RETURN_CODE_SUCCESS}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.923">Arguments: [ ${code}=u'0' ]</msg>
+<kw type="kw" name="${returnCode} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>Return code</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.925">Arguments: [ u'Return code' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.927">Get action variable: Return code</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.928">Return: u'0'</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.929">${returnCode} = 0</msg>
+<status endtime="20170321 17:57:09.928" starttime="20170321 17:57:09.924" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${returnCode}</arg>
+<arg>${code}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.931">Arguments: [ u'0' | u'0' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.932">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.932">Return: None</msg>
+<status endtime="20170321 17:57:09.932" starttime="20170321 17:57:09.930" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.933">Return: None</msg>
+<status endtime="20170321 17:57:09.933" starttime="20170321 17:57:09.922" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.935">Return: None</msg>
+<status endtime="20170321 17:57:09.935" starttime="20170321 17:57:09.865" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.936">Return: None</msg>
+<status endtime="20170321 17:57:09.936" starttime="20170321 17:57:09.861" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Action Object Variable Should Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+<arg>ELSE</arg>
+<arg>Action Object Variable Should Not Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.939">Arguments: [ u"'OK' == 'OK'" | u'Action Object Variable Should Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' | u'ELSE' | u'Action Object Variable Should Not Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="keywords.Action Object Variable Should Be Found">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.944">Arguments: [ ${Object_Variable}=u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="${objectVariable} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>${Object_Variable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.946">Arguments: [ u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.948">Get action variable: &amp;UC4RB_TDM_JOBSTATUS#</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.949">Return: u'Completed'</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.949">${objectVariable} = Completed</msg>
+<status endtime="20170321 17:57:09.948" starttime="20170321 17:57:09.944" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Not Be Empty">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${objectVariable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.952">Arguments: [ u'Completed' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.953">Length is 9</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.954">Return: None</msg>
+<status endtime="20170321 17:57:09.954" starttime="20170321 17:57:09.951" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Global Variable">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${objectVariable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.957">Arguments: [ u'${objectVariable}' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.958">${objectVariable} = Completed</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.960">Return: None</msg>
+<status endtime="20170321 17:57:09.960" starttime="20170321 17:57:09.956" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.962">Return: None</msg>
+<status endtime="20170321 17:57:09.961" starttime="20170321 17:57:09.942" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.963">Return: None</msg>
+<status endtime="20170321 17:57:09.963" starttime="20170321 17:57:09.937" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:09.965">Return: None</msg>
+<status endtime="20170321 17:57:09.965" starttime="20170321 17:57:02.019" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>all</tag>
+<tag>get_publish_job_status</tag>
+<tag>main_scenarios</tag>
+</tags>
+<status critical="yes" endtime="20170321 17:57:09.968" starttime="20170321 17:57:02.008" status="PASS"></status>
+</test>
+<test name="Get Publish Job Status with invalid Job ID" id="s1-s1-s1-s1-s1-t2">
+<kw type="kw" name="Get Publish Job Status Template">
+<doc>This action is used to get the status of a job.</doc>
+<arguments>
+<arg>OK</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.987">Arguments: [ ${OK_NOK}=u'OK' | ${JobID}=u'166' ]</msg>
+<kw type="kw" name="keywords.Init Action">
+<doc></doc>
+<arguments>
+<arg>${_GET_PUBLISH_JOB_STATUS_ACTION}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.991">Arguments: [ ${actionName}=u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Create">
+<doc></doc>
+<arguments>
+<arg>${actionName}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:09.994">Arguments: [ u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:09.997">Create action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS</msg>
+<msg level="TRACE" timestamp="20170321 17:57:09.998">Return: None</msg>
+<status endtime="20170321 17:57:09.998" starttime="20170321 17:57:09.993" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Set Overwrite Agent">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.003">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'WIN'</arg>
+<arg>Set Overwrite Agent WIN</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.006">Arguments: [ u"'WIN' == 'WIN'" | u'Set Overwrite Agent WIN' ]</msg>
+<kw type="kw" name="keywords.Set Overwrite Agent WIN">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.011">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;AGENT#</arg>
+<arg>${_PROMPTSET_AGENT_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.014">Arguments: [ u'&amp;AGENT#' | u'WIN01' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.017">Set prompt set: &amp;AGENT# = WIN01</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.019">Return: None</msg>
+<status endtime="20170321 17:57:10.018" starttime="20170321 17:57:10.012" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;LOGIN#</arg>
+<arg>${_PROMPTSET_LOGIN_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.022">Arguments: [ u'&amp;LOGIN#' | u'LOGIN' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.025">Set prompt set: &amp;LOGIN# = LOGIN</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.026">Return: None</msg>
+<status endtime="20170321 17:57:10.026" starttime="20170321 17:57:10.021" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.028">Return: None</msg>
+<status endtime="20170321 17:57:10.028" starttime="20170321 17:57:10.009" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.029">Return: None</msg>
+<status endtime="20170321 17:57:10.029" starttime="20170321 17:57:10.004" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'UNIX'</arg>
+<arg>Set Overwrite Agent UNIX</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.032">Arguments: [ u"'WIN' == 'UNIX'" | u'Set Overwrite Agent UNIX' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.035">Return: None</msg>
+<status endtime="20170321 17:57:10.035" starttime="20170321 17:57:10.031" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.037">Return: None</msg>
+<status endtime="20170321 17:57:10.037" starttime="20170321 17:57:10.001" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.039">Return: None</msg>
+<status endtime="20170321 17:57:10.039" starttime="20170321 17:57:09.988" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Connect To TDM">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.042">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_BASE_URL#</arg>
+<arg>${TDM_URL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.044">Arguments: [ u'&amp;UC4RB_TDM_BASE_URL#' | u'https://192.168.44.75:8443' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.047">Set prompt set: &amp;UC4RB_TDM_BASE_URL# = https://192.168.44.75:8443</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.047">Return: None</msg>
+<status endtime="20170321 17:57:10.047" starttime="20170321 17:57:10.043" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_USERNAME#</arg>
+<arg>${Username}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.050">Arguments: [ u'&amp;UC4RB_TDM_USERNAME#' | u'administrator' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.054">Set prompt set: &amp;UC4RB_TDM_USERNAME# = administrator</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.055">Return: None</msg>
+<status endtime="20170321 17:57:10.055" starttime="20170321 17:57:10.049" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_PASSWORD#</arg>
+<arg>${Password}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.057">Arguments: [ u'&amp;UC4RB_TDM_PASSWORD#' | u'marmite' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.059">Set prompt set: &amp;UC4RB_TDM_PASSWORD# = marmite</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.060">Return: None</msg>
+<status endtime="20170321 17:57:10.060" starttime="20170321 17:57:10.056" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_SSL_VALIDATION#</arg>
+<arg>${SkipSSL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.063">Arguments: [ u'&amp;UC4RB_TDM_SSL_VALIDATION#' | u'YES' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.065">Set prompt set: &amp;UC4RB_TDM_SSL_VALIDATION# = YES</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.066">Return: None</msg>
+<status endtime="20170321 17:57:10.066" starttime="20170321 17:57:10.061" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.068">Return: None</msg>
+<status endtime="20170321 17:57:10.068" starttime="20170321 17:57:10.040" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${Job_ID}' == 'Invalid'</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Generated_Name}_${Time}</arg>
+<arg>ELSE</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.072">Arguments: [ u"'166' == 'Invalid'" | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Generated_Name}_${Time}' | u'ELSE' | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Job_ID}' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.076">Arguments: [ u'&amp;UC4RB_TDM_JOBID#' | u'166' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.078">Set prompt set: &amp;UC4RB_TDM_JOBID# = 166</msg>
+<msg level="TRACE" timestamp="20170321 17:57:10.079">Return: None</msg>
+<status endtime="20170321 17:57:10.079" starttime="20170321 17:57:10.075" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:10.080">Return: None</msg>
+<status endtime="20170321 17:57:10.080" starttime="20170321 17:57:10.069" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Execute">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:10.082">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:10.084">Execute action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992299987910132604907236441</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:10.086">Create wrapper workflow which include testing action...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:10.697">Assign all required parameters...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:11.068">Execute workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:11.142">Waiting for workflow running, runId = 1249129, timeout = 300</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:16.177">... 1 waiting, 0 ended, 0 running backup, 0 rollback, 0</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:21.210">... 0 waiting, 0 ended, 1 running backup, 0 rollback, 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:21.245">Deactivate task, runId = 1249129</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:21.262">RunId = 1249129</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:21.264">Execute done</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.265">Export results of 1249129...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:22.372">Report = 20170321/175711.625 - U02001096 Job '1248140' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'.
+20170321/175711.626 - U02001096 Job '1248140' uses client-wide resource '100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\tdm-tool.JAR'.
+
+c:\&gt;e:\Automic_113\Automation.Platform\Agents\windows\bin\UCXJWX6M.EXE JNR=0001248140 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" 
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' started
+UCMDJP: *********************************************************************
+UCMDJP: ** JOB 0001248140 (ProcID:0000021316) START AT 21.03.2017/17:57:11 **
+UCMDJP: **                                    UTC TIME 21.03.2017/12:27:11 **
+UCMDJP: *********************************************************************
+Connected with agent 'WIN01'
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' terminated normally
+""
+""
+"********************************"
+"**      EXECUTION START       **"
+"********************************"
+""
+
+******     Input Parameters     ******
+
+Parameter [TDM Portal URL] = https://192.168.44.75:8443
+Parameter [Username for Login into TDM Portal] = administrator
+Parameter [Skip SSL validation] = YES
+Parameter [Id of the Job] = 166
+
+Using Connection timeout as 30000 (ms)
+Using Read timeout as 60000 (ms)
+Calling url https://192.168.44.75:8443/TestDataManager/user/login
+Response Code [200] Message : [OK]
+Calling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166
+Response Code [200] Message : [OK]
+{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\ProgramData\\CA\\CA Test Data Manager Portal\\Jobs\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}
+UC4RB_TDM_JOBSTATUS ::=Completed
+Calling url https://192.168.44.75:8443/TestDataManager/user/logout
+Response Code [200] Message : [OK]
+PUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK
+****** Execution ends with response code : 0
+"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' started
+UCMDJP: *********************************************************************
+UCMDJP: ** JOB 0001248140 (ProcID:0000021316) ENDED AT 21.03.2017/17:57:16 **
+UCMDJP: **                                    UTC TIME 21.03.2017/12:27:16 **
+UCMDJP: ** --------------------------------------------------------------- **
+UCMDJP: **                                    USED:      0.000 CPU         **
+UCMDJP: *********************************************************************
+Connected with agent 'WIN01'
+Program 'UC4 Job Messenger' version '11.2.2-dev+low.build.556' terminated normally
+</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.376">Variables: </msg>
+<msg level="INFO" timestamp="20170321 17:57:22.377">System time = 0,07</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.378">&amp;UC4RB_TDM_SSL_VALIDATION# = YES</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.380">End = 2017-03-21T12:27:16</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.381">Status = ENDED_OK - ended normally</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.383">Event ID = 1248140</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.384">&amp;UC4RB_TDM_JOBSTATUS# = Completed</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.386">Consumption = 1</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.388">Status text = Job ended</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.390">&amp;UC4RB_TDM_USERNAME# = administrator</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.392">Post proc. = 2017-03-21T12:27:16</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.393">&amp;UC4RB_TDM_PASSWORD# = marmite</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.395">Start = 2017-03-21T12:27:11</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.397">Runtime =    0:00:05</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.399">RunID = 1248140</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.401">CPU time = 0,08</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.403">Title = Get publish job status</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.405">User time = 0,02</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.407">&amp;UC4RB_TDM_JOBID# = 166</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.408">Login = (nagarro\jyotiyaduvanshi)</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.409">User = USER/USER</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.411">Enable Rollback = No</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.412">Activation = 2017-03-21T12:27:11</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.422">Job Status = ENDED_OK - ended normally</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.425">&amp;LOGIN# = LOGIN</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.426">Object name = PCK.AUTOMIC_CA_TDM.PRV.JOB.GET_PUBLISH_JOB_STATUS@GENERIC</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.428">Activator = 1249130</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.430">&amp;UC4RB_USE_SUDO# = None</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.432">&amp;UC4RB_AGENT_OS# = WINDOWS</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.434">Start type = JOBP</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.435">&amp;AGENT# = WIN01</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.437">&amp;UC4RB_TDM_BASE_URL# = https://192.168.44.75:8443</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.439">Parent = 1249130</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.441">Process ID = 21316</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.442">&amp;UC4RB_SUDO_USER# = </msg>
+<msg level="INFO" timestamp="20170321 17:57:22.444">Return code = 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.445">Version = 1</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.447">&amp;UC4RB_SUDO_PASSWORD# = </msg>
+<msg level="INFO" timestamp="20170321 17:57:22.448">Express = Deactivated</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.449">Queue = CLIENT_QUEUE</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.451">Host = WIN01</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:22.454">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.456">Deactivate task, runId = 1249129</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.470">Export result done</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.471">Clean up workflow 1249129...</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.473">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.474">Deactivate task, runId = 1249129</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.487">Clean up workflow done</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.488">Return: None</msg>
+<status endtime="20170321 17:57:22.488" starttime="20170321 17:57:10.081" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Assert Success</arg>
+<arg>ELSE IF</arg>
+<arg>'${OK_NOK}' == 'NOK'</arg>
+<arg>Assert Failure</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.491">Arguments: [ u"'OK' == 'OK'" | u'Assert Success' | u'ELSE IF' | u"'${OK_NOK}' == 'NOK'" | u'Assert Failure' ]</msg>
+<kw type="kw" name="keywords.Assert Success">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.494">Arguments: [  ]</msg>
+<kw type="kw" name="keywords.Action Report Should Be Found">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.496">Arguments: [  ]</msg>
+<kw type="kw" name="${report} = com.automic.robot.itpa.ItpaLibrary.Action Get Report">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.498">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.500">Load action last report, action = PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992299987910132604907236441, runId = 1249129</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.502">Return: u'20170321/175711.625 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175711.626 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248140 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) START AT 21.03.2017/17:57:11 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:11 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) ENDED AT 21.03.2017/17:57:16 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:16 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n'</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.506">${report} = 20170321/175711.625 - U02001096 Job '1248140' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'....</msg>
+<status endtime="20170321 17:57:22.501" starttime="20170321 17:57:22.497" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Not Be Empty">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${report}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.511">Arguments: [ u'20170321/175711.625 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175711.626 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248140 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) START AT 21.03.2017/17:57:11 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:11 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) ENDED AT 21.03.2017/17:57:16 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:16 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.514">Length is 3378</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.514">Return: None</msg>
+<status endtime="20170321 17:57:22.514" starttime="20170321 17:57:22.511" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.515">Return: None</msg>
+<status endtime="20170321 17:57:22.515" starttime="20170321 17:57:22.495" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Report Should Contain">
+<doc></doc>
+<arguments>
+<arg>EXECUTED SUCCESSFULLY</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.518">Arguments: [ ${text}=u'EXECUTED SUCCESSFULLY' ]</msg>
+<kw type="kw" name="${report} = com.automic.robot.itpa.ItpaLibrary.Action Get Report">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.522">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.525">Load action last report, action = PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992299987910132604907236441, runId = 1249129</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.526">Return: u'20170321/175711.625 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175711.626 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248140 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) START AT 21.03.2017/17:57:11 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:11 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) ENDED AT 21.03.2017/17:57:16 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:16 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n'</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.529">${report} = 20170321/175711.625 - U02001096 Job '1248140' uses client-wide resource '100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR' - 'e:\Automic_113\Automation.Platform\Agents\windows\Resources\0100\itpa-tool.jar'....</msg>
+<status endtime="20170321 17:57:22.526" starttime="20170321 17:57:22.518" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Contain">
+<doc>Fails if `item1` does not contain `item2` one or more times.</doc>
+<arguments>
+<arg>${report}</arg>
+<arg>${text}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.531">Arguments: [ u'20170321/175711.625 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.ITPA_SHARED.PRV.STORE/ITPATOOL.JAR\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\itpa-tool.jar\'.\n20170321/175711.626 - U02001096 Job \'1248140\' uses client-wide resource \'100:PCK.AUTOMIC_CA_TDM.PRV.STORE/TDMTOOL\' - \'e:\\Automic_113\\Automation.Platform\\Agents\\windows\\Resources\\0100\\tdm-tool.JAR\'.\n\nc:\\&gt;e:\\Automic_113\\Automation.Platform\\Agents\\windows\\bin\\UCXJWX6M.EXE JNR=0001248140 MNR=0100 PNR=2300 IPA=127.0.0.1 TYP=S TXT="        Job started" \nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) START AT 21.03.2017/17:57:11 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:11 **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n""\n""\n"********************************"\n"**      EXECUTION START       **"\n"********************************"\n""\n\n******     Input Parameters     ******\n\nParameter [TDM Portal URL] = https://192.168.44.75:8443\nParameter [Username for Login into TDM Portal] = administrator\nParameter [Skip SSL validation] = YES\nParameter [Id of the Job] = 166\n\nUsing Connection timeout as 30000 (ms)\nUsing Read timeout as 60000 (ms)\nCalling url https://192.168.44.75:8443/TestDataManager/user/login\nResponse Code [200] Message : [OK]\nCalling url https://192.168.44.75:8443/TDMJobService/api/ca/v1/jobs/166\nResponse Code [200] Message : [OK]\n{"name":"Publish_SpartanProfile_BookGenerator","jobId":166,"description":null,"projectName":"SpartanTestProject","projectId":0,"versionId":null,"createdBy":"Administrator","email":null,"scheduledTime":"2017-03-16T11:38:00Z","startTime":"2017-03-21T10:41:42Z","endTime":"2017-03-21T10:41:42Z","status":"Completed","type":"PUBLISH","parentId":0,"jobs":[],"duration":400,"artifactLocation":"C:\\\\ProgramData\\\\CA\\\\CA Test Data Manager Portal\\\\Jobs\\\\Job_166.zip","origin":"generation","parameters":{"generatorId":"2356.0","dataTargetProfile":"SpartanProfile","repeatCount":"10","publishTo":"TGT"},"statusMessage":"Publish to SpartanProfileusingBookGenerator is complete","runningStatus":null,"created":null}\nUC4RB_TDM_JOBSTATUS ::=Completed\nCalling url https://192.168.44.75:8443/TestDataManager/user/logout\nResponse Code [200] Message : [OK]\nPUT https://192.168.44.75:8443/TestDataManager/user/logout returned a response status of 200 OK\n****** Execution ends with response code : 0\n"INFO: ******** GET PUBLISH JOB STATUS ACTION EXECUTED SUCCESSFULLY ********"\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' started\nUCMDJP: *********************************************************************\nUCMDJP: ** JOB 0001248140 (ProcID:0000021316) ENDED AT 21.03.2017/17:57:16 **\nUCMDJP: **                                    UTC TIME 21.03.2017/12:27:16 **\nUCMDJP: ** --------------------------------------------------------------- **\nUCMDJP: **                                    USED:      0.000 CPU         **\nUCMDJP: *********************************************************************\nConnected with agent \'WIN01\'\nProgram \'UC4 Job Messenger\' version \'11.2.2-dev+low.build.556\' terminated normally\n' | u'EXECUTED SUCCESSFULLY' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.535">Return: None</msg>
+<status endtime="20170321 17:57:22.535" starttime="20170321 17:57:22.530" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.537">Return: None</msg>
+<status endtime="20170321 17:57:22.537" starttime="20170321 17:57:22.516" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Return Status Should Be">
+<doc></doc>
+<arguments>
+<arg>${ENDED_OK}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.541">Arguments: [ ${status}=u'ENDED_OK - ended normally' ]</msg>
+<kw type="kw" name="${returnStatus} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>Status</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.544">Arguments: [ u'Status' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.547">Get action variable: Status</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.549">Return: u'ENDED_OK - ended normally'</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.550">${returnStatus} = ENDED_OK - ended normally</msg>
+<status endtime="20170321 17:57:22.548" starttime="20170321 17:57:22.542" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${returnStatus}</arg>
+<arg>${status}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.553">Arguments: [ u'ENDED_OK - ended normally' | u'ENDED_OK - ended normally' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.554">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.555">Return: None</msg>
+<status endtime="20170321 17:57:22.555" starttime="20170321 17:57:22.551" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.557">Return: None</msg>
+<status endtime="20170321 17:57:22.557" starttime="20170321 17:57:22.539" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Action Return Code Should Be">
+<doc></doc>
+<arguments>
+<arg>${RETURN_CODE_SUCCESS}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.561">Arguments: [ ${code}=u'0' ]</msg>
+<kw type="kw" name="${returnCode} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>Return code</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.563">Arguments: [ u'Return code' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.565">Get action variable: Return code</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.566">Return: u'0'</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.567">${returnCode} = 0</msg>
+<status endtime="20170321 17:57:22.566" starttime="20170321 17:57:22.562" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${returnCode}</arg>
+<arg>${code}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.569">Arguments: [ u'0' | u'0' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.571">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.572">Return: None</msg>
+<status endtime="20170321 17:57:22.571" starttime="20170321 17:57:22.568" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.573">Return: None</msg>
+<status endtime="20170321 17:57:22.573" starttime="20170321 17:57:22.558" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.574">Return: None</msg>
+<status endtime="20170321 17:57:22.574" starttime="20170321 17:57:22.493" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.575">Return: None</msg>
+<status endtime="20170321 17:57:22.575" starttime="20170321 17:57:22.490" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Action Object Variable Should Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+<arg>ELSE</arg>
+<arg>Action Object Variable Should Not Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.578">Arguments: [ u"'OK' == 'OK'" | u'Action Object Variable Should Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' | u'ELSE' | u'Action Object Variable Should Not Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="keywords.Action Object Variable Should Be Found">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.582">Arguments: [ ${Object_Variable}=u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="${objectVariable} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>${Object_Variable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.585">Arguments: [ u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.587">Get action variable: &amp;UC4RB_TDM_JOBSTATUS#</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.588">Return: u'Completed'</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.588">${objectVariable} = Completed</msg>
+<status endtime="20170321 17:57:22.587" starttime="20170321 17:57:22.583" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Not Be Empty">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${objectVariable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.590">Arguments: [ u'Completed' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.591">Length is 9</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.591">Return: None</msg>
+<status endtime="20170321 17:57:22.591" starttime="20170321 17:57:22.589" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Global Variable">
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<arguments>
+<arg>${objectVariable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.593">Arguments: [ u'${objectVariable}' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.594">${objectVariable} = Completed</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.594">Return: None</msg>
+<status endtime="20170321 17:57:22.594" starttime="20170321 17:57:22.592" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.596">Return: None</msg>
+<status endtime="20170321 17:57:22.596" starttime="20170321 17:57:22.581" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.597">Return: None</msg>
+<status endtime="20170321 17:57:22.597" starttime="20170321 17:57:22.577" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.599">Return: None</msg>
+<status endtime="20170321 17:57:22.598" starttime="20170321 17:57:09.984" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>all</tag>
+<tag>get_publish_job_status</tag>
+</tags>
+<status critical="yes" endtime="20170321 17:57:22.600" starttime="20170321 17:57:09.971" status="PASS"></status>
+</test>
+<test name="Assert Job ID as Mandatory Field" id="s1-s1-s1-s1-s1-t3">
+<kw type="kw" name="Get Publish Job Status Template">
+<doc>This action is used to get the status of a job.</doc>
+<arguments>
+<arg>NOK</arg>
+<arg>${EMPTY}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.614">Arguments: [ ${OK_NOK}=u'NOK' | ${JobID}='' ]</msg>
+<kw type="kw" name="keywords.Init Action">
+<doc></doc>
+<arguments>
+<arg>${_GET_PUBLISH_JOB_STATUS_ACTION}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.617">Arguments: [ ${actionName}=u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Create">
+<doc></doc>
+<arguments>
+<arg>${actionName}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.620">Arguments: [ u'PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.623">Create action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.624">Return: None</msg>
+<status endtime="20170321 17:57:22.624" starttime="20170321 17:57:22.618" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Set Overwrite Agent">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.628">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'WIN'</arg>
+<arg>Set Overwrite Agent WIN</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.631">Arguments: [ u"'WIN' == 'WIN'" | u'Set Overwrite Agent WIN' ]</msg>
+<kw type="kw" name="keywords.Set Overwrite Agent WIN">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.637">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;AGENT#</arg>
+<arg>${_PROMPTSET_AGENT_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.640">Arguments: [ u'&amp;AGENT#' | u'WIN01' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.642">Set prompt set: &amp;AGENT# = WIN01</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.643">Return: None</msg>
+<status endtime="20170321 17:57:22.643" starttime="20170321 17:57:22.638" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;LOGIN#</arg>
+<arg>${_PROMPTSET_LOGIN_WIN}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.646">Arguments: [ u'&amp;LOGIN#' | u'LOGIN' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.649">Set prompt set: &amp;LOGIN# = LOGIN</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.650">Return: None</msg>
+<status endtime="20170321 17:57:22.650" starttime="20170321 17:57:22.645" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.651">Return: None</msg>
+<status endtime="20170321 17:57:22.651" starttime="20170321 17:57:22.634" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.652">Return: None</msg>
+<status endtime="20170321 17:57:22.652" starttime="20170321 17:57:22.630" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${ENV}' == 'UNIX'</arg>
+<arg>Set Overwrite Agent UNIX</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.654">Arguments: [ u"'WIN' == 'UNIX'" | u'Set Overwrite Agent UNIX' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.658">Return: None</msg>
+<status endtime="20170321 17:57:22.658" starttime="20170321 17:57:22.653" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.659">Return: None</msg>
+<status endtime="20170321 17:57:22.659" starttime="20170321 17:57:22.626" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.661">Return: None</msg>
+<status endtime="20170321 17:57:22.661" starttime="20170321 17:57:22.615" status="PASS"></status>
+</kw>
+<kw type="kw" name="keywords.Connect To TDM">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.664">Arguments: [  ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_BASE_URL#</arg>
+<arg>${TDM_URL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.666">Arguments: [ u'&amp;UC4RB_TDM_BASE_URL#' | u'https://192.168.44.75:8443' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.669">Set prompt set: &amp;UC4RB_TDM_BASE_URL# = https://192.168.44.75:8443</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.670">Return: None</msg>
+<status endtime="20170321 17:57:22.669" starttime="20170321 17:57:22.664" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_USERNAME#</arg>
+<arg>${Username}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.672">Arguments: [ u'&amp;UC4RB_TDM_USERNAME#' | u'administrator' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.674">Set prompt set: &amp;UC4RB_TDM_USERNAME# = administrator</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.676">Return: None</msg>
+<status endtime="20170321 17:57:22.675" starttime="20170321 17:57:22.671" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_PASSWORD#</arg>
+<arg>${Password}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.678">Arguments: [ u'&amp;UC4RB_TDM_PASSWORD#' | u'marmite' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.681">Set prompt set: &amp;UC4RB_TDM_PASSWORD# = marmite</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.682">Return: None</msg>
+<status endtime="20170321 17:57:22.682" starttime="20170321 17:57:22.677" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_SSL_VALIDATION#</arg>
+<arg>${SkipSSL}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.684">Arguments: [ u'&amp;UC4RB_TDM_SSL_VALIDATION#' | u'YES' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.687">Set prompt set: &amp;UC4RB_TDM_SSL_VALIDATION# = YES</msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.687">Return: None</msg>
+<status endtime="20170321 17:57:22.687" starttime="20170321 17:57:22.683" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.689">Return: None</msg>
+<status endtime="20170321 17:57:22.689" starttime="20170321 17:57:22.662" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${Job_ID}' == 'Invalid'</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Generated_Name}_${Time}</arg>
+<arg>ELSE</arg>
+<arg>Action Set</arg>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.691">Arguments: [ u"'' == 'Invalid'" | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Generated_Name}_${Time}' | u'ELSE' | u'Action Set' | u'&amp;UC4RB_TDM_JOBID#' | u'${Job_ID}' ]</msg>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Set">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBID#</arg>
+<arg>${Job_ID}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.694">Arguments: [ u'&amp;UC4RB_TDM_JOBID#' | '' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.697">Set prompt set: &amp;UC4RB_TDM_JOBID# = </msg>
+<msg level="TRACE" timestamp="20170321 17:57:22.698">Return: None</msg>
+<status endtime="20170321 17:57:22.698" starttime="20170321 17:57:22.693" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:22.699">Return: None</msg>
+<status endtime="20170321 17:57:22.699" starttime="20170321 17:57:22.690" status="PASS"></status>
+</kw>
+<kw type="kw" name="com.automic.robot.itpa.ItpaLibrary.Action Execute">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:22.701">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:22.703">Execute action PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992426242324164302103377321</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:22.706">Create wrapper workflow which include testing action...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:23.223">Assign all required parameters...</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:23.603">Execute workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:23.669">Waiting for workflow running, runId = 1249132, timeout = 300</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:28.697">... 1 waiting, 0 ended, 0 running backup, 0 rollback, 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:28.732">Deactivate task, runId = 1249132</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:28.746">RunId = 1249132</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:28.748">Execute done</msg>
+<msg level="INFO" timestamp="20170321 17:57:29.749">Export results of 1249132...</msg>
+<msg level="WARN" timestamp="20170321 17:57:29.809">Report still empty, wait for 1 second.</msg>
+<msg level="WARN" timestamp="20170321 17:57:30.863">Report still empty, wait for 5 seconds.</msg>
+<msg level="WARN" timestamp="20170321 17:57:35.923">Report still empty, wait for 10 seconds.</msg>
+<msg level="DEBUG" timestamp="20170321 17:57:45.975">Report = </msg>
+<msg level="INFO" timestamp="20170321 17:57:45.976">Variables: </msg>
+<msg level="DEBUG" timestamp="20170321 17:57:45.978">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:45.979">Deactivate task, runId = 1249132</msg>
+<msg level="INFO" timestamp="20170321 17:57:45.993">Export result done</msg>
+<msg level="INFO" timestamp="20170321 17:57:45.995">Clean up workflow 1249132...</msg>
+<msg level="INFO" timestamp="20170321 17:57:45.996">Deactivate workflow...</msg>
+<msg level="INFO" timestamp="20170321 17:57:45.997">Deactivate task, runId = 1249132</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.011">Clean up workflow done</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.013">Return: None</msg>
+<status endtime="20170321 17:57:46.012" starttime="20170321 17:57:22.700" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Assert Success</arg>
+<arg>ELSE IF</arg>
+<arg>'${OK_NOK}' == 'NOK'</arg>
+<arg>Assert Failure</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.015">Arguments: [ u"'NOK' == 'OK'" | u'Assert Success' | u'ELSE IF' | u"'${OK_NOK}' == 'NOK'" | u'Assert Failure' ]</msg>
+<kw type="kw" name="keywords.Assert Failure">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.018">Arguments: [  ]</msg>
+<kw type="kw" name="${report} = com.automic.robot.itpa.ItpaLibrary.Action Get Report">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.019">Arguments: [  ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.021">Load action last report, action = PCK.AUTOMIC_CA_TDM.PUB.ACTION.GET_PUBLISH_JOB_STATUS14900992426242324164302103377321, runId = 1249132</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.022">Return: u''</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.022">${report} = </msg>
+<status endtime="20170321 17:57:46.022" starttime="20170321 17:57:46.019" status="PASS"></status>
+</kw>
+<kw type="kw" name="${length} = BuiltIn.Get Length">
+<doc>Returns and logs the length of the given item.</doc>
+<arguments>
+<arg>${report}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.024">Arguments: [ u'' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.025">Length is 0</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.025">Return: 0</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.026">${length} = 0</msg>
+<status endtime="20170321 17:57:46.025" starttime="20170321 17:57:46.023" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${length}' &gt; '4'</arg>
+<arg>Action Return Status Should Be</arg>
+<arg>${ENDED_NOT_OK}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.027">Arguments: [ u"'0' &gt; '4'" | u'Action Return Status Should Be' | u'${ENDED_NOT_OK}' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.029">Return: None</msg>
+<status endtime="20170321 17:57:46.029" starttime="20170321 17:57:46.026" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${length}' &gt; '4'</arg>
+<arg>Action Return Code Should Not Equal</arg>
+<arg>${RETURN_CODE_SUCCESS}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.032">Arguments: [ u"'0' &gt; '4'" | u'Action Return Code Should Not Equal' | u'${RETURN_CODE_SUCCESS}' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.034">Return: None</msg>
+<status endtime="20170321 17:57:46.033" starttime="20170321 17:57:46.030" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${length}' &gt; '4'</arg>
+<arg>Action Report Should Contain</arg>
+<arg>ACTION FAILED</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.037">Arguments: [ u"'0' &gt; '4'" | u'Action Report Should Contain' | u'ACTION FAILED' ]</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.039">Return: None</msg>
+<status endtime="20170321 17:57:46.039" starttime="20170321 17:57:46.036" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${length}' == '0' or '${length}' == '4'</arg>
+<arg>Log</arg>
+<arg>"------AE Report is not generated------"</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.041">Arguments: [ u"'0' == '0' or '0' == '4'" | u'Log' | u'"------AE Report is not generated------"' ]</msg>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>"------AE Report is not generated------"</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.044">Arguments: [ u'"------AE Report is not generated------"' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.045">"------AE Report is not generated------"</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.046">Return: None</msg>
+<status endtime="20170321 17:57:46.046" starttime="20170321 17:57:46.043" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.047">Return: None</msg>
+<status endtime="20170321 17:57:46.047" starttime="20170321 17:57:46.040" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.048">Return: None</msg>
+<status endtime="20170321 17:57:46.048" starttime="20170321 17:57:46.017" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.048">Return: None</msg>
+<status endtime="20170321 17:57:46.048" starttime="20170321 17:57:46.014" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if `condition` is true.</doc>
+<arguments>
+<arg>'${OK_NOK}' == 'OK'</arg>
+<arg>Action Object Variable Should Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+<arg>ELSE</arg>
+<arg>Action Object Variable Should Not Be Found</arg>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.050">Arguments: [ u"'NOK' == 'OK'" | u'Action Object Variable Should Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' | u'ELSE' | u'Action Object Variable Should Not Be Found' | u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="keywords.Action Object Variable Should Not Be Found">
+<doc></doc>
+<arguments>
+<arg>&amp;UC4RB_TDM_JOBSTATUS#</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.054">Arguments: [ ${Object_Variable}=u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<kw type="kw" name="${objectVariable} = com.automic.robot.itpa.ItpaLibrary.Action Get Variable">
+<doc></doc>
+<arguments>
+<arg>${Object_Variable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.056">Arguments: [ u'&amp;UC4RB_TDM_JOBSTATUS#' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.058">Get action variable: &amp;UC4RB_TDM_JOBSTATUS#</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.059">Return: u''</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.059">${objectVariable} = </msg>
+<status endtime="20170321 17:57:46.059" starttime="20170321 17:57:46.055" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Empty">
+<doc>Verifies that the given item is empty.</doc>
+<arguments>
+<arg>${objectVariable}</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.060">Arguments: [ u'' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.061">Length is 0</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.061">Return: None</msg>
+<status endtime="20170321 17:57:46.061" starttime="20170321 17:57:46.060" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.062">Return: None</msg>
+<status endtime="20170321 17:57:46.062" starttime="20170321 17:57:46.053" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.063">Return: None</msg>
+<status endtime="20170321 17:57:46.063" starttime="20170321 17:57:46.049" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.064">Return: None</msg>
+<status endtime="20170321 17:57:46.064" starttime="20170321 17:57:22.611" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+<tag>all</tag>
+<tag>get_publish_job_status</tag>
+</tags>
+<status critical="yes" endtime="20170321 17:57:46.065" starttime="20170321 17:57:22.602" status="PASS"></status>
+</test>
+<kw type="teardown" name="Teardown">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.071">Arguments: [  ]</msg>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>*******End Test "Get Publish Job Status"*******</arg>
+</arguments>
+<msg level="TRACE" timestamp="20170321 17:57:46.072">Arguments: [ u'*******End Test "Get Publish Job Status"*******' ]</msg>
+<msg level="INFO" timestamp="20170321 17:57:46.072">*******End Test "Get Publish Job Status"*******</msg>
+<msg level="TRACE" timestamp="20170321 17:57:46.073">Return: None</msg>
+<status endtime="20170321 17:57:46.073" starttime="20170321 17:57:46.071" status="PASS"></status>
+</kw>
+<msg level="TRACE" timestamp="20170321 17:57:46.073">Return: None</msg>
+<status endtime="20170321 17:57:46.073" starttime="20170321 17:57:46.069" status="PASS"></status>
+</kw>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20170321 17:57:46.074" starttime="20170321 17:57:00.977" status="PASS"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20170321 17:57:46.084" starttime="20170321 17:57:00.955" status="PASS"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20170321 17:57:46.095" starttime="20170321 17:57:00.934" status="PASS"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20170321 17:57:46.109" starttime="20170321 17:57:00.908" status="PASS"></status>
+</suite>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20170321 17:57:46.120" starttime="20170321 17:57:00.596" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0">Critical Tests</stat>
+<stat pass="3" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" doc="" links="" combined="" info="">all</stat>
+<stat pass="3" fail="0" doc="" links="" combined="" info="">get_publish_job_status</stat>
+<stat pass="1" fail="0" doc="" links="" combined="" info="">main_scenarios</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" name="Test CA TDM" id="s1">Test CA TDM</stat>
+<stat pass="3" fail="0" name="PCK.AUTOMIC CA TDM" id="s1-s1">Test CA TDM.PCK.AUTOMIC CA TDM</stat>
+<stat pass="3" fail="0" name="TestCases" id="s1-s1-s1">Test CA TDM.PCK.AUTOMIC CA TDM.TestCases</stat>
+<stat pass="3" fail="0" name="Get Publish Job Status" id="s1-s1-s1-s1">Test CA TDM.PCK.AUTOMIC CA TDM.TestCases.Get Publish Job Status</stat>
+<stat pass="3" fail="0" name="Get Publish Job Status" id="s1-s1-s1-s1-s1">Test CA TDM.PCK.AUTOMIC CA TDM.TestCases.Get Publish Job Status.Get Publish Job Status</stat>
+</suite>
+</statistics>
+<errors>
+<msg level="ERROR" timestamp="20170321 17:57:01.924">Error in file 'E:\src\TDM_test\pck.automic_ca_tdm\test\Env\default.txt': Setting variable '${_PROMPTSET_AGENT_UNIX}' failed: Variable '@{Promptset_Overwrite_Agent_UNIX}[0]' not found. Did you mean:
+    @{Promptset_Overwrite_Agent_WIN}</msg>
+<msg level="ERROR" timestamp="20170321 17:57:01.933">Error in file 'E:\src\TDM_test\pck.automic_ca_tdm\test\Env\default.txt': Setting variable '${_PROMPTSET_LOGIN_UNIX}' failed: Variable '@{Promptset_Overwrite_Agent_UNIX}[1]' not found. Did you mean:
+    @{Promptset_Overwrite_Agent_WIN}</msg>
+<msg level="WARN" timestamp="20170321 17:57:29.809">Report still empty, wait for 1 second.</msg>
+<msg level="WARN" timestamp="20170321 17:57:30.863">Report still empty, wait for 5 seconds.</msg>
+<msg level="WARN" timestamp="20170321 17:57:35.923">Report still empty, wait for 10 seconds.</msg>
+</errors>
+</robot>

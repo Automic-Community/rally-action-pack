@@ -32,6 +32,12 @@ public class Constants {
     public static final int READ_TIMEOUT = 60000;    
 
 	public static final String API_KEY = "apiKey";
+	
+	public static final String WORKSPACE = "Workspace";
+	public static final String PROJECT = "Project";
+	public static final String USER_STORY = "User Story";
+	public static final String DEFECT = "Defect";
+	
 
     private Constants() {
     }

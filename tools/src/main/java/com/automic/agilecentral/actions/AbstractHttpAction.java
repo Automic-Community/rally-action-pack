@@ -30,12 +30,12 @@ public abstract class AbstractHttpAction extends AbstractAction {
 	private String username;
 
 	private String password;
-	
+
 	protected RallyRestApi rallyRestTarget;
 
 	public AbstractHttpAction() {
 		addOption(Constants.BASE_URL, true, "CA Agile Central URL");
-		addOption(Constants.USERNAME, true, "Username for Login into CA Agile Central");
+		addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
 		addOption(Constants.API_KEY, false, "Rally Rest API Key");
 	}
 
@@ -53,12 +53,6 @@ public abstract class AbstractHttpAction extends AbstractAction {
 	@SuppressWarnings("deprecation")
 	private void prepareCommonInputs() throws AutomicException {
 		String temp = getOptionValue(Constants.BASE_URL);
-		this.username = getOptionValue("username");
-		AgileCentralValidator.checkNotEmpty(username, "Username for Login into CA Agile Central");
-
-		this.password = System.getenv(Constants.ENV_PASSWORD);
-		
-		AgileCentralValidator.checkNotEmpty(password, "Password for Login into CA Agile Central");
 
 		try {
 			this.baseUrl = new URI(temp);
@@ -67,7 +61,23 @@ public abstract class AbstractHttpAction extends AbstractAction {
 			String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
 			throw new AutomicException(msg);
 		}
-		rallyRestTarget = new RallyRestApi(baseUrl, username, password);
+
+		this.apiKey = getOptionValue(Constants.API_KEY);
+
+		if (null != this.apiKey && !this.apiKey.isEmpty()) {
+
+			rallyRestTarget = new RallyRestApi(baseUrl, apiKey);
+
+		} else {
+			this.username = getOptionValue("username");
+			AgileCentralValidator.checkNotEmpty(username, "Username for Login into CA Agile Central");
+
+			this.password = System.getenv(Constants.ENV_PASSWORD);
+
+			AgileCentralValidator.checkNotEmpty(password, "Password for Login into CA Agile Central");
+
+			rallyRestTarget = new RallyRestApi(baseUrl, username, password);
+		}
 
 	}
 

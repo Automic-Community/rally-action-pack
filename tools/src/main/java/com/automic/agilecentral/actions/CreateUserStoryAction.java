@@ -60,8 +60,8 @@ public class CreateUserStoryAction extends AbstractHttpAction {
 
 			if (createResponse.wasSuccessful()) {
 				ConsoleWriter.writeln(
-						"UC4RB_AC_USER_STORY_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
-				ConsoleWriter.writeln("UC4RB_AC_WORK_ITEM_ID ::=" + createResponse.getObject().get("ObjectID"));
+						"UC4RB_AC_STORY_FMT_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
+				ConsoleWriter.writeln("UC4RB_AC_STORY_OBJ_ID ::=" + createResponse.getObject().get("ObjectID"));
 
 			} else {
 				throw new AutomicException(Arrays.toString(createResponse.getErrors()));

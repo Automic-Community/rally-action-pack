@@ -73,7 +73,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
 			this.username = getOptionValue("username");
 			AgileCentralValidator.checkNotEmpty(username, "Username for Login into CA Agile Central");
 
-			this.password = System.getenv(Constants.ENV_PASSWORD);
+			this.password = /*System.getenv(Constants.ENV_PASSWORD)*/"Release!";
 
 			AgileCentralValidator.checkNotEmpty(password, "Password for Login into CA Agile Central");
 

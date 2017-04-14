@@ -37,6 +37,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
 		addOption(Constants.BASE_URL, true, "CA Agile Central URL");
 		addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
 		addOption(Constants.API_KEY, false, "Rally Rest API Key");
+		addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
 	}
 
 	/**

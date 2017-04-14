@@ -23,7 +23,10 @@
 <sortDirection>0</sortDirection>
 </ATTR_VARA>
 <VARA state="1">
-<Variables/>
+<Variables>
+<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+</Variables>
 </VARA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

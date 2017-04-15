@@ -24,20 +24,22 @@ import com.rallydev.rest.response.CreateResponse;
  * @author sumitsamson
  *
  */
-public class CreateUserStoryAction extends AbstractHttpAction {
+public class CreateWorkItemAction extends AbstractHttpAction {
 
 	private String workSpace;
 	private String project;
 	private String workItemName;
+	private String workItemType;
 	private String description;
 	private String scheduleState;
 	private String customFields;
 
-	public CreateUserStoryAction() {
+	public CreateWorkItemAction() {
 
+		addOption("workitemname", true, "Name of the work item");
+		addOption("workitemtype", true, "Work item type you wanted to create");
 		addOption("workspacename", false, "Workspace in which project is located");
 		addOption("projectname", false, "Project Name where work item needs to be created");
-		addOption("usrstoryname", true, "Name of user story");
 		addOption("description", false, "Desciption of work item");
 		addOption("schedulestate", false, "Schedule state of work");
 		addOption("customfields", false, "Custom fields");
@@ -54,17 +56,72 @@ public class CreateUserStoryAction extends AbstractHttpAction {
 			addCustomfileds(newObj);
 		}
 
-		CreateRequest createRequest = new CreateRequest("hierarchicalrequirement", newObj);
+		CreateRequest createRequest = new CreateRequest(workItemType, newObj);
 		try {
 			CreateResponse createResponse = rallyRestTarget.create(createRequest);
 
 			if (createResponse.wasSuccessful()) {
 				ConsoleWriter.writeln(
-						"UC4RB_AC_STORY_FMT_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
-				ConsoleWriter.writeln("UC4RB_AC_STORY_OBJ_ID ::=" + createResponse.getObject().get("ObjectID"));
+						"UC4RB_AC_WORK_ITEM_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
+				ConsoleWriter.writeln("UC4RB_AC_WORK_ITEM_OBJ_ID ::=" + createResponse.getObject().get("ObjectID"));
 
 			} else {
 				throw new AutomicException(Arrays.toString(createResponse.getErrors()));
+			}
+
+		} catch (IOException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException(e.getMessage());
+		}
+
+	}
+
+	private void checkandPrepareInputs(JsonObject newObj) throws AutomicException {
+		workItemName = getOptionValue("workitemname");
+		AgileCentralValidator.checkNotEmpty(workItemName, "Name of user story");
+		newObj.addProperty("Name", workItemName);
+
+		workItemType = getOptionValue("workitemtype");
+		AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
+
+		workSpace = getOptionValue("workspacename");
+
+		project = getOptionValue("projectname");
+
+		scheduleState = getOptionValue("schedulestate");
+
+		description = getOptionValue("description");
+
+		customFields = getOptionValue("customfields");
+
+		newObj.addProperty("Description", description);
+		newObj.addProperty("ScheduleState", scheduleState);
+
+		Map<String, String> queryFilter;
+		List<String> fetch;
+		try {
+
+			if (CommonUtil.checkNotEmpty(workSpace)) {
+				// querying and getting workspace id
+				queryFilter = new HashMap<>();
+				fetch = new ArrayList<>();
+
+				queryFilter.put("Name", workSpace);
+				fetch.add("ObjectID");
+
+				workSpace = RallyUtil.getObjectId(rallyRestTarget, Constants.WORKSPACE, queryFilter, fetch);
+				newObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpace);
+			}
+
+			if (CommonUtil.checkNotEmpty(project)) {
+				// querying and getting project id
+
+				queryFilter = new HashMap<>();
+				fetch = new ArrayList<>();
+
+				queryFilter.put("Name", project);
+				project = RallyUtil.getObjectId(rallyRestTarget, Constants.PROJECT, queryFilter, fetch);
+				newObj.addProperty(Constants.PROJECT, "/project/" + project);
 			}
 
 		} catch (IOException e) {
@@ -90,57 +147,6 @@ public class CreateUserStoryAction extends AbstractHttpAction {
 			throw new AutomicException(
 					"Error in the given custom fields ,please provide the valid input e.g Key1=Val1 \\n Key2=Val2");
 		}
-	}
-
-	private void checkandPrepareInputs(JsonObject newObj) throws AutomicException {
-		workItemName = getOptionValue("usrstoryname");
-		AgileCentralValidator.checkNotEmpty(workItemName, "Name of user story");
-		newObj.addProperty("Name", workItemName);
-
-		workSpace = getOptionValue("workspacename");
-
-		project = getOptionValue("projectname");
-
-		scheduleState = getOptionValue("schedulestate");
-
-		description = getOptionValue("description");
-
-		customFields = getOptionValue("customfields");
-
-		newObj.addProperty("Description", description);
-		newObj.addProperty("ScheduleState", scheduleState);
-
-		Map<String, String> queryFilter;
-		List<String> fetch;
-		try {
-
-			if (null != workSpace && !workSpace.isEmpty()) {
-				// querying and getting workspace id
-				queryFilter = new HashMap<>();
-				fetch = new ArrayList<>();
-
-				queryFilter.put("Name", workSpace);
-				fetch.add("ObjectID");
-
-				workSpace = RallyUtil.getObjectId(rallyRestTarget, Constants.WORKSPACE, queryFilter, fetch);
-				newObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpace);
-			}
-
-			if (null != project && !project.isEmpty()) {
-				// querying and getting project id
-
-				queryFilter = new HashMap<>();
-				fetch = new ArrayList<>();
-
-				queryFilter.put("Name", project);
-				project = RallyUtil.getObjectId(rallyRestTarget, Constants.PROJECT, queryFilter, fetch);
-			}
-
-		} catch (IOException e) {
-			ConsoleWriter.writeln(e);
-			throw new AutomicException(e.getMessage());
-		}
-
 	}
 
 }

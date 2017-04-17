@@ -178,7 +178,21 @@
 <calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
 <postconditions>
 <PostCon>
-<conditions id="CONDITIONS"/>
+<conditions id="CONDITIONS">
+<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
+<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P03" type="V" value="##911010">
+<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
+<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FILE_PATH#" vname="XC_P03"/>
+</param>
+<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
+</params>
+</action>
+</conditions>
 </PostCon>
 </postconditions>
 </task>
@@ -358,7 +372,9 @@ This action use to create new user story.
 * User Story name 	: Specify user story name to create. E.g. User story
 * Description 		: Provide new description to your work item. E.g. Edit a story
 * Schedule State 	: Provide new schedule state to the work item. E.g. Idea
-* Custom Fields 	: Provide list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
+* Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as seprator.
+			E.g. Name2=Value2
+			     Name3=Value3	
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -369,8 +385,8 @@ This action use to create new user story.
 (none)
 
 =Return Value=
-* UC4RB_AC_STORY_OBJ_ID : Created user story object ID.
-* UC4RB_AC_STORY_FMT_ID : Created user story formatted ID.
+* UC4RB_AC_WORK_ITEM_OBJ_ID : Created user story object ID.
+* UC4RB_AC_WORK_ITEM_ID : Created user story formatted ID.
 
 = Outputs =
 * Return code is 0 in case of success.

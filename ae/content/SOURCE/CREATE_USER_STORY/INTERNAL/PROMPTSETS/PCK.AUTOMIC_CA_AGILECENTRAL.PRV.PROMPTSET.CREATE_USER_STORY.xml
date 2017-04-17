@@ -38,7 +38,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_PRJCT_NAMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Project name" tooltip="Specify a new project name to the work item. E.g. Customer Site" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_PROJECTs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Project name" tooltip="Specify a new project name to the work item. E.g. Customer Site" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -51,7 +51,7 @@
         <entry name="separator">;</entry>
         <entry name="len"/>
         <entry name="quotes"/>
-        <entry name="id">UC4RB_AC_PRJCT_NAMEs.00</entry>
+        <entry name="id">UC4RB_AC_PROJECTs.00</entry>
         <entry name="regex"/>
         <entry name="inputassistance">0</entry>
         <entry name="enabled">0</entry>
@@ -181,7 +181,7 @@
     </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_AC_WORKSPACEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_WORKSPACE#" ReadFromTable="OPSE"></UC4RB_AC_WORKSPACEs.00><UC4RB_AC_PRJCT_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_PRJCT_NAME#" ReadFromTable="OPSE"></UC4RB_AC_PRJCT_NAMEs.00><UC4RB_AC_STORY_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_STORY_NAME#" ReadFromTable="OPSE"></UC4RB_AC_STORY_NAMEs.00><UC4RB_AC_DESCRIPTIONs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_DESCRIPTION#" ReadFromTable="OPSE"></UC4RB_AC_DESCRIPTIONs.00><UC4RB_AC_SCHEDULE_STATEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_SCHEDULE_STATE#" ReadFromTable="OPSE"></UC4RB_AC_SCHEDULE_STATEs.00><UC4RB_AC_CUSTOM_FIELDSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_CUSTOM_FIELDS#" ReadFromTable="OPSE"></UC4RB_AC_CUSTOM_FIELDSs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_AC_WORKSPACEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_WORKSPACE#" ReadFromTable="OPSE"></UC4RB_AC_WORKSPACEs.00><UC4RB_AC_PROJECTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_PROJECT#" ReadFromTable="OPSE"></UC4RB_AC_PROJECTs.00><UC4RB_AC_STORY_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_STORY_NAME#" ReadFromTable="OPSE"></UC4RB_AC_STORY_NAMEs.00><UC4RB_AC_DESCRIPTIONs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_DESCRIPTION#" ReadFromTable="OPSE"></UC4RB_AC_DESCRIPTIONs.00><UC4RB_AC_SCHEDULE_STATEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_SCHEDULE_STATE#" ReadFromTable="OPSE"></UC4RB_AC_SCHEDULE_STATEs.00><UC4RB_AC_CUSTOM_FIELDSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_CUSTOM_FIELDS#" ReadFromTable="OPSE"></UC4RB_AC_CUSTOM_FIELDSs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

@@ -11,28 +11,25 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    ServerURL               Username       Password       API_Token       SkipSSL    WorkspaceName        ProjectName        WorkItemName        Description       ScheduleState        CustomFields
+*** Test Cases ***    OK_NOK    ServerURL               Username       Password       API_Token       SkipSSL    WorkspaceName        ProjectName        UserstoryName        Description       ScheduleState        CustomFields
 Assertion with Invalid Server URL
                       [Tags]    main_scenarios
-                      NOK       Invalid                 ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       Invalid                 ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Username
-                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Password
-                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with providing Server URL & not providing Username,Password & API Token
-                      NOK       ${AgileCentral_URL }    ${Empty }      ${Empty }      ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    ${Empty }      ${Empty }      ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid API Token
-                      NOK       ${AgileCentral_URL }    ${Empty}       ${Empty}       Invalid         YES        ${Workspace_Name}    ${Project_Name}
-
-Assertion with invalid Username & Password and API Token as Empty
-                      NOK       ${AgileCentral_URL }    Invalid        Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}
+                      NOK       ${AgileCentral_URL }    ${Empty}       ${Empty}       Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assert Server URL as mandatory field
-                      NOK       ${Empty }               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${Empty }               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Userstory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 *** Keywords ***
 Startup
@@ -42,19 +39,19 @@ Startup
 
 Common Failure Scenarios Template
     [Arguments]    ${OK_NOK}    ${ServerURL}    ${Username}    ${Password}    ${API_Token}    ${SkipSSL}
-    ...    ${WorkspaceName} ${ProjectName} ${WorkItemName} ${Description} ${ScheduleState} ${CustomFields}
-    [Documentation]    This test executes the common failure scenarios for action pack with create work item action.
+    ...    ${WorkspaceName}    ${ProjectName}    ${UserstoryName}    ${Description}    ${ScheduleState}    ${CustomFields}
+    [Documentation]    This test executes the common failure scenarios for action pack with create user story action.
     ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
     ...    -${ServerURL}: This field specifies address to the AC server.
     ...    -${Username}: This field specifies username for authentication
     ...    -${Password}: This field specifies password for authentication
-    ...    -${API_Token}: This field API token for authentication.
+    ...    -${API_Token}: This field specifies API token for authentication.
     ...    -${SkipSSL}: This field specifies if you want to skip SSL validation.
     ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
-    ...    -${ProjectName}: This field specifies a new project name to the work item.
-    ...    -${WorkItemName}: This field specifies a new work item name.
-    ...    -${Description}: This field specifies new description to your work item.
-    ...    -${ScheduleState}: This field specifies new schedule state to the work item.
+    ...    -${ProjectName}: This field specifies a new project name to the user story.
+    ...    -${UserstoryName} : This field specifies a new user story name.
+    ...    -${Description}: This field specifies new description to your user story.
+    ...    -${ScheduleState}: This field specifies new schedule state to the wuser story.
     ...    -${CustomFields}: This field specifies list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
     Generate String
     Init Action    ${_CREATE_USER_STORY_ACTION}
@@ -68,8 +65,8 @@ Common Failure Scenarios Template
     ...    &UC4RB_AC_TOKEN#    ${API_Token}
     Action Set    &UC4RB_AC_SSL_VALIDATION#    ${SkipSSL}
     Action Set    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
-    Action Set    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}
-    Action Set    &UC4RB_AC_ITEM_NAME#    ${WorkItemName}
+    Action Set    &UC4RB_AC_PROJECT#    ${ProjectName}
+    Action Set    &UC4RB_AC_STORY_NAME#    ${UserstoryName}
     Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
     Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
     Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${CustomFields}

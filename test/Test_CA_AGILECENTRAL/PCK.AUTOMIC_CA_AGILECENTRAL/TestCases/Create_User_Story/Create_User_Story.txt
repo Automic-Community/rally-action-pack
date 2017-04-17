@@ -42,16 +42,16 @@ Startup
     Connect AE
 
 Create User Story Template
-    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${ProjectName}    ${Userstory_Name}    ${Description}    ${ScheduleState}
+    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${ProjectName}    ${UserstoryName}    ${Description}    ${ScheduleState}
     ...    ${CustomFields}
-    [Documentation]    This test executes the common failure scenarios for action pack with create work item action.
+    [Documentation]    This test executes the common failure scenarios for action pack with create user story action.
     ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
     ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
-    ...    -${ProjectName}: This field specifies a new project name to the work item.
-    ...    -${Userstory_Name}: This field specifies a new work item name.
-    ...    -${Description}: This field specifies new description to your work item.
-    ...    -${ScheduleState}: This field specifies new schedule state to the work item.
-    ...    -${CustomFields}: This field specifies list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
+    ...    -${ProjectName}: This field specifies a new project name to the user story.
+    ...    -${UserstoryName}: This field specifies a new user story name.
+    ...    -${Description}: This field specifies new description to your user story.
+    ...    -${ScheduleState}: This field specifies new schedule state to the user story.
+    ...    -${CustomFields}: This field specifies list of other fields with values you want to set.
     Generate String
     Init Action    ${_CREATE_USER_STORY_ACTION}
     Connect To Agile_Central

@@ -35,9 +35,15 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
      */
     private String workItemId;
 
+    /**
+     * Work item type
+     */
+    private String type;
+
     public DeleteWorkItemAction() {
         addOption("workspace", false, "Workspace name");
         addOption("workitemid", true, "Work Item ID");
+        addOption("type", true, "Work item type");
     }
 
     @Override
@@ -70,27 +76,29 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
 
         workItemId = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(workItemId, "Work Item ID");
+
+        type = getOptionValue("type");
+        AgileCentralValidator.checkNotEmpty(type, "Work Item type");
     }
 
     private JsonArray queryRes() throws AutomicException, IOException {
 
-        //filter criteria
+        // filter criteria
         Map<String, String> queryFilter = new HashMap<>();
         queryFilter.put("FormattedID", workItemId);
 
-        //query parameter
+        // query parameter
         Map<String, String> queryParam = null;
         if (CommonUtil.checkNotEmpty(workSpace)) {
             queryParam = new HashMap<>();
             queryParam.put("Workspace", workSpace);
         }
 
-        //result to be fetched
+        // result to be fetched
         List<String> fetch = new ArrayList<>();
         fetch.add("Results");
-        
-        QueryResponse queryResponse = RallyUtil.query(rallyRestTarget, "hierarchicalrequirement", queryFilter, fetch,
-                queryParam);
+
+        QueryResponse queryResponse = RallyUtil.query(rallyRestTarget, type, queryFilter, fetch, queryParam);
 
         if (!queryResponse.wasSuccessful()) {
             throw new AutomicException(queryResponse.getErrors()[0]);

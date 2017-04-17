@@ -124,7 +124,7 @@
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>0</Mode>
+<Mode>1</Mode>
 </VALUE>
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
@@ -281,7 +281,7 @@
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
 <Values/>
-<Mode>0</Mode>
+<Mode>1</Mode>
 </VALUE>
 </node>
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
@@ -329,7 +329,57 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY
+
+= General description =
+This action deletes the given user story along with the tasks associated to it.
+
+Note: 
+* When you delete a user story with child stories, its child stories and their tasks are deleted.
+* When you delete a user story, the following work items are also dissociated:
+	-Test Cases
+	-Defects
+	-Predecessors
+	-Successors
+
+= Failure Conditions =
+* If the User Story Id provided doesn't exist.
+
+= Inputs =
+* Base API URL		: Specify Agile Central Base API URL. Eg. https://rally1.rallydev.com
+* API Token		: Specify API token for authentication.
+* Username		: Specify username for authentication. E.g. abc@automic.com
+* Password		: Specify password for authentication.
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Workspace Name	: Provide workspace name in which your project is located. E.g. Acme
+* User Story Id 	: Specify User Story ID to delete. E.g. US11	
+* Sudo Password         : The password for the sudo command.
+* Options              	: Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+Note : Provide either API Token or Username-Password. If both are provided API Token is used.
+
+= Behavior =
+(none)
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+Logs will be displayed in the AE report.
+
+= Example =
+(none)]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

@@ -17,25 +17,22 @@ Assertion with Invalid Server URL
                       NOK       Invalid                 ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Username
-                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Password
-                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with providing Server URL & not providing Username,Password & API Token
+                      NOK       ${AgileCentral_URL }    ${Empty }      ${Empty }      ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid API Token
-                      NOK       ${AgileCentral_URL }    ${Username}    ${Password}    Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL }    ${Empty}       ${Empty}       Invalid         YES        ${Workspace_Name}    ${Project_Name}
+
+Assertion with invalid Username & Password and API Token as Empty
+                      NOK       ${AgileCentral_URL }    Invalid        Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}
 
 Assert Server URL as mandatory field
-                      NOK       ${EMPTY}                ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assert Username as mandatory field
-                      NOK       ${AgileCentral_URL }    ${EMPTY}       ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assert Password as mandatory field
-                      NOK       ${AgileCentral_URL }    ${Username}    ${EMPTY}       ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assert API Token as mandatory field
-                      NOK       ${AgileCentral_URL }    ${Username}    ${Password}    ${EMPTY}        YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${Empty }               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${Work_ItemName}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 *** Keywords ***
 Startup
@@ -51,7 +48,7 @@ Common Failure Scenarios Template
     ...    -${ServerURL}: This field specifies address to the AC server.
     ...    -${Username}: This field specifies username for authentication
     ...    -${Password}: This field specifies password for authentication
-    ...    -${API_Token}: This field specifies the api token.
+    ...    -${API_Token}: This field API token for authentication.
     ...    -${SkipSSL}: This field specifies if you want to skip SSL validation.
     ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
     ...    -${ProjectName}: This field specifies a new project name to the work item.
@@ -60,15 +57,15 @@ Common Failure Scenarios Template
     ...    -${ScheduleState}: This field specifies new schedule state to the work item.
     ...    -${CustomFields}: This field specifies list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
     Generate String
-    Init Action    ${_CREATE_WORK_ITEM_ACTION}
+    Init Action    ${_CREATE_USER_STORY_ACTION}
     Run Keyword If    '${ServerURL}' == 'Invalid'    Action Set    &UC4RB_AC_BASE_URL#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_BASE_URL#    ${ServerURL}
     Run Keyword If    '${Username}' == 'Invalid'    Action Set    &UC4RB_AC_USERNAME#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_USERNAME#    ${Username}
     Run Keyword If    '${Password}' == 'Invalid'    Action Set    &UC4RB_AC_PASSWORD#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_PASSWORD#    ${Password}
-    Run Keyword If    '${API_Token}' == 'Invalid'    Action Set    &UC4RB_TDM_PASSWORD#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_TDM_PASSWORD#    ${API_Token}
+    Run Keyword If    '${API_Token}' == 'Invalid'    Action Set    &UC4RB_AC_TOKEN#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_TOKEN#    ${API_Token}
     Action Set    &UC4RB_AC_SSL_VALIDATION#    ${SkipSSL}
     Action Set    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
     Action Set    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}

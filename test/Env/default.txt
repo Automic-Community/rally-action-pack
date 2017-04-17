@@ -3,8 +3,8 @@ Library           com.automic.robot.itpa.ItpaLibrary
 
 *** Variables ***
 #---- AE -------------------------
-#@{AE}            AUTOMIC    192.168.112.35    2217    1000/INTEGRATION/SPARTAN    test    # system, host, port, user, pass
-@{AE}             AUTOMIC    192.168.168.93    2217    100/USER/USER    test    # system, host, port, user, pass
+@{AE}             AUTOMIC    192.168.112.35    2217    1000/INTEGRATION/SPARTAN    test    # system, host, port, user, pass
+#@{AE}            AUTOMIC    192.168.168.93    2217    100/USER/USER    test    # system, host, port, user, pass
 #---- Promptset Overwrite Agent -------------------------------------------------------------------------
 @{Promptset_Overwrite_Agent_WIN}    WIN01    LOGIN
 #@{Promptset_Overwrite_Agent_UNIX}    UNIX02    LOGIN.UNIX02

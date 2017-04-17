@@ -106,5 +106,5 @@ Connect To Agile_Central
     Action Set    &UC4RB_AC_BASE_URL#    ${AgileCentral_URL }
     Action Set    &UC4RB_AC_USERNAME#    ${Username}
     Action Set    &UC4RB_AC_PASSWORD#    ${Password}
-    Action Set    &UC4RB_AC_API_TOKEN#    ${API_Token}
+    Action Set    &UC4RB_AC_TOKEN#    ${API_Token}
     Action Set    &UC4RB_AC_SSL_VALIDATION#    ${SkipSSL}

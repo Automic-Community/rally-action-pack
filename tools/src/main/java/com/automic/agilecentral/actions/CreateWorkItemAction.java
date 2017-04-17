@@ -57,15 +57,15 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 
 		JsonObject newObj = new JsonObject();
 		checkandPrepareInputs(newObj);
-		
-		if (!customFields.isEmpty()) {
+
+		if (null != customFields && !customFields.isEmpty()) {
 			addCustomfileds(newObj);
 		}
-		ConsoleWriter.writeln("Request Json Object: "+newObj);
+		ConsoleWriter.writeln("Request Json Object: " + newObj);
 		CreateRequest createRequest = new CreateRequest(workItemType, newObj);
 		try {
 			CreateResponse createResponse = rallyRestTarget.create(createRequest);
-			ConsoleWriter.writeln("Response Json Object: "+createResponse.getObject());
+			ConsoleWriter.writeln("Response Json Object: " + createResponse.getObject());
 			if (createResponse.wasSuccessful()) {
 				ConsoleWriter.writeln(
 						"UC4RB_AC_WORK_ITEM_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
@@ -90,33 +90,27 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 		workItemType = getOptionValue("workitemtype");
 		AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
-		workSpace = getOptionValue("workspacename");
-
-		project = getOptionValue("projectname");
-
 		scheduleState = getOptionValue("schedulestate");
+		if (CommonUtil.checkNotEmpty(scheduleState)) {
+			newObj.addProperty("ScheduleState", scheduleState);
+		}
 
 		description = getOptionValue("description");
-
-		//customFields = getOptionValue("customfields");
-		String temp = getOptionValue("filepath");
-		if (CommonUtil.checkNotEmpty(temp)) {
-			File file = new File(temp);
-            AgileCentralValidator.checkFileExists(file);
-            customFields = getCustomFields(temp);
-		}		
-		
 		if (CommonUtil.checkNotEmpty(description)) {
 			newObj.addProperty("Description", description);
 		}
-		if (CommonUtil.checkNotEmpty(scheduleState)) {
-			newObj.addProperty("ScheduleState", scheduleState);
-		}	
+
+		String temp = getOptionValue("filepath");
+		if (CommonUtil.checkNotEmpty(temp)) {
+			File file = new File(temp);
+			AgileCentralValidator.checkFileExists(file);
+			customFields = getCustomFields(temp);
+		}
 
 		Map<String, String> queryFilter;
 		List<String> fetch;
 		try {
-
+			workSpace = getOptionValue("workspacename");
 			if (CommonUtil.checkNotEmpty(workSpace)) {
 				// querying and getting workspace id
 				queryFilter = new HashMap<>();
@@ -129,6 +123,7 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 				newObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpace);
 			}
 
+			project = getOptionValue("projectname");
 			if (CommonUtil.checkNotEmpty(project)) {
 				// querying and getting project id
 
@@ -153,36 +148,45 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 	 */
 	private void addCustomfileds(JsonObject newObj) throws AutomicException {
 		try {
-			//String regex = System.getProperty("line.separator");
-			//String[] listOfFields = customFields.split(regex);
+
 			for (String fields : customFields) {
 				String[] field = fields.split("=");
-				if(field.length == 2){
-					Arrays.stream(field).map(String::trim).toArray(unused -> field);//Trim original array element
+				if (field.length == 2) {
+					Arrays.stream(field).map(String::trim).toArray(unused -> field);// Trim
 					newObj.addProperty(field[0], field[1]);
+				} else {
+					String errorMsg = String.format(
+							"Error in the given custom field [%s] ,please provide the valid input e.g Key1=Val1 ",
+							fields.toString());
+					throw new AutomicException(errorMsg);
 				}
 			}
-		} catch (Exception e) {
+		} catch (AutomicException e) {
+			throw e;
+		}
+
+		catch (Exception e) {
+			ConsoleWriter.writeln(e);
 			throw new AutomicException(
-					"Error in the given custom fields ,please provide the valid input e.g Key1=Val1 \\n Key2=Val2");
+					"Error in the given custom fields ,please provide the valid input e.g Key1=Val1 \\n Key2=Val2 :: "
+							+ e.getMessage());
 		}
 	}
-	
-	private List<String> getCustomFields(String fileName){
+
+	private List<String> getCustomFields(String fileName) throws AutomicException {
 		List<String> list = new ArrayList<>();
 
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-			list = stream
-					.filter(s -> !s.isEmpty())// trim them and filter out all empty lines
-					.map(line ->  line.trim())
-					.collect(Collectors.toList());
+			list = stream.filter(s -> !s.isEmpty())// trim them and filter out
+													// all empty lines
+					.map(line -> line.trim()).collect(Collectors.toList());
 		} catch (IOException e) {
-			e.printStackTrace();
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
 		}
 
 		return list;
 
 	}
-	
 
 }

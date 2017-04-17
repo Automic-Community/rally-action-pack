@@ -58,6 +58,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -134,6 +135,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -177,14 +179,14 @@
 <task Alias="" BranchType="0" Col="3" Lnr="3" OType="&lt;END&gt;" Object="END" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
-<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="0" WElseH="0" WElseS="1" WElseX="0" WhenExecute="" WtimOn="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
 <preconditions>
 <PreCon>
 <conditions id="CONDITIONS"/>
 </PreCon>
 </preconditions>
 <predecessors>
-<pre BranchType="0" Lnr="1" PreLnr="2" When="" type="container"/>
+<pre BranchType="0" Lnr="1" PreLnr="2" When="ANY_OK" type="container"/>
 </predecessors>
 <runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
 <result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
@@ -196,6 +198,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>

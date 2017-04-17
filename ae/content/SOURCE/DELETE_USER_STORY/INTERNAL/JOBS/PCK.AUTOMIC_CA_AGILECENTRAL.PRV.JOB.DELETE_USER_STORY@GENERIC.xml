@@ -102,7 +102,8 @@
 :   DEFINE &STRING_ARR#, string, 30
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
 : ENDIF
-
+!------------------------------------------ Validating optional value --------------------------------------------------------------------------------------------
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_CONN_PARAM
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
 ! Log parameters specific to action
@@ -127,17 +128,17 @@
 ! Workspace
 : SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_WORKSPACE#
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workspace &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workspace &UC4RB_AC_ESCAPED_STRING#")
 
 ! User Story ID
 : SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_ITEM_ID#
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
-: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemid &UC4RB_SV_ESCAPED_STRING#")
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemid &UC4RB_AC_ESCAPED_STRING#")
 
 : PRINT &UC4RB_AC_CMD#
 
 ! Invoking java binary
-  &UC4RB_AC_CMD# -type hierarchicalrequirement
+  &UC4RB_AC_CMD# -workitemtype hierarchicalrequirement
 
 ! Status messages
 : SET &UC4RB_LOGGING_INFO# = "******** DELETE USER STORY ACTION EXECUTED SUCCESSFULLY ********"

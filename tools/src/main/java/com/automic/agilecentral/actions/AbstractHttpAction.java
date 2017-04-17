@@ -46,7 +46,6 @@ public abstract class AbstractHttpAction extends AbstractAction {
         addOption(Constants.BASE_URL, true, "CA Agile Central URL");
         addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
         addOption(Constants.SKIP_CERT_VALIDATION, true, "Skip SSL Validation");
-        addOption(Constants.API_KEY, false, "Rally Rest API Key");
     }
 
     /**
@@ -64,7 +63,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
     private void prepareCommonInputs() throws AutomicException {
         this.username = getOptionValue("username");
         this.password = System.getenv(Constants.ENV_PASSWORD);
-        this.apiKey = getOptionValue("username");
+        this.apiKey = System.getenv(Constants.ENV_API_TOKEN);
 
         // check if login parameters are provided
         if (!CommonUtil.checkNotEmpty(username) && !CommonUtil.checkNotEmpty(apiKey)) {

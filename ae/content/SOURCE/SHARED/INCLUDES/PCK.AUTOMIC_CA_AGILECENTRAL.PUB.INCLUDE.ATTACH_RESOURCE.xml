@@ -10,7 +10,7 @@
 <MSCRI><![CDATA[:ATTACH_RES "AUTOMIC_CA_AGILECENTRAL.PRV.STORE" ,"AGILECENTRALTOOL", C, N
 
 ! Setting jar class path into variable
-:SET &UC4RB_SV_PATH_JAR#= STR_CAT(&$AGENT_RESOURCES_CLIENT#,"agilecentral-tool.jar")]]></MSCRI>
+:SET &UC4RB_AC_PATH_JAR#= STR_CAT(&$AGENT_RESOURCES_CLIENT#,"agilecentral-tool.jar")]]></MSCRI>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[This includes attaches the Service Virtualization jar to current agent

@@ -13,7 +13,9 @@ import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 
+import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
+import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
 import com.rallydev.rest.RallyRestApi;
 
@@ -27,16 +29,21 @@ public class InsecureRallyRestApi extends RallyRestApi {
     @SuppressWarnings("deprecation")
     public InsecureRallyRestApi(URI server, String userName, String password) throws AutomicException {
         super(server, userName, password);
-        SchemeRegistry registry = client.getConnectionManager().getSchemeRegistry();
-        registry.register(new Scheme("https", 443, buildSSLSocketFactory()));
+        skipValidation();
     }
 
     public InsecureRallyRestApi(URI server, String apiKey) throws AutomicException {
         super(server, apiKey);
-        SchemeRegistry registry = client.getConnectionManager().getSchemeRegistry();
-        registry.register(new Scheme("https", 443, buildSSLSocketFactory()));
+        skipValidation();
     }
 
+    private void skipValidation() throws AutomicException {
+        int port = CommonUtil.getEnvParameter(Constants.ENV_PORT,
+                Constants.AC_PORT);
+        SchemeRegistry registry = client.getConnectionManager().getSchemeRegistry();
+        registry.register(new Scheme("https", port, buildSSLSocketFactory()));
+    }
+    
     private SSLSocketFactory buildSSLSocketFactory() throws AutomicException {
         TrustStrategy ts = new TrustStrategy() {
             @Override
@@ -52,5 +59,6 @@ public class InsecureRallyRestApi extends RallyRestApi {
             throw new AutomicException(e.getMessage());
         }
     }
+    
 
 }

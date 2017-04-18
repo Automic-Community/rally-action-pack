@@ -102,20 +102,11 @@
 :   DEFINE &STRING_ARR#, string, 30
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
 : ENDIF
+
 !------------------------------------------ Validating optional value --------------------------------------------------------------------------------------------
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_CONN_PARAM
+
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.PARAM_VALIDATION
-! Log parameters specific to action
-
-: SET &UC4RB_LOGGING_PARAMETER# = "Workspace name"
-: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AC_WORKSPACE#"
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
-
-: SET &UC4RB_LOGGING_PARAMETER# = "User Story Id"
-: SET &UC4RB_LOGGING_PARAMETER_VAL# = "&UC4RB_AC_ITEM_ID#"
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.PARAM
-
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ATTACH_RESOURCE
 

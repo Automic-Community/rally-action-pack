@@ -22,9 +22,9 @@
 : ENDIF
 
 : IF &UC4RB_AC_TOKEN# EQ ""
-:   IF &UC4RB_AC_PASSWORD# EQ ""
-:     STOP MSG, 50, "Provide Password to the Username"
-:   ENDIF
+:     IF &UC4RB_AC_PASSWORD# EQ ""
+:         STOP MSG, 50, "Provide Password to the Username"
+:     ENDIF
 : ENDIF]]></MSCRI>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">

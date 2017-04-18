@@ -19,19 +19,9 @@ import com.rallydev.rest.response.DeleteResponse;
 public class DeleteWorkItemAction extends AbstractHttpAction {
 
     /**
-     * Workspace name where the user story is located
-     */
-    private String workSpace;
-
-    /**
      * Formatted Id of the user story to be deleted
      */
-    private String workItemId;
-
-    /**
-     * Work item type
-     */
-    private String workItemType;
+    private String workItemRef;
 
     public DeleteWorkItemAction() {
         addOption("workspace", false, "Workspace name");
@@ -44,7 +34,7 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
         prepareInputs();
         try {
             // deleting the work item
-            DeleteRequest deleteRequest = new DeleteRequest(workItemId);
+            DeleteRequest deleteRequest = new DeleteRequest(workItemRef);
             DeleteResponse deleteResponse;
             deleteResponse = rallyRestTarget.delete(deleteRequest);
             if (!deleteResponse.wasSuccessful()) {
@@ -58,17 +48,20 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
     }
 
     private void prepareInputs() throws AutomicException {
-        workSpace = getOptionValue("workspace");
-        if (CommonUtil.checkNotEmpty(workSpace)) {
-            RallyUtil.getWorspaceId(rallyRestTarget, workSpace);
+        // Workspace name where the user story is located
+        String workSpaceRef = "";
+        String workSpaceName = getOptionValue("workspace");
+        if (CommonUtil.checkNotEmpty(workSpaceName)) {
+            workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);
         }
 
-        workItemType = getOptionValue("workitemtype");
+        // Work item type
+        String workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Work Item type");
 
         String temp = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(temp, "Work Item ID");
-        workItemId = RallyUtil.getWorkItemRef(rallyRestTarget, temp, null, workSpace, workItemType);
+        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, temp, workSpaceRef, workItemType);
 
     }
 

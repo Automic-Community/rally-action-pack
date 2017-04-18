@@ -15,6 +15,7 @@ public class Constants {
     public static final String HTTPS = "https";
     public static final String USERNAME = "username";
     public static final String SKIP_CERT_VALIDATION = "ssl";
+    public static final String BASIC_AUTH = "basicauth";
     public static final String WORKSPACE = "WORKSPACE";
     public static final String PROJECT = "PROJECT";
 
@@ -23,7 +24,6 @@ public class Constants {
     public static final String ONE = "1";
 
     public static final String ENV_PASSWORD = "UC4_DECRYPTED_PWD";
-    public static final String ENV_API_TOKEN = "UC4_API_TOKEN";
     public static final String ENV_API_VERSION = "ENV_API_VERSION";
     public static final String ENV_PORT = "ENV_PORT";
     

@@ -11,7 +11,7 @@ ${API_Token}      Empty
 ${SkipSSL}        YES
 ${Workspace_Name}    Acme
 ${Project_Name}    Shopping Team
-${Userstory_Name}    Epic:Personal Information
+${UserStory_Name}    Epic:Personal Information
 ${Description}    testing
 ${Schedule_State}    In-Progress
 ${Custom_Fields}    Demo=test

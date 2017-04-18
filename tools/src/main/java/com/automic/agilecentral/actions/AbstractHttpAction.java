@@ -1,5 +1,6 @@
 package com.automic.agilecentral.actions;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -18,11 +19,6 @@ import com.rallydev.rest.RallyRestApi;
 public abstract class AbstractHttpAction extends AbstractAction {
 
     /**
-     * apikey to connect to agile central
-     */
-    protected String apiKey;
-
-    /**
      * apiKey to make the request for all the actions
      */
     protected RallyRestApi rallyRestTarget;
@@ -31,6 +27,11 @@ public abstract class AbstractHttpAction extends AbstractAction {
      * Service end point
      */
     private URI baseUrl;
+
+    /**
+     * apikey to connect to agile central
+     */
+    private String apiKey;
 
     /**
      * Username for Login into CA Agile Central
@@ -42,10 +43,16 @@ public abstract class AbstractHttpAction extends AbstractAction {
      */
     private String password;
 
+    /**
+     * Api version of agile central
+     */
+    private String apiVersion;
+
     public AbstractHttpAction() {
         addOption(Constants.BASE_URL, true, "CA Agile Central URL");
         addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
         addOption(Constants.SKIP_CERT_VALIDATION, true, "Skip SSL Validation");
+        addOption(Constants.API_VERSION, true, "API Version");
     }
 
     /**
@@ -59,21 +66,23 @@ public abstract class AbstractHttpAction extends AbstractAction {
         prepareCommonInputs();
         executeSpecific();
         }finally{
-            try{
-                if(rallyRestTarget!=null){
+            if(rallyRestTarget!=null){
+                try {
                     rallyRestTarget.close();
+                } catch (IOException e) {
+                   ConsoleWriter.write("Error while closing Rally client");
                 }
-            }catch(Exception e){
-                ConsoleWriter.writeln("Error occured while closing client");
             }
         }
     }
 
     @SuppressWarnings("deprecation")
     private void prepareCommonInputs() throws AutomicException {
-        this.username = getOptionValue("username");
+        this.username = getOptionValue(Constants.USERNAME);
         this.password = System.getenv(Constants.ENV_PASSWORD);
         this.apiKey = System.getenv(Constants.ENV_API_TOKEN);
+
+        this.apiVersion = CommonUtil.getEnvParameter(getOptionValue(Constants.API_VERSION), Constants.AC_API_VERSION);
 
         // check if login parameters are provided
         if (!CommonUtil.checkNotEmpty(username) && !CommonUtil.checkNotEmpty(apiKey)) {
@@ -104,7 +113,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
         } else {
             rallyRestTarget = new RallyRestApi(baseUrl, username, password);
         }
-
+        rallyRestTarget.setWsapiVersion(apiVersion);
     }
 
     /**

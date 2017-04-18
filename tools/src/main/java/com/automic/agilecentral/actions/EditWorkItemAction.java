@@ -81,7 +81,7 @@ public class EditWorkItemAction extends AbstractHttpAction {
         }
 
         // checking if given work item exists
-        workItemRef = RallyUtil.getUserStoryRef(rallyRestTarget, workItemId, null, workSpace);
+        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemType, workItemId, null, workSpace);
 
         // checking if given project exists
         project = getOptionValue("projectname");
@@ -109,7 +109,7 @@ public class EditWorkItemAction extends AbstractHttpAction {
             AgileCentralValidator.checkFileExists(file);
             RallyUtil.processCustomFields(temp, updateObj);
         }
-        
+
         // adding new work item description
         temp = getOptionValue("descriptionfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
@@ -125,7 +125,6 @@ public class EditWorkItemAction extends AbstractHttpAction {
 
         }
 
-       
         ConsoleWriter.writeln("Request Json Object: " + updateObj);
         return new UpdateRequest(workItemRef, updateObj);
 

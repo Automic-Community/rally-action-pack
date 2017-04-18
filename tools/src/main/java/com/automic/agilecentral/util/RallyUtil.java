@@ -134,9 +134,9 @@ public final class RallyUtil {
         return projectQueryResponse.getResults().get(0).getAsJsonObject().get(OBJECT_ID).getAsString();
     }
 
-    public static String getUserStoryRef(RallyRestApi restApi, String formattedId, String projectName,
+    public static String getWorkItemRef(RallyRestApi restApi, String type ,String formattedId, String projectName,
             String workspaceName) throws AutomicException {
-        QueryRequest queryRequest = new QueryRequest(Constants.USER_STORY);
+        QueryRequest queryRequest = new QueryRequest(type);
         queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
         if (null != workspaceName && !workspaceName.isEmpty()) {
             queryRequest.addParam(Constants.WORKSPACE, workspaceName);

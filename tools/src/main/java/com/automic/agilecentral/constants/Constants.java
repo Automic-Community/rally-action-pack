@@ -6,8 +6,6 @@ package com.automic.agilecentral.constants;
  */
 public class Constants {
 
-   
-
     public static final String ACTION = "action";
     public static final String HELP = "help";
 
@@ -23,21 +21,19 @@ public class Constants {
     public static final String USERNAME = "username";
 
     public static final String ENV_PASSWORD = "UC4_DECRYPTED_PWD";
+    public static final String ENV_API_TOKEN = "UC4_API_TOKEN";
 
     public static final String SKIP_CERT_VALIDATION = "ssl";
     public static final String ENV_CONNECTION_TIMEOUT = "ENV_CONNECTION_TIMEOUT";
     public static final String ENV_READ_TIMEOUT = "ENV_READ_TIMEOUT";
 
     public static final int CONNECTION_TIMEOUT = 30000;
-    public static final int READ_TIMEOUT = 60000;    
+    public static final int READ_TIMEOUT = 60000;
 
-	public static final String API_KEY = "apiKey";
-	
-	public static final String WORKSPACE = "Workspace";
-	public static final String PROJECT = "Project";
-	public static final String USER_STORY = "User Story";
-	public static final String DEFECT = "Defect";
-	
+    public static final String WORKSPACE = "Workspace";
+    public static final String PROJECT = "Project";
+    public static final String USER_STORY = "User Story";
+    public static final String DEFECT = "Defect";
 
     private Constants() {
     }

@@ -44,7 +44,7 @@ Startup
 Create User Story Template
     [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${ProjectName}    ${UserstoryName}    ${Description}    ${ScheduleState}
     ...    ${CustomFields}
-    [Documentation]    This test executes the common failure scenarios for action pack with create user story action.
+    [Documentation]    This action creates the given user story in agile central.
     ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
     ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
     ...    -${ProjectName}: This field specifies a new project name to the user story.

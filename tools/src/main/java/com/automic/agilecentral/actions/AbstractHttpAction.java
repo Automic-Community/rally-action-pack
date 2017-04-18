@@ -51,7 +51,6 @@ public abstract class AbstractHttpAction extends AbstractAction {
         addOption(Constants.BASE_URL, true, "CA Agile Central URL");
         addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
         addOption(Constants.SKIP_CERT_VALIDATION, true, "Skip SSL Validation");
-        addOption(Constants.API_VERSION, true, "API Version");
     }
 
     /**
@@ -70,8 +69,6 @@ public abstract class AbstractHttpAction extends AbstractAction {
         this.username = getOptionValue(Constants.USERNAME);
         this.password = System.getenv(Constants.ENV_PASSWORD);
         this.apiKey = System.getenv(Constants.ENV_API_TOKEN);
-
-        this.apiVersion = CommonUtil.getEnvParameter(getOptionValue(Constants.API_VERSION), Constants.AC_API_VERSION);
 
         // check if login parameters are provided
         if (!CommonUtil.checkNotEmpty(username) && !CommonUtil.checkNotEmpty(apiKey)) {
@@ -102,6 +99,9 @@ public abstract class AbstractHttpAction extends AbstractAction {
         } else {
             rallyRestTarget = new RallyRestApi(baseUrl, username, password);
         }
+        
+        //setting the api version
+        this.apiVersion = CommonUtil.getEnvParameter(Constants.ENV_API_VERSION, Constants.AC_API_VERSION);
         rallyRestTarget.setWsapiVersion(apiVersion);
     }
 

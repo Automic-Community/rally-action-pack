@@ -352,7 +352,7 @@ Note:
 * Username		: Specify username for authentication. E.g. abc@automic.com
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Workspace Name	: Provide workspace name in which your project is located. E.g. Acme
+* Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id 	: Specify User Story ID to delete. E.g. US11	
 * Sudo Password         : The password for the sudo command.
 * Options              	: Run using sudo password (and sudo username if specified).

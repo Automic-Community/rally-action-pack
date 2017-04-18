@@ -176,5 +176,34 @@ public class RallyUtil {
         }
         return storyQueryResponse.getResults().get(0).getAsJsonObject().get(OBJECT_ID).getAsString();
     }
+    
+    public static String getWorkItemRef(RallyRestApi restApi, String formattedId, String projectName,
+            String workspaceName, String type) throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(type);
+        queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
+        if (null != workspaceName && !workspaceName.isEmpty()) {
+            queryRequest.addParam(Constants.WORKSPACE, workspaceName);
+        }
+
+        if (null != projectName && !projectName.isEmpty()) {
+            queryRequest.addParam(Constants.PROJECT, projectName);
+        }
+
+        QueryResponse storyQueryResponse;
+        try {
+            storyQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+        }
+
+        int totalResultCount = storyQueryResponse.getTotalResultCount();
+
+        if (totalResultCount != 1) {
+            throw new AutomicException(
+                    String.format("User story id %s found %s ,expected 1", formattedId, totalResultCount));
+        }
+        return storyQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+    } 
 
 }

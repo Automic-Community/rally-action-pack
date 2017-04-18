@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.ADD_COMMENT@GENERIC">
+<XHEADER state="1">
+<Title>Add Comment</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;GENERIC&gt;|HOST</HostDst>
+<HostATTR_Type>GENERIC</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>0</AutoDeactErrorFree>
+<DeactWhen/>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>1</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>0</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INC PCK.ITPA_SHARED.PUB.INCLUDE.START_STOP_JOB_ACCORDING_TO_AGENT_OS]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[: IF &$PLATFORM# EQ "WINDOWS"
+    @echo off
+: ELSE
+:   DEFINE &STRING_ARR#, string, 30
+:   INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
+: ENDIF
+
+!------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
+: INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ATTACH_RESOURCE
+
+! Define action specific java options and values
+: SET &ACTION_NAME# = "AddCommentAction"
+
+! Build java arguments
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.PREPARE_CMD
+! Workspace name
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_WORKSPACE#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workspacename &UC4RB_AC_ESCAPED_STRING#")
+
+! Work item type
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemtype hierarchicalrequirement")
+
+! Work Item Id
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_ITEM_ID#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemid &UC4RB_AC_ESCAPED_STRING#")
+
+! Comment
+! Get File path
+: SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
+! Baseline File
+: PSET &UC4RB_COMMENT_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"comment-&$RUNID#.txt")
+: SET &UC4RB_FILE_CONTENT# = &UC4RB_AC_ITEM_COMMENT#
+! Creating file in the temp dir
+: SET &UC4RB_FILE_PATH#=&UC4RB_COMMENT_FILE_PATH#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CREATE_FILE
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_COMMENT_FILE_PATH#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -commentfilepath &UC4RB_AC_ESCAPED_STRING#")
+
+: PRINT &UC4RB_AC_CMD#
+! Invoking java binary
+  &UC4RB_AC_CMD#
+
+! Status messages
+: SET &UC4RB_LOGGING_INFO# = "******** ADD COMMENT ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** ADD COMMENT ACTION FAILED ********"
+
+!------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
+
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_JOBSTATUS
+: INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_FOOTER]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_GENERIC>
+</uc-export>

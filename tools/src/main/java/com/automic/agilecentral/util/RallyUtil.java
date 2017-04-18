@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.google.gson.JsonObject;
 import com.rallydev.rest.RallyRestApi;
@@ -25,7 +26,9 @@ import com.rallydev.rest.util.QueryFilter;
  * @author sumitsamson
  *
  */
-public class RallyUtil {
+public final class RallyUtil {
+
+    private static final String OBJECT_ID = "ObjectID";
 
     public static QueryResponse query(RallyRestApi restApi, String type, Map<String, String> queryFilter,
             List<String> fetch, Map<String, String> queryParam) throws IOException {
@@ -57,21 +60,6 @@ public class RallyUtil {
 
     }
 
-    public static String getObjectId(RallyRestApi restApi, String type, Map<String, String> queryFilter,
-            List<String> fetch, Map<String, String> queryParam) throws IOException, AutomicException {
-
-        QueryResponse queryResponse = query(restApi, type, queryFilter, fetch, queryParam);
-        int totalResultCount = queryResponse.getTotalResultCount();
-
-        if (totalResultCount != 1) {
-            type = ("HIERARCHICALREQUIREMENT".equalsIgnoreCase(type) ? "User Story " : type);
-            throw new AutomicException(String.format("[%s] named [%s] found [%s] , expected 1", type,
-                    queryFilter.get("Name"), totalResultCount));
-        }
-        return queryResponse.getResults().get(0).getAsJsonObject().get("ObjectID").getAsString();
-
-    }
-
     public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
         List<String> list = new ArrayList<>();
 
@@ -97,6 +85,82 @@ public class RallyUtil {
             ConsoleWriter.writeln(e);
             throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
         }
+    }
+
+    public static String getWorspaceId(RallyRestApi restApi, String workspaceName) throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(Constants.WORKSPACE);
+        queryRequest.setQueryFilter(new QueryFilter("Name", "=", workspaceName));
+
+        QueryResponse workspaceQueryResponse;
+        try {
+            workspaceQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+        }
+
+        int totalResultCount = workspaceQueryResponse.getTotalResultCount();
+
+        if (totalResultCount != 1) {
+            throw new AutomicException(
+                    String.format("Workspace named %s found %s ,expected 1", workspaceName, totalResultCount));
+        }
+        return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get(OBJECT_ID).getAsString();
+    }
+
+    public static String getProjectId(RallyRestApi restApi, String projectName, String workspaceName)
+            throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(Constants.PROJECT);
+        queryRequest.setQueryFilter(new QueryFilter("Name", "=", projectName));
+        if (null != workspaceName && !workspaceName.isEmpty()) {
+            queryRequest.addParam(Constants.WORKSPACE, workspaceName);
+        }
+
+        QueryResponse projectQueryResponse;
+        try {
+            projectQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+        }
+
+        int totalResultCount = projectQueryResponse.getTotalResultCount();
+        projectQueryResponse.wasSuccessful();
+
+        if (totalResultCount != 1) {
+            throw new AutomicException(
+                    String.format("Project named %s found %s ,expected 1", projectName, totalResultCount));
+        }
+        return projectQueryResponse.getResults().get(0).getAsJsonObject().get(OBJECT_ID).getAsString();
+    }
+
+    public static String getUserStoryRef(RallyRestApi restApi, String formattedId, String projectName,
+            String workspaceName) throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(Constants.USER_STORY);
+        queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
+        if (null != workspaceName && !workspaceName.isEmpty()) {
+            queryRequest.addParam(Constants.WORKSPACE, workspaceName);
+        }
+
+        if (null != projectName && !projectName.isEmpty()) {
+            queryRequest.addParam(Constants.PROJECT, projectName);
+        }
+
+        QueryResponse storyQueryResponse;
+        try {
+            storyQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+        }
+
+        int totalResultCount = storyQueryResponse.getTotalResultCount();
+
+        if (totalResultCount != 1) {
+            throw new AutomicException(
+                    String.format("User story id %s found %s ,expected 1", formattedId, totalResultCount));
+        }
+        return storyQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
     }
 
 }

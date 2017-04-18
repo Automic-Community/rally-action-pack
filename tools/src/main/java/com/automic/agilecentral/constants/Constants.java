@@ -30,10 +30,10 @@ public class Constants {
     public static final int CONNECTION_TIMEOUT = 30000;
     public static final int READ_TIMEOUT = 60000;
 
-    public static final String WORKSPACE = "Workspace";
-    public static final String PROJECT = "Project";
-    public static final String USER_STORY = "User Story";
-    public static final String DEFECT = "Defect";
+    public static final String WORKSPACE = "WORKSPACE";
+    public static final String PROJECT = "PROJECT";
+    public static final String USER_STORY = "HIERARCHICALREQUIREMENT";
+    public static final String DEFECT = "DEFECT";
 
     private Constants() {
     }

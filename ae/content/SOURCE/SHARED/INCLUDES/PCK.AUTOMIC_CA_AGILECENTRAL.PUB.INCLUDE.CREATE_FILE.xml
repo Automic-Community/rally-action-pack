@@ -7,7 +7,7 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[! ----------------- Writing XML File-------------------------------------
+<MSCRI><![CDATA[
 :    SET &HND# = CREATE_PROCESS(NEW)
 :    SET &RET# = PUT_PROCESS_LINE(&HND#, &UC4RB_FILE_CONTENT#)
 :    SET &RET# = WRITE_PROCESS(&HND#,&UC4RB_FILE_PATH#,&AGENT#,&LOGIN#,OVERWRITE)

@@ -1,99 +1,126 @@
 package com.automic.agilecentral.actions;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import com.automic.agilecentral.config.InsecureRallyRestApi;
 import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.constants.ExceptionConstants;
 import com.automic.agilecentral.exception.AutomicException;
+import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
-import com.automic.agilecentral.validator.AgileCentralValidator;
 import com.rallydev.rest.RallyRestApi;
 
 /**
- * This class defines the execution of any action.It provides some
- * initializations and validations on common inputs .The child actions will
- * implement its executeSpecific() method as per their own need.
+ * This class defines the execution of any action.It provides some initializations and validations on common inputs .The
+ * child actions will implement its executeSpecific() method as per their own need.
  */
 public abstract class AbstractHttpAction extends AbstractAction {
 
-	protected String apiKey;
+    /**
+     * apiKey to make the request for all the actions
+     */
+    protected RallyRestApi rallyRestTarget;
 
-	/**
-	 * Service end point
-	 */
-	private URI baseUrl;
+    /**
+     * Service end point
+     */
+    private URI baseUrl;
 
-	/**
-	 * Username for Login into CA Agile Central
-	 */
-	private String username;
+    /**
+     * apikey to connect to agile central
+     */
+    private String apiKey;
 
-	private String password;
+    /**
+     * Username for Login into CA Agile Central
+     */
+    private String username;
 
-	protected RallyRestApi rallyRestTarget;
+    /**
+     * Password to the username
+     */
+    private String password;
 
-	public AbstractHttpAction() {
-		addOption(Constants.BASE_URL, true, "CA Agile Central URL");
-		addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
-		addOption(Constants.API_KEY, false, "Rally Rest API Key");
-		addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL validation");
-	}
+    /**
+     * Api version of agile central
+     */
+    private String apiVersion;
 
-	/**
-	 * This method initializes the arguments and calls the execute method.
-	 *
-	 * @throws AutomicException
-	 *             exception while executing an action
-	 */
-	public final void execute() throws AutomicException {
-		prepareCommonInputs();
-		executeSpecific();
-	}
+    public AbstractHttpAction() {
+        addOption(Constants.BASE_URL, true, "CA Agile Central URL");
+        addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
+        addOption(Constants.SKIP_CERT_VALIDATION, true, "Skip SSL Validation");
+        addOption(Constants.API_VERSION, true, "API Version");
+    }
 
-	@SuppressWarnings("deprecation")
-	private void prepareCommonInputs() throws AutomicException {
-		String temp = getOptionValue(Constants.BASE_URL);
+    /**
+     * This method initializes the arguments and calls the execute method.
+     *
+     * @throws AutomicException
+     *             exception while executing an action
+     */
+    public final void execute() throws AutomicException {
+        try{
+        prepareCommonInputs();
+        executeSpecific();
+        }finally{
+            if(rallyRestTarget!=null){
+                try {
+                    rallyRestTarget.close();
+                } catch (IOException e) {
+                   ConsoleWriter.write("Error while closing Rally client");
+                }
+            }
+        }
+    }
 
-		try {
-			this.baseUrl = new URI(temp);
-		} catch (URISyntaxException e) {
-			ConsoleWriter.writeln(e);
-			String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
-			throw new AutomicException(msg);
-		}
+    @SuppressWarnings("deprecation")
+    private void prepareCommonInputs() throws AutomicException {
+        this.username = getOptionValue(Constants.USERNAME);
+        this.password = System.getenv(Constants.ENV_PASSWORD);
+        this.apiKey = System.getenv(Constants.ENV_API_TOKEN);
 
-		this.apiKey = getOptionValue(Constants.API_KEY);
+        this.apiVersion = CommonUtil.getEnvParameter(getOptionValue(Constants.API_VERSION), Constants.AC_API_VERSION);
 
-		if (null != this.apiKey && !this.apiKey.isEmpty()) {
+        // check if login parameters are provided
+        if (!CommonUtil.checkNotEmpty(username) && !CommonUtil.checkNotEmpty(apiKey)) {
+            throw new AutomicException("Provide either username and password or the api key");
+        }
 
-			rallyRestTarget = new RallyRestApi(baseUrl, apiKey);
+        String temp = getOptionValue(Constants.BASE_URL);
+        try {
+            this.baseUrl = new URI(temp);
+        } catch (URISyntaxException e) {
+            ConsoleWriter.writeln(e);
+            String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
+            throw new AutomicException(msg);
+        }
 
-		} else {
-			this.username = getOptionValue("username");
-			AgileCentralValidator.checkNotEmpty(username, "Username for Login into CA Agile Central");
+        // if cert validation needs to be skipped
+        if (CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION))) {
+            if (CommonUtil.checkNotEmpty(apiKey)) {
+                new InsecureRallyRestApi(baseUrl, apiKey);
+            } else {
+                new InsecureRallyRestApi(baseUrl, username, password);
+            }
+        }
 
-			this.password = /*System.getenv(Constants.ENV_PASSWORD)*/"Release!";
+        // for performing all the CRUD and query operations.
+        if (CommonUtil.checkNotEmpty(apiKey)) {
+            rallyRestTarget = new RallyRestApi(baseUrl, apiKey);
+        } else {
+            rallyRestTarget = new RallyRestApi(baseUrl, username, password);
+        }
+        rallyRestTarget.setWsapiVersion(apiVersion);
+    }
 
-			AgileCentralValidator.checkNotEmpty(password, "Password for Login into CA Agile Central");
-
-			rallyRestTarget = new RallyRestApi(baseUrl, username, password);
-		}
-
-	}
-
-	/**
-	 * Method to execute the action.
-	 *
-	 * @throws AutomicException
-	 */
-	protected abstract void executeSpecific() throws AutomicException;
-
-	/**
-	 * Method to initialize Client instance.
-	 *
-	 * @throws AutomicException
-	 *
-	 */
+    /**
+     * Method to execute the action.
+     *
+     * @throws AutomicException
+     */
+    protected abstract void executeSpecific() throws AutomicException;
 
 }

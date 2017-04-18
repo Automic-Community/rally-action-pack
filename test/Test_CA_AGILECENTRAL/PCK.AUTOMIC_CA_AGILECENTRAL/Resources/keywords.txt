@@ -102,7 +102,7 @@ Init Action
     Action Create    ${actionName}
     Set Overwrite Agent
 
-Connect To Agile_Central
+Connect To AgileCentral
     Action Set    &UC4RB_AC_BASE_URL#    ${AgileCentral_URL }
     Action Set    &UC4RB_AC_USERNAME#    ${Username}
     Action Set    &UC4RB_AC_PASSWORD#    ${Password}

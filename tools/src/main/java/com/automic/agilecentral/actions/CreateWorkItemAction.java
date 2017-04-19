@@ -25,7 +25,7 @@ import com.rallydev.rest.response.CreateResponse;
  */
 public class CreateWorkItemAction extends AbstractHttpAction {
 
-    private String workSpace;
+    private String workspace;
     private String project;
     private String workItemName;
     private String workItemType;
@@ -39,7 +39,7 @@ public class CreateWorkItemAction extends AbstractHttpAction {
         addOption("projectname", false, "Project Name where work item needs to be created");
         addOption("descriptionfilepath", false, "Description file path");
         addOption("schedulestate", false, "Schedule state of work");
-        addOption("filepath", false, "Custom fields file path");
+        addOption("customfilepath", false, "Custom fields file path");
 
     }
 
@@ -78,17 +78,16 @@ public class CreateWorkItemAction extends AbstractHttpAction {
         workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
-        workSpace = getOptionValue("workspacename");
-        if (CommonUtil.checkNotEmpty(workSpace)) {
-            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
-            newObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpace);
+        workspace = getOptionValue("workspacename");
+        if (CommonUtil.checkNotEmpty(workspace)) {
+            workspace = RallyUtil.getWorspaceRef(rallyRestTarget, workspace);
+            newObj.addProperty(Constants.WORKSPACE, workspace);
         }
 
         project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
-
-            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
-            newObj.addProperty(Constants.PROJECT, "/project/" + project);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, workspace);
+            newObj.addProperty(Constants.PROJECT, project);
         }
 
         scheduleState = getOptionValue("schedulestate");
@@ -97,14 +96,14 @@ public class CreateWorkItemAction extends AbstractHttpAction {
         }
 
         // Custom fields addition
-        String temp = getOptionValue("filepath");
+        String temp = getOptionValue("customfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
             File file = new File(temp);
             AgileCentralValidator.checkFileExists(file);
             RallyUtil.processCustomFields(temp, newObj);
         }
 
-        //description addition
+        // description addition
         temp = getOptionValue("descriptionfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
             File file = new File(temp);

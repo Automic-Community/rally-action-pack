@@ -58,6 +58,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -137,6 +138,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -247,6 +249,7 @@
 <UC4RB_AC_BASE_URLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_BASE_URL#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PASSWORD#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_SSL_VALIDATIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SSL_VALIDATION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS">NO</UC4RB_AC_SSL_VALIDATIONs.00>
+<UC4RB_AC_TOKENs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_TOKEN#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 <UC4RB_AC_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_USERNAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -385,6 +388,9 @@ PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
 
 = General description =
 This action use to create new user story. 
+
+= Failure Conditions =
+(none)
 
 = Inputs =
 * Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com

@@ -15,3 +15,5 @@ ${UserStory_Name}    Epic:Personal Information
 ${Description}    testing
 ${Schedule_State}    In-Progress
 ${Custom_Fields}    Demo=test
+${UserStory_Id}    US13
+${Id_Of_User_Stories}    US13,US12

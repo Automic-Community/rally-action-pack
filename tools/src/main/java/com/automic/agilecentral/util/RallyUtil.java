@@ -63,21 +63,6 @@ public class RallyUtil {
 
     }
 
-    public static String getObjectId(RallyRestApi restApi, String type, Map<String, String> queryFilter,
-            List<String> fetch, Map<String, String> queryParam) throws IOException, AutomicException {
-
-        QueryResponse queryResponse = query(restApi, type, queryFilter, fetch, queryParam);
-        int totalResultCount = queryResponse.getTotalResultCount();
-
-        if (totalResultCount != 1) {
-            type = ("HIERARCHICALREQUIREMENT".equalsIgnoreCase(type) ? "User Story " : type);
-            throw new AutomicException(String.format("[%s] named [%s] found [%s] , expected 1", type,
-                    queryFilter.get("Name"), totalResultCount));
-        }
-        return queryResponse.getResults().get(0).getAsJsonObject().get(OBJECT_ID).getAsString();
-
-    }
-
     public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
         List<String> list = new ArrayList<>();
 

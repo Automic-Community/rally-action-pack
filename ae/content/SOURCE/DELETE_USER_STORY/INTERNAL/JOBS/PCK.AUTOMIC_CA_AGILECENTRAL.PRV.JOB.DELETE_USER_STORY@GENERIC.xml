@@ -139,7 +139,7 @@
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.CHECK_JOBSTATUS
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_JOBSTATUS
 : INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_FOOTER]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">

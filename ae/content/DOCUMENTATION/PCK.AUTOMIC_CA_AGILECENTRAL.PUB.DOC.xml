@@ -20,11 +20,10 @@ CA Agile Central is an enterprise-class platform that's purpose-built for scalin
 =Setup=
 * Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
 * The Agent should be able to access CA Agile Central rest api endpoint URL in order to make HTTP requests.
-* Modify the HTTP timeout parameters as per your environment. By default "CONNECTION_TIMEOUT" is defined as 30000 and "READ_TIMEOUT" is defined as 60000. Both are defined in milliseconds. 0 means no timeout.
 
 =Variables=
 PCK.AUTOMIC_CA_AGILE_CENTRAL.PUB.VARA.PACKAGE_PARAMETERS
-* Connection timeout and read timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
+* API version and https port defined in this vara
 
 =Actions=
 Following actions are supported for CA SV.
@@ -32,7 +31,13 @@ Following actions are supported for CA SV.
 * Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY 
 * Action Description: This action deletes the given user story along with the tasks associated to it.
 
-* Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS 
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
+* Action Description: This action use to create new user story.
+
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY
+* Action Description: This action use to edit a user story.
+
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
 * Action Description: This action changes the status provided in a comma separated manner for provided user story.]]></DOC>
 </DOCU_Docu>
 </DOCU>

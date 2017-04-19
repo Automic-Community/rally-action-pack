@@ -1,5 +1,6 @@
 package com.automic.agilecentral.actions;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.KeyManagementException;
@@ -47,8 +48,18 @@ public abstract class AbstractHttpAction extends AbstractAction {
      *             exception while executing an action
      */
     public final void execute() throws AutomicException {
-        prepareCommonInputs();
-        executeSpecific();
+        try {
+            prepareCommonInputs();
+            executeSpecific();
+        } finally {
+            if (rallyRestTarget != null) {
+                try {
+                    rallyRestTarget.close();
+                } catch (IOException e) {
+                    ConsoleWriter.write("Error while closing Rally client");
+                }
+            }
+        }
     }
 
     @SuppressWarnings("deprecation")

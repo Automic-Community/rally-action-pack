@@ -66,7 +66,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 </PRPTBOX>
@@ -143,7 +142,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 </PRPTBOX>
@@ -206,7 +204,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.DELETE_USER_STORY"/>
 </PRPTBOX>
@@ -347,7 +344,7 @@ Note:
 * If the User Story Id provided doesn't exist.
 
 = Inputs =
-* Base API URL		: Specify Agile Central Base API URL. Eg. https://rally1.rallydev.com
+* Base URL		: Specify Agile Central Base URL. Eg. https://rally1.rallydev.com
 * API Token		: Specify API token for authentication.
 * Username		: Specify username for authentication. E.g. abc@automic.com
 * Password		: Specify password for authentication.

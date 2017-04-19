@@ -1,6 +1,13 @@
 package com.automic.agilecentral.util;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import com.automic.agilecentral.constants.Constants;
+import com.automic.agilecentral.exception.AutomicException;
+import com.automic.agilecentral.validator.AgileCentralValidator;
 
 /**
  * Common Utility class contains basic function(s) required by CA Agile Central actions.
@@ -115,5 +122,21 @@ public class CommonUtil {
             i = defaultValue;
         }
         return i;
+    }
+
+    public static String readFileIntoString(String filePath) throws AutomicException {
+
+        File file = new File(filePath);
+        AgileCentralValidator.checkFileExists(file);
+
+        try {
+            String content = new String(Files.readAllBytes(Paths.get(filePath)));
+            return content;
+
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException(String.format("Error occured while reading contents from file [%s] : %s ",
+                    filePath, e.getMessage()));
+        }
     }
 }

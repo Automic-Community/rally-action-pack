@@ -3,13 +3,24 @@ package com.automic.agilecentral.actions;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 
-import com.automic.agilecentral.config.InsecureRallyRestApi;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.TrustStrategy;
+
 import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.constants.ExceptionConstants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
+import com.automic.agilecentral.validator.AgileCentralValidator;
 import com.rallydev.rest.RallyRestApi;
 
 /**
@@ -23,36 +34,11 @@ public abstract class AbstractHttpAction extends AbstractAction {
      */
     protected RallyRestApi rallyRestTarget;
 
-    /**
-     * Service end point
-     */
-    private URI baseUrl;
-
-    /**
-     * apikey to connect to agile central
-     */
-    private String apiKey;
-
-    /**
-     * Username for Login into CA Agile Central
-     */
-    private String username;
-
-    /**
-     * Password to the username
-     */
-    private String password;
-
-    /**
-     * Api version of agile central
-     */
-    private String apiVersion;
-
     public AbstractHttpAction() {
         addOption(Constants.BASE_URL, true, "CA Agile Central URL");
         addOption(Constants.USERNAME, false, "Username for Login into CA Agile Central");
-        addOption(Constants.SKIP_CERT_VALIDATION, true, "Skip SSL Validation");
-        addOption(Constants.API_VERSION, true, "API Version");
+        addOption(Constants.BASIC_AUTH, true, "Basic authentication");
+        addOption(Constants.SKIP_CERT_VALIDATION, false, "Skip SSL Validation");
     }
 
     /**
@@ -78,42 +64,65 @@ public abstract class AbstractHttpAction extends AbstractAction {
 
     @SuppressWarnings("deprecation")
     private void prepareCommonInputs() throws AutomicException {
-        this.username = getOptionValue(Constants.USERNAME);
-        this.password = System.getenv(Constants.ENV_PASSWORD);
-        this.apiKey = System.getenv(Constants.ENV_API_TOKEN);
 
-        this.apiVersion = CommonUtil.getEnvParameter(getOptionValue(Constants.API_VERSION), Constants.AC_API_VERSION);
-
-        // check if login parameters are provided
-        if (!CommonUtil.checkNotEmpty(username) && !CommonUtil.checkNotEmpty(apiKey)) {
-            throw new AutomicException("Provide either username and password or the api key");
-        }
+        URI baseUrl = null; // base url
 
         String temp = getOptionValue(Constants.BASE_URL);
         try {
-            this.baseUrl = new URI(temp);
+            baseUrl = new URI(temp);
         } catch (URISyntaxException e) {
             ConsoleWriter.writeln(e);
             String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
             throw new AutomicException(msg);
         }
 
-        // if cert validation needs to be skipped
-        if (CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION))) {
-            if (CommonUtil.checkNotEmpty(apiKey)) {
-                new InsecureRallyRestApi(baseUrl, apiKey);
-            } else {
-                new InsecureRallyRestApi(baseUrl, username, password);
-            }
+        // check if rally authentication is using API token or basic auth
+        String tempAuth = getOptionValue(Constants.BASIC_AUTH);
+        AgileCentralValidator.checkNotEmpty(tempAuth, "Basic authentication");
+        boolean basicAuth = CommonUtil.convert2Bool(tempAuth);
+
+        // api token or password to username
+        String password = System.getenv(Constants.ENV_PASSWORD);
+
+        // for performing all the CRUD and query operations
+        if (basicAuth) {
+            rallyRestTarget = new RallyRestApi(baseUrl, getOptionValue(Constants.USERNAME), password);
+        } else {
+            rallyRestTarget = new RallyRestApi(baseUrl, password);
         }
 
-        // for performing all the CRUD and query operations.
-        if (CommonUtil.checkNotEmpty(apiKey)) {
-            rallyRestTarget = new RallyRestApi(baseUrl, apiKey);
-        } else {
-            rallyRestTarget = new RallyRestApi(baseUrl, username, password);
-        }
+        String apiVersion = CommonUtil.getEnvParameter(Constants.ENV_API_VERSION, Constants.AC_API_VERSION);
         rallyRestTarget.setWsapiVersion(apiVersion);
+
+        // if cert validation needs to be skipped
+        if (CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION))) {
+            int port = CommonUtil.getEnvParameter(Constants.ENV_PORT, Constants.AC_PORT);
+            SchemeRegistry registry = rallyRestTarget.getClient().getConnectionManager().getSchemeRegistry();
+            registry.register(new Scheme("https", port, buildSSLSocketFactory()));
+        }
+
+    }
+
+    /**
+     * to configure an insecure rally rest api.
+     * 
+     * @return
+     * @throws AutomicException
+     */
+    private SSLSocketFactory buildSSLSocketFactory() throws AutomicException {
+        TrustStrategy ts = new TrustStrategy() {
+            @Override
+            public boolean isTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+                return true;
+            }
+        };
+
+        try {
+            return new SSLSocketFactory(ts, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        } catch (KeyManagementException | UnrecoverableKeyException | NoSuchAlgorithmException | KeyStoreException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException(e.getMessage());
+        }
     }
 
     /**

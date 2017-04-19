@@ -29,7 +29,8 @@ public class Constants {
     
     public static final String AC_API_VERSION = "v2.0";    
     public static final int AC_PORT = 443;
-    
+    public static final String CONVERSATION_POST = "ConversationPost";
+   
     private Constants() {
     }
 }

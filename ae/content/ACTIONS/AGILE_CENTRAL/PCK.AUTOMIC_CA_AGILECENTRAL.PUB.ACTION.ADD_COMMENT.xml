@@ -66,9 +66,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
-<TEXTFIELD3s.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="TEXTFIELD3#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_COMMENTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_COMMENT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -144,9 +144,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
-<TEXTFIELD3s.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="TEXTFIELD3#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_COMMENTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_COMMENT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -222,9 +222,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
-<TEXTFIELD3s.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="TEXTFIELD3#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_COMMENTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_COMMENT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_COMMENT"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -352,12 +352,20 @@ PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
 = General description =
 This action used to add comment to provided work Item.
 
+Note: Agile Central use two id to identify unique work item:
+1. Object Id that is unique across workspace, we get this id for any work item from url. E.g. https://demo-rally.rallydev.com/#/729701d/detail/userstory/1522731/revisions. In this example object id is 1522731
+2. Formatted ID is unique across project. E.g. US126, US127 etc
+
+= Failure Conditions =
+(none)
+
 = Inputs =
 * Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * Workspace name	: Provide workspace name in which your project is located. E.g. Acme
+* Work Item type	: Specify type of Work Item you are commenting. E.g. User Story
 * Work Item Id 		: Provide ID of the work item you want to edit. E.g. US126
 * Comment 		: Provide comment to the Work Item. E.g. User story updated
 * Sudo Password         : The password for the sudo command.

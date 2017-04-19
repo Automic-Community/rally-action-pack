@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.READ_WORK_ITEM_TYPE">
+<HEADER state="1">
+<Title>Read work item type</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! Resolve Work item type key
+: SET &ATTRIBUTE_VARA# = "PCK.AUTOMIC_CA_AGILECENTRAL.PUB.VARA.WORK_ITEM_TYPE"
+: SET &HANDLE# = PREP_PROCESS_VAR(&ATTRIBUTE_VARA#,,&KEY#)
+: DEFINE &VALUE#, string
+: PROCESS &HANDLE#
+:   SET &VALUE# = GET_PROCESS_LINE(&HANDLE#,1)
+:   PRINT  "KEY: &VALUE#"
+: ENDPROCESS
+: CLOSE_PROCESS &HANDLE#]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[It calculates and publish the job status based on some known parameters. It considers the following things into account.
+* Any OS command failed or not. (E.g. ERRORLEVEL OS variable)
+* Job explicitly sets error code into known variable.  
+* AE Script processing error. (E.g. Validation errors)
+It considers any non zero value as error scenario.
+Further based on job status, it logs the success or failure message into Job report.
+
+This include can be only used in Job's Process tab.
+It can be used for both Windows and Unix environment.
+]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

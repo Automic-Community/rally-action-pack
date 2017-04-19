@@ -22,7 +22,7 @@ public final class Client {
     }
 
     /**
-     * Main method which will start the execution of an action on Blazemeter. This method will call the ClientHelper
+     * Main method which will start the execution of an action on Agile Central. This method will call the ClientHelper
      * class which will trigger the execution of specific action and then if action fails this main method will handle
      * the failed scenario and print the error message and system will exit with the respective response code.
      *
@@ -41,9 +41,9 @@ public final class Client {
             ConsoleWriter.writeln(e);
             ConsoleWriter.writeln(CommonUtil.formatErrorMessage(ERRORMSG));
         } finally {
-            ConsoleWriter.writeln("****** Execution ends with response code : " + responseCode);
+            ConsoleWriter.writeln("Execution ends with response code : " + responseCode);
             ConsoleWriter.flush();
-        }        
+        }
         System.exit(responseCode);
     }
 }

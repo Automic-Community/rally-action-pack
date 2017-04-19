@@ -13,7 +13,7 @@ import com.automic.agilecentral.util.ConsoleWriter;
  *
  */
 public class ClientHelper {
-    private static final String ABSOLUTEPATH = "com.automic.testdatamanager.actions";
+    private static final String ABSOLUTEPATH = "com.automic.agilecentral.actions";
 
     private ClientHelper() {
     }

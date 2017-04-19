@@ -8,6 +8,8 @@
 </HEADER>
 <SCRIPT mode="1" state="1">
 <MSCRI><![CDATA[! We escape characters based on Platform for java Strings
+! Removes empty spaces at the beginning and the end of a string
+: SET &UC4RB_AC_ESCAPED_STRING# = STR_TRIM(&UC4RB_AC_ESCAPED_STRING#)
 
 : SWITCH &$PLATFORM#
 :   CASE "WINDOWS"

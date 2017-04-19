@@ -1,0 +1,13 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#---- Promptset Fields --------------------------------------------------------------------------------------
+#----Global Variables----------------------------------------------------------------------------------------
+${AgileCentral_URL}    https://demo-rally.rallydev.com
+${Username}       dan@acme.com
+${Password}       Release!
+${API_Token}      xxx
+${SkipSSL}        YES
+${Workspace_Name}    Acme
+${UserStory_ID}    US130

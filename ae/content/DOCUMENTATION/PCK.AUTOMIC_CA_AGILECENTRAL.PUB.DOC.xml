@@ -35,7 +35,10 @@ Following actions are supported for CA SV.
 * Action Description: This action use to create new user story.
 
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY
-* Action Description: This action use to edit a user story.]]></DOC>
+* Action Description: This action use to edit a user story.
+
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
+* Action Description: This action used to add comment to provided work Item.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>

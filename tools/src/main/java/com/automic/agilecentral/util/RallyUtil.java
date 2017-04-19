@@ -28,8 +28,22 @@ import com.rallydev.rest.util.QueryFilter;
  */
 public class RallyUtil {
 
-    private static final String OBJECT_ID = "ObjectID";
-
+    /**
+     * Get the WSAPI response after retrieving the object
+     * 
+     * @param restApi
+     * @param type
+     *            Type of workitem - hierarchicalrequirement/defect/task etc
+     * @param queryFilter
+     *            query filter to be applied to query requests
+     * @param fetch
+     *            a list of fields to be returned in response from the WSAPI
+     * @param queryParam
+     *            query parameters
+     * @return
+     * @throws IOException
+     * @throws AutomicException
+     */
     public static QueryResponse query(RallyRestApi restApi, String type, Map<String, String> queryFilter,
             List<String> fetch, Map<String, String> queryParam) throws IOException, AutomicException {
 
@@ -63,6 +77,13 @@ public class RallyUtil {
 
     }
 
+    /**
+     * this method is used to read the custom input fields from file and add them to the json.
+     * 
+     * @param fileName
+     * @param jsonObj
+     * @throws AutomicException
+     */
     public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
         List<String> list = new ArrayList<>();
 
@@ -90,6 +111,15 @@ public class RallyUtil {
         }
     }
 
+    /**
+     * Get the workspace ref of the WSAPI object.
+     * 
+     * @param restApi
+     * @param workspaceName
+     *            Name of the workspace
+     * @return
+     * @throws AutomicException
+     */
     public static String getWorspaceRef(RallyRestApi restApi, String workspaceName) throws AutomicException {
         QueryRequest queryRequest = new QueryRequest(Constants.WORKSPACE);
         queryRequest.setQueryFilter(new QueryFilter("Name", "=", workspaceName));
@@ -115,6 +145,17 @@ public class RallyUtil {
         return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
     }
 
+    /**
+     * Get the project ref of the WSAPI object.
+     * 
+     * @param restApi
+     * @param projectName
+     *            Name of the project
+     * @param workspaceRef
+     *            Reference of the workspace in which the project is located. May be absolute or relative.
+     * @return
+     * @throws AutomicException
+     */
     public static String getProjectRef(RallyRestApi restApi, String projectName, String workspaceRef)
             throws AutomicException {
         QueryRequest queryRequest = new QueryRequest(Constants.PROJECT);
@@ -146,13 +187,15 @@ public class RallyUtil {
     }
 
     /**
-     * Get the ref of the WSAPI object.
+     * Get the work item ref of the WSAPI object.
      * 
      * @param restApi
-     *            rally
      * @param formattedId
+     *            Formatted Id of the work item. E.g US12/TS20 etc
      * @param workspaceRef
+     *            Reference of the workspace in which the work item is located
      * @param type
+     *            Type of workitem - hierarchicalrequirement/defect/task etc
      * @return
      * @throws AutomicException
      */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.DELETE_USER_STORY@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.CHANGE_USER_STORY_STATUS@GENERIC">
 <XHEADER state="1">
-<Title>Delete a user story</Title>
+<Title>Change user story status</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -111,13 +111,13 @@
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "DeleteWorkItemAction"
+: SET &ACTION_NAME# = "ChangeWorkItemStatusAction -workitemtype hierarchicalrequirement"
 
 ! Build java arguments
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.PREPARE_CMD
 
 ! Workspace
-: IF &UC4RB_AC_WORKSPACE# <> ""
+: IF &UC4RB_AC_WORKSPACE# NE ""
 :   SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_WORKSPACE#
 :   INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workspace &UC4RB_AC_ESCAPED_STRING#")
@@ -128,18 +128,23 @@
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
 : SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemid &UC4RB_AC_ESCAPED_STRING#")
 
+! User Story Status
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_ITEM_STATUS#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemstatus &UC4RB_AC_ESCAPED_STRING#")
+
 : PRINT &UC4RB_AC_CMD#
 
 ! Invoking java binary
-  &UC4RB_AC_CMD# -workitemtype hierarchicalrequirement
+  &UC4RB_AC_CMD#
 
 ! Status messages
-: SET &UC4RB_LOGGING_INFO# = "******** DELETE USER STORY ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** DELETE USER STORY ACTION FAILED ********"
+: SET &UC4RB_LOGGING_INFO# = "******** CHANGE USER STORY STATUS ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** CHANGE USER STORY STATUS ACTION FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 
-: INC PCK.AUTOMIC_CA_SV.PUB.INCLUDE.CHECK_JOBSTATUS
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_JOBSTATUS
 : INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_FOOTER]]></MSCRI>
 </SCRIPT>
 <OUTPUTSCAN state="1">

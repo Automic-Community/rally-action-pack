@@ -30,7 +30,10 @@ PCK.AUTOMIC_CA_AGILE_CENTRAL.PUB.VARA.PACKAGE_PARAMETERS
 Following actions are supported for CA SV.
 
 * Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY 
-* Action Description: This action deletes the given user story along with the tasks associated to it.]]></DOC>
+* Action Description: This action deletes the given user story along with the tasks associated to it.
+
+* Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS 
+* Action Description: This action changes the status provided in a comma separated manner for provided user story.]]></DOC>
 </DOCU_Docu>
 </DOCU>
 </uc-export>

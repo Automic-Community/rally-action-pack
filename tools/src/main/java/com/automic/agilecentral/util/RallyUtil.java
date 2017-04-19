@@ -1,17 +1,12 @@
-/**
- * 
- */
 package com.automic.agilecentral.util;
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Properties;
+import java.util.Set;
 
 import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
@@ -85,31 +80,24 @@ public class RallyUtil {
      * @throws AutomicException
      */
     public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
-        List<String> list = new ArrayList<>();
 
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-            list = stream.filter(s -> !s.isEmpty())// trim them and filter out
-                                                   // all empty lines
-                    .map(line -> line.trim()).collect(Collectors.toList());
+		Properties prop = new Properties();
 
-            for (String fields : list) {
-                String[] field = fields.split("=");
-                if (field.length == 2) {
-                    Arrays.stream(field).map(String::trim).toArray(unused -> field);// Trim
-                    jsonObj.addProperty(field[0], field[1]);
-                } else {
-                    String errorMsg = String.format(
-                            "Error in the given custom field [%s] ,please provide the valid input e.g Key1=Val1 ",
-                            fields.toString());
-                    throw new AutomicException(errorMsg);
-                }
-            }
+		try (FileInputStream input = new FileInputStream(fileName)) {
+			prop.load(input);
+			Set<String> keys = prop.stringPropertyNames();
+			for (String key : keys) {
+				if (CommonUtil.checkNotEmpty(key)) {
+					jsonObj.addProperty(key, prop.getProperty(key));
+				}
+			}
 
-        } catch (IOException e) {
-            ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
-        }
-    }
+		} catch (IOException e) {
+			ConsoleWriter.writeln(e);
+			throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
+		}
+
+	}
 
     /**
      * Get the workspace ref of the WSAPI object.

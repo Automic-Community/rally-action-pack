@@ -1,0 +1,55 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        delete_user_story
+Test Template     Delete User Story Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    WorkspaceName        UserStoryID
+Delete User Story with valid inputs
+                      [Tags]    main_scenarios
+                      OK        ${Workspace_Name}    ${UserStory_ID}
+
+Assert Workspace Name as Optinal Field
+                      OK        ${EMPTY}             ${UserStory_ID}
+
+Delete User Story with invalid Workspace
+                      NOK       Invalid              ${UserStory_ID}
+
+Delete User Story with invalid User Story ID
+                      NOK       ${Workspace_Name}    Invalid
+
+Assert User Story ID as Mandatory Field
+                      NOK       ${Workspace_Name}    ${EMPTY}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "DELETE USER STORY"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Delete User Story Template
+    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${UserStoryID}
+    [Documentation]    This test is used for delete a user story from Agile Central.
+    ...    -Precondition: To execute valid test, Existing user story id should be known to user.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${WorkspaceName}: This field specifies workspace name in which your user story is located. E.g. Acme
+    ...    -${UserStoryID}: This field specifies the user story to delete.
+    Generate String
+    Init Action    ${_DELETE_USER_STORY}
+    Connect To AgileCentral
+    Run Keyword If    '${WorkspaceName}' == 'Invalid'    Action Set    &UC4RB_AC_WORKSPACE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
+    Run Keyword If    '${UserStoryID}' == 'Invalid'    Action Set    &UC4RB_AC_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_ITEM_ID#    ${UserStoryID}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+
+Teardown
+    Log    *******End Test "DELETE USER STORY"*******

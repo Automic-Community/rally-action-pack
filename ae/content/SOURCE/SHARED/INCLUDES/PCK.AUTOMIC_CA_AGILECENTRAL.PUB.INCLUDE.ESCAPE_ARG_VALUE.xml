@@ -7,9 +7,10 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[! Removes empty spaces at the beginning and the end of a string
+<MSCRI><![CDATA[! We escape characters based on Platform for java Strings
+! Removes empty spaces at the beginning and the end of a string
 : SET &UC4RB_AC_ESCAPED_STRING# = STR_TRIM(&UC4RB_AC_ESCAPED_STRING#)
-! We escape characters based on Platform for java Strings
+
 : SWITCH &$PLATFORM#
 :   CASE "WINDOWS"
 :     SET &UC4RB_AC_ESCAPED_STRING# = STR_SUB(&UC4RB_AC_ESCAPED_STRING#, "%", "%%")

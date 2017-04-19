@@ -75,18 +75,18 @@ public class EditWorkItemAction extends AbstractHttpAction {
         // checking if given workspace name exists
         workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
-            String workSpaceId = RallyUtil.getWorspaceId(rallyRestTarget, workSpace);
+            String workSpaceId = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
             updateObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpaceId);
 
         }
 
         // checking if given work item exists
-        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemType, workItemId, null, workSpace);
+        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemType, workItemId, workSpace);
 
         // checking if given project exists
         project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
-            project = RallyUtil.getProjectId(rallyRestTarget, project, workSpace);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
             updateObj.addProperty(Constants.PROJECT, "/project/" + project);
         }
 

@@ -1,16 +1,5 @@
 package com.automic.agilecentral.util;
 
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonWriter;
-import javax.json.JsonWriterFactory;
-import javax.json.stream.JsonGenerator;
-
 import com.automic.agilecentral.constants.Constants;
 
 /**
@@ -81,37 +70,6 @@ public class CommonUtil {
             }
         }
         return i;
-    }
-
-    /**
-     * Method to convert a stream into Json object
-     * 
-     * @param is
-     *            input stream
-     * @return {@link JsonObject}
-     */
-    public static final JsonObject jsonObjectResponse(InputStream is) {
-        return Json.createReader(is).readObject();
-
-    }
-
-    /**
-     * Method to beautify the jsonand write on the console
-     * 
-     * @param jsonObj
-     */
-    public static final String jsonPrettyPrinting(JsonObject jsonObj) {
-        StringWriter stringWriter = new StringWriter();
-
-        Map<String, Boolean> config = new HashMap<>();
-        config.put(JsonGenerator.PRETTY_PRINTING, true);
-
-        JsonWriterFactory writerFactory = Json.createWriterFactory(config);
-        JsonWriter jsonWriter = writerFactory.createWriter(stringWriter);
-        jsonWriter.writeObject(jsonObj);
-        jsonWriter.close();
-
-        return stringWriter.toString();
     }
 
     /**

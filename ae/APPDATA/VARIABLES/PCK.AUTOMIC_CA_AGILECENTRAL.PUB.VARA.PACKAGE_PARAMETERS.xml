@@ -24,9 +24,8 @@
 </ATTR_VARA>
 <VARA state="1">
 <Variables>
-<row Name="API_VERSION" Value="v4" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="CONNECTION_TIMEOUT" Value="30000" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="READ_TIMEOUT" Value="60000" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="API_VERSION" Value="v2.0" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PORT" Value="443" Value1="" Value2="" Value3="" Value4=""/>
 </Variables>
 </VARA>
 <DOCU_Docu state="1" type="text">

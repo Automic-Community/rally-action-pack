@@ -80,14 +80,14 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 
         workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
-            workSpace = RallyUtil.getWorspaceId(rallyRestTarget, workSpace);
+            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
             newObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpace);
         }
 
         project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
 
-            project = RallyUtil.getProjectId(rallyRestTarget, project, workSpace);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
             newObj.addProperty(Constants.PROJECT, "/project/" + project);
         }
 

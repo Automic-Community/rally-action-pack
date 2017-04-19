@@ -5,8 +5,6 @@ package com.automic.agilecentral.actions;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 import com.automic.agilecentral.constants.Constants;
@@ -35,12 +33,12 @@ public class EditWorkItemAction extends AbstractHttpAction {
     public EditWorkItemAction() {
         addOption("workitemid", true, "Work item id");
         addOption("workitemtype", true, "Work item type you wanted to edit");
-        addOption("workitemname", true, "New workt item name");
+        addOption("workitemname", false, "New workt item name");
         addOption("workspacename", false, "Workspace in which project is located");
         addOption("projectname", false, "New project name");
         addOption("descriptionfilepath", false, "Description file path");
         addOption("schedulestate", false, "New schedule state of work item");
-        addOption("filepath", false, "Custom fields file path");
+        addOption("customfilepath", false, "Custom fields file path");
 
     }
 
@@ -64,31 +62,28 @@ public class EditWorkItemAction extends AbstractHttpAction {
     private UpdateRequest checkInputsAndPrepareRequest() throws AutomicException {
         JsonObject updateObj = new JsonObject();
 
-        workItemId = getOptionValue("workitemid");
-        AgileCentralValidator.checkNotEmpty(workItemId, "ID of the work item(User story,Defect etc.)");
-
         workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
         String workItemRef = null;
 
-        // checking if given workspace name exists
         workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
-            String workSpaceId = RallyUtil.getWorspaceId(rallyRestTarget, workSpace);
-            updateObj.addProperty(Constants.WORKSPACE, "/workspace/" + workSpaceId);
-
+            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
+            updateObj.addProperty(Constants.WORKSPACE, workSpace);
         }
-
-        // checking if given work item exists
-        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemType, workItemId, null, workSpace);
 
         // checking if given project exists
         project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
-            project = RallyUtil.getProjectId(rallyRestTarget, project, workSpace);
-            updateObj.addProperty(Constants.PROJECT, "/project/" + project);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
+            updateObj.addProperty(Constants.PROJECT, project);
         }
+
+        // checking if given work item exists
+        workItemId = getOptionValue("workitemid");
+        AgileCentralValidator.checkNotEmpty(workItemId, "ID of the work item(User story,Defect etc.)");
+        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemId, workSpace, workItemType);
 
         // adding new work item name
         workItemName = getOptionValue("workitemname");
@@ -103,7 +98,7 @@ public class EditWorkItemAction extends AbstractHttpAction {
         }
 
         // Custom fields addition
-        String temp = getOptionValue("filepath");
+        String temp = getOptionValue("customfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
             File file = new File(temp);
             AgileCentralValidator.checkFileExists(file);
@@ -113,15 +108,8 @@ public class EditWorkItemAction extends AbstractHttpAction {
         // adding new work item description
         temp = getOptionValue("descriptionfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
-            File file = new File(temp);
-            AgileCentralValidator.checkFileExists(file);
-            try {
-                String description = new String(Files.readAllBytes(Paths.get(temp)));
-                updateObj.addProperty("Description", description);
-            } catch (IOException e) {
-                ConsoleWriter.writeln(e);
-                throw new AutomicException("Error occured while reading description from temp file" + e.getMessage());
-            }
+            String description = /*CommonUtil.readFileIntoString(temp)*/null;
+            updateObj.addProperty("Description", description);
 
         }
 

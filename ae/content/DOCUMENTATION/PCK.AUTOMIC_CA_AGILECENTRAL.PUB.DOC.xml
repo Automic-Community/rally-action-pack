@@ -7,32 +7,32 @@
 <OH_SubType/>
 </HEADER>
 <DOCU_Docu state="1" type="text">
-<DOC><![CDATA[About Automic's CA AGILECENTRAL Package
+<DOC><![CDATA[About Automic's CA Agile Central Package
 ================================
-CA Agile Central is an enterprise-class platform that's purpose-built for scaling agile development practices. Provide a hub for teams to collaboratively plan, prioritize and track work on a synchronized cadence. With this package we automate the given business goal:
-* Create User Story
+CA Agile Central is an enterprise-class platform that's purpose-built for scaling agile development practices. It provides a hub for teams to collaboratively plan, prioritize and track work on a synchronized cadence. With this package we automate the following:
+* Create/Edit/Bulk edit/Delete a user story.
+* Add attachment/comment to the user story.
+* Export a user story
 
 
-=Supported CA AGILECENTRAL versions=
-Agile Central Version 
-
-=Limitations=
-(none)
+=Supported CA SV versions=
 
 =Setup=
 * Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
-* The Agent should be able to access Agile Central rest api endpoint URL in order to make HTTP requests.
+* The Agent should be able to access CA Agile Central rest api endpoint URL in order to make HTTP requests.
 * Modify the HTTP timeout parameters as per your environment. By default "CONNECTION_TIMEOUT" is defined as 30000 and "READ_TIMEOUT" is defined as 60000. Both are defined in milliseconds. 0 means no timeout.
 
 =Variables=
-PCK.AUTOMIC_CA_AGILECENTRAL.PUB.VARA.PACKAGE_PARAMETERS
-* Connection timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
-* Version of the API to be used in Agile Central REST api. default value is latest.
+PCK.AUTOMIC_CA_AGILE_CENTRAL.PUB.VARA.PACKAGE_PARAMETERS
+* Connection timeout and read timeout parameter can be configured in this variable. Value is defined in milliseconds. 0 means no timeout.
 
 =Actions=
-Following actions are supported for CA AGILECENTRAL.
+Following actions are supported for CA SV.
 
-* Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
+* Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY 
+* Action Description: This action deletes the given user story along with the tasks associated to it.
+
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
 * Action Description: This action use to create new user story.]]></DOC>
 </DOCU_Docu>
 </DOCU>

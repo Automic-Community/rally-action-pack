@@ -11,34 +11,31 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    BaseURL                 Username       Password       APIToken        SkipSSL    WorkspaceName        ProjectName        UserStoryName        Description       ScheduleState        CustomFields
+*** Test Cases ***    OK_NOK    BaseURL                Username       Password       APIToken        SkipSSL    WorkspaceName        ProjectName        UserStoryName        Description       ScheduleState        CustomFields
 Assertion with Invalid Base URL
                       [Tags]    main_scenarios
-                      NOK       Invalid                 ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       Invalid                ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Username
-                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL}    Invalid        ${Password}    ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid Password
-                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL}    ${Username}    Invalid        ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion when Username is provided and Password is not provided
+                      NOK       ${AgileCentral_URL}    ${Username}    ${EMPTY}       ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion when Password is provided and Username is not provided
+                      NOK       ${AgileCentral_URL}    ${EMPTY}       ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with providing Base URL & not providing Username,Password & API Token
-                      NOK       ${AgileCentral_URL }    ${Empty }      ${Empty }      ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL}    ${Empty}       ${Empty}       ${Empty}        YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assertion with invalid API Token
-                      NOK       ${AgileCentral_URL }    ${Empty}       ${Empty}       Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assertion with invalid Username
-                      NOK       ${AgileCentral_URL }    Invalid        ${Password}    Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assertion with invalid Password
-                      NOK       ${AgileCentral_URL }    ${Username}    Invalid        Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${AgileCentral_URL}    ${Empty}       ${Empty}       Invalid         YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assert Base URL as mandatory field
-                      NOK       ${Empty }               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
-
-Assert API Token as mandatory field
-                      NOK       ${Empty }               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+                      NOK       ${Empty}               ${Username}    ${Password}    ${API_Token}    YES        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 *** Keywords ***
 Startup

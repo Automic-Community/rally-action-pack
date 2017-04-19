@@ -48,15 +48,15 @@ public abstract class AbstractHttpAction extends AbstractAction {
      *             exception while executing an action
      */
     public final void execute() throws AutomicException {
-        try{
-        prepareCommonInputs();
-        executeSpecific();
-        }finally{
-            if(rallyRestTarget!=null){
+        try {
+            prepareCommonInputs();
+            executeSpecific();
+        } finally {
+            if (rallyRestTarget != null) {
                 try {
                     rallyRestTarget.close();
                 } catch (IOException e) {
-                   ConsoleWriter.write("Error while closing Rally client");
+                    ConsoleWriter.write("Error while closing Rally client");
                 }
             }
         }

@@ -1,0 +1,76 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        create_user_story
+Test Template     Create User Story Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    WorkspaceName        ProjectName        UserStoryName        Description       ScheduleState        CustomFields
+Create user story with providing valid inputs to Workspace name,project name,userstory name,description,schedule state & custom fields
+                      [Tags]    main_scenarios
+                      OK        ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Create user story with valid inputs providing Userstory name & without providing Workspace name,project name,description,schedule state & custom fields
+                      [Tags]    main_scenarios
+                      OK        ${Empty}             ${Empty}           ${UserStory_Name}    ${Empty}          ${Empty}             ${Empty}
+
+Assertion with invalid workspace name
+                      NOK       Invalid              ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid project name
+                      NOK       ${Workspace_Name}    Invalid            ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid Schedule state
+                      NOK       ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    Invalid              ${Custom_Fields}
+
+Assertion with invalid Custom fields
+                      NOK       ${Workspace_Name}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    Invalid
+
+Assert Userstory name as mandatory field
+                      NOK       ${Workspace_Name}    ${Project_Name}    ${Empty}             ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "Create User Story"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Create User Story Template
+    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${ProjectName}    ${UserStoryName}    ${Description}    ${ScheduleState}
+    ...    ${CustomFields}
+    [Documentation]    This test executes the common failure scenarios for action pack with create work item action.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
+    ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
+    ...    -${ProjectName}: This field specifies a new project name to the work item.
+    ...    -${UserStoryName}: This field specifies a new work item name.
+    ...    -${Description}: This field specifies new description to your work item.
+    ...    -${ScheduleState}: This field specifies new schedule state to the work item.
+    ...    -${CustomFields}: This field specifies list of other fields with values you want to set in format; ("Name1", "Value1"),("Name2","Value2")
+    Generate String
+    Init Action    ${_CREATE_USER_STORY_ACTION}
+    Connect To AgileCentral
+    Run Keyword If    '${WorkspaceName}' == 'Invalid'    Action Set    &UC4RB_AC_WORKSPACE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
+    Run Keyword If    '${ProjectName}' == 'Invalid'    Action Set    &UC4RB_AC_PROJECT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_PROJECT#    ${ProjectName}
+    Run Keyword If    '${UserStoryName}' == 'Invalid'    Action Set    &UC4RB_AC_STORY_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_STORY_NAME#    ${UserStoryName}
+    Run Keyword If    '${Description}' == 'Invalid'    Action Set    &UC4RB_AC_DESCRIPTION#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Run Keyword If    '${ScheduleState}' == 'Invalid'    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
+    Run Keyword If    '${CustomFields}' == 'Invalid'    Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_CUSTOM_FIELDS#    ${CustomFields}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_AC_WORK_ITEM_OBJ_ID#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_AC_WORK_ITEM_OBJ_ID#
+    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Should Be Found    &UC4RB_AC_WORK_ITEM_ID#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_AC_WORK_ITEM_ID#
+
+Teardown
+    Log    *******End Test "Create User Story"*******

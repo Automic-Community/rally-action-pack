@@ -10,7 +10,7 @@
 <DESIGNER/>
 </PROMPTDESIGNER>
 <PROMPTSETXUI state="1">
-<XUIEDITOR><![CDATA[<dialog height="422" icon="PRPT" id="PRPTS" left="0" top="0" width="441"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Create User Story"><properties><entry name="text">Create User Story</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_WORKSPACEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Workspace name" tooltip="Provide workspace name in which your project is located. E.g. Acme" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+<XUIEDITOR><![CDATA[<dialog height="422" icon="PRPT" id="PRPTS" left="0" top="0" width="1081"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Create User Story"><properties><entry name="text">Create User Story</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_WORKSPACEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Workspace name" tooltip="Provide workspace name in which your project is located. E.g. Acme" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -38,7 +38,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_PROJECTs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Project name" tooltip="Specify a new project name to the work item. E.g. Customer Site" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_PROJECTs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Project name" tooltip="Specify project name in which you want to create a user story. E.g. Customer Site" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -59,7 +59,7 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Specify a new project name to the work item. E.g. Customer Site</entry>
+        <entry name="tooltip">Specify project name in which you want to create a user story. E.g. Customer Site</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
@@ -94,14 +94,14 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_DESCRIPTIONs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Description" tooltip="Provide new description to your work item. E.g. Edit a story" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_DESCRIPTIONs.00" inputassistance="0" len="" multiline="1" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Description" tooltip="Provide description to your user story. E.g. Edit a story" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
         <entry name="text">Description</entry>
-        <entry name="multiline">0</entry>
+        <entry name="multiline">1</entry>
         <entry name="multilineIcon">0</entry>
         <entry name="multiselect">0</entry>
         <entry name="separator">;</entry>
@@ -115,14 +115,14 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide new description to your work item. E.g. Edit a story</entry>
+        <entry name="tooltip">Provide description to your user story. E.g. Edit a story</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_SCHEDULE_STATEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Schedule State" tooltip="Provide new schedule state to the work item. E.g. Idea" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_SCHEDULE_STATEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Schedule State" tooltip="Provide schedule state to the user story. Eg. Idea" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -143,7 +143,7 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide new schedule state to the work item. E.g. Idea</entry>
+        <entry name="tooltip">Provide schedule state to the user story. Eg. Idea</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>

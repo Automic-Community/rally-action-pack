@@ -22,7 +22,7 @@
 <AutoDeactNo>0</AutoDeactNo>
 <AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
 <AutoDeactErrorFree>1</AutoDeactErrorFree>
-<DeactWhen/>
+<DeactWhen>ANY_OK</DeactWhen>
 <AutoDeactAlways>0</AutoDeactAlways>
 <DeactDelay>0</DeactDelay>
 <ActAtRun>1</ActAtRun>
@@ -121,10 +121,7 @@
 <dyntree>
 <node content="1" id="VALUE" name="Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
-<Values>
-<row ERTUsage="2" Mod="0" Name="&amp;DELETECUSTOMFILE#" Value="0"/>
-<row ERTUsage="2" Mod="0" Name="&amp;DELETEDESCRIPTIONFILE#" Value="0"/>
-</Values>
+<Values/>
 <Mode>0</Mode>
 </VALUE>
 </node>
@@ -186,44 +183,44 @@
 <conditions id="CONDITIONS">
 <condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
 <params>
-<param altview="0" name="XC_P01" type="V" value="&amp;DELETEDESCRIPTIONFILE#"/>
-<param altview="0" name="XC_P02" type="V" value="="/>
-<param altview="0" name="XC_P03" type="V" value="1"/>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="1" name="XC_P03" type="V" value="EMPTY"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
 <param altview="0" name="XC_P03" type="V" value="##911010">
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;DELETEDESCRIPTIONFILE#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#" vname="XC_P03"/>
 </param>
-<param altview="0" name="XC_P04" type="V" value="DEL_FILE"/>
+<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
 </params>
 </action>
 </when>
 </condition>
 <condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
 <params>
-<param altview="0" name="XC_P01" type="V" value="&amp;DELETECUSTOMFILE#"/>
-<param altview="0" name="XC_P02" type="V" value="="/>
-<param altview="0" name="XC_P03" type="V" value="1"/>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="0" name="XC_P03" type="V" value="EMPTY"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
 <param altview="0" name="XC_P03" type="V" value="##911010">
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;CUSTOM_FILE_PATH#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#" vname="XC_P03"/>
 </param>
-<param altview="0" name="XC_P04" type="V" value="DEL_FILE"/>
+<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
 </params>
 </action>
 </when>

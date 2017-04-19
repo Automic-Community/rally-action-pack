@@ -179,6 +179,13 @@
 <postconditions>
 <PostCon>
 <conditions id="CONDITIONS">
+<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="1" name="XC_P03" type="V" value="EMPTY"/>
+</params>
+<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
@@ -187,11 +194,35 @@
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
 <param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FILE_PATH#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#" vname="XC_P03"/>
 </param>
 <param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
 </params>
 </action>
+</when>
+</condition>
+<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="0" name="XC_P03" type="V" value="EMPTY"/>
+</params>
+<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
+<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
+<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P03" type="V" value="##911010">
+<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
+<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#" vname="XC_P03"/>
+</param>
+<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
+</params>
+</action>
+</when>
+</condition>
 </conditions>
 </PostCon>
 </postconditions>
@@ -359,8 +390,7 @@ PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
 This action use to create new user story. 
 
 = Failure Conditions =
-* If user doesn't provide any of the fields : Project name, Work Item name, Description, Schedule State, Custom Fields.
-* If the field specified in the Custom Fields  input doen't exist.
+(none)
 
 = Inputs =
 * Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
@@ -368,10 +398,10 @@ This action use to create new user story.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * Workspace name	: Provide workspace name in which your project is located. E.g. Acme
-* Project name 		: Specify a new project name to the work item. E.g. Customer Site
+* Project name 		: Specify project name in which you want to create a user story. E.g. Customer Site
 * User Story name 	: Specify user story name to create. E.g. User story
-* Description 		: Provide new description to your work item. E.g. Edit a story
-* Schedule State 	: Provide new schedule state to the work item. E.g. Idea
+* Description 		: Provide description to your user story. E.g. Edit a story
+* Schedule State 	: Provide schedule state to the user story. Eg. Idea
 * Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as seprator.
 			E.g. Name2=Value2
 			     Name3=Value3	

@@ -102,6 +102,8 @@
 :   DEFINE &STRING_ARR#, string, 30
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
 : ENDIF
+!------------------------------------------ Validating optional value --------------------------------------------------------------------------------------------
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_CONN_PARAM
 
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION
@@ -158,13 +160,13 @@
 ! Get File path
 : SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
 
-: PSET &UC4RB_CUSTOM_FIELDS_FILE_PATH# ="EMPTY"
+
 ! Custom Fields
 : IF &UC4RB_AC_CUSTOM_FIELDS# NE ""
 !   Get File path
 :   SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
 !   Baseline File
-:   SET &UC4RB_CUSTOM_FIELDS_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"custom-&$RUNID#.txt")
+:   SET &UC4RB_CUSTOM_FIELDS_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"editcustom-&$RUNID#.txt")
 :   SET &UC4RB_FILE_CONTENT# = &UC4RB_AC_CUSTOM_FIELDS#
 !   Creating file in the temp dir
 :   SET &UC4RB_FILE_PATH#=&UC4RB_CUSTOM_FIELDS_FILE_PATH#
@@ -173,17 +175,18 @@
 :   INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -customfilepath &UC4RB_AC_ESCAPED_STRING#")
 :   SET &COUNT# = 1
+:   PUBLISH &UC4RB_CUSTOM_FIELDS_FILE_PATH#,,"TASK"
+: ELSE
+:   SET &UC4RB_AC_CUSTOM_FIELDS# = "EMPTY"
 : ENDIF
 
 
-
-: PSET &UC4RB_DESCRIPTION_FILE_PATH# ="EMPTY"
 ! Description
 : IF &UC4RB_AC_DESCRIPTION# NE ""
 !   Get File path
 :   SET &AGENT_TEMPDIR# = GET_VAR('UC_EX_PATH_TEMP', &AGENT#)
 !   Baseline File
-:   SET &UC4RB_DESCRIPTION_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"description-&$RUNID#.txt")
+:   SET &UC4RB_DESCRIPTION_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"editdescription-&$RUNID#.txt")
 :   SET &UC4RB_FILE_CONTENT# = &UC4RB_AC_DESCRIPTION#
 !   Creating file in the temp dir
 :   SET &UC4RB_FILE_PATH#=&UC4RB_DESCRIPTION_FILE_PATH#
@@ -192,6 +195,9 @@
 :   INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -descriptionfilepath &UC4RB_AC_ESCAPED_STRING#")
 :   SET &COUNT# = 1
+:   PUBLISH &UC4RB_DESCRIPTION_FILE_PATH#,,"TASK"
+: ELSE
+:   SET &UC4RB_AC_DESCRIPTION# = "EMPTY"
 : ENDIF
 
 
@@ -203,7 +209,6 @@
 
 
 : PRINT &UC4RB_AC_CMD#
-: INC PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
 ! Invoking java binary
   &UC4RB_AC_CMD#
 

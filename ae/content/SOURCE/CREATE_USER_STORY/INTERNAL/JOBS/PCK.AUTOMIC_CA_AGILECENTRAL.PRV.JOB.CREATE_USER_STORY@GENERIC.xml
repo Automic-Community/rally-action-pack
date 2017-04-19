@@ -102,6 +102,8 @@
 :   DEFINE &STRING_ARR#, string, 30
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SUDOERS_HEADER
 : ENDIF
+!------------------------------------------ Validating optional value --------------------------------------------------------------------------------------------
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.CHECK_CONN_PARAM
 
 !------------------------------------------ Buidling java arguments --------------------------------------------------------------------------------------------
 : INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.HEADER.EXECUTION

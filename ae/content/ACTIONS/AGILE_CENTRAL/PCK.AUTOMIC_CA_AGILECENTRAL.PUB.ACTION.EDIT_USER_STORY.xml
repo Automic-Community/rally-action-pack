@@ -185,7 +185,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_CUSTOM_FIELDS#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="EMPTY"/>
+<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
@@ -207,7 +207,7 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_DESCRIPTION#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="EMPTY"/>
+<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">

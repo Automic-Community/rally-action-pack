@@ -16,6 +16,7 @@ import com.rallydev.rest.response.UpdateResponse;
 
 /**
  * @author sumitsamson
+ * This class is used to edit the work item (user story,defect etc.).
  *
  */
 public class EditWorkItemAction extends AbstractHttpAction {
@@ -30,8 +31,8 @@ public class EditWorkItemAction extends AbstractHttpAction {
     public EditWorkItemAction() {
         addOption("workitemid", true, "Work item id");
         addOption("workitemtype", true, "Work item type you wanted to edit");
-        addOption("workitemname", false, "New workt item name");
-        addOption("workspacename", false, "Workspace in which project is located");
+        addOption("workitemname", false, "New work item name");
+        addOption("workspacename", false, "Workspace in which workitem is located");
         addOption("projectname", false, "New project name");
         addOption("descriptionfilepath", false, "Description file path");
         addOption("schedulestate", false, "New schedule state of work item");
@@ -73,7 +74,7 @@ public class EditWorkItemAction extends AbstractHttpAction {
         // checking if given project exists
         project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
-            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, null);
             updateObj.addProperty(Constants.PROJECT, project);
         }
 

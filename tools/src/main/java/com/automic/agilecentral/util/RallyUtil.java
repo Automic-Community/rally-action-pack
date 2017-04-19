@@ -26,64 +26,63 @@ import com.rallydev.rest.util.QueryFilter;
  */
 public class RallyUtil {
 
-	/**
-	 * Get the WSAPI response after retrieving the object
-	 * 
-	 * @param restApi
-	 * @param type
-	 *            Type of workitem - hierarchicalrequirement/defect/task etc
-	 * @param queryFilter
-	 *            query filter to be applied to query requests
-	 * @param fetch
-	 *            a list of fields to be returned in response from the WSAPI
-	 * @param queryParam
-	 *            query parameters
-	 * @return
-	 * @throws IOException
-	 * @throws AutomicException
-	 */
-	public static QueryResponse query(RallyRestApi restApi, String type, Map<String, String> queryFilter,
-			List<String> fetch, Map<String, String> queryParam) throws IOException, AutomicException {
+    /**
+     * Get the WSAPI response after retrieving the object
+     * 
+     * @param restApi
+     * @param type
+     *            Type of workitem - hierarchicalrequirement/defect/task etc
+     * @param queryFilter
+     *            query filter to be applied to query requests
+     * @param fetch
+     *            a list of fields to be returned in response from the WSAPI
+     * @param queryParam
+     *            query parameters
+     * @return
+     * @throws IOException
+     * @throws AutomicException
+     */
+    public static QueryResponse query(RallyRestApi restApi, String type, Map<String, String> queryFilter,
+            List<String> fetch, Map<String, String> queryParam) throws IOException, AutomicException {
 
-		QueryRequest queryRequest = new QueryRequest(type);
+        QueryRequest queryRequest = new QueryRequest(type);
 
-		if (null != fetch && fetch.size() > 0) {
-			queryRequest.setFetch(new Fetch(fetch.toArray(new String[fetch.size()])));
-		}
+        if (null != fetch && fetch.size() > 0) {
+            queryRequest.setFetch(new Fetch(fetch.toArray(new String[fetch.size()])));
+        }
 
-		if (null != queryFilter && queryFilter.size() > 0) {
-			List<QueryFilter> queryFilterList = new ArrayList<QueryFilter>();
-			for (Map.Entry<String, String> filter : queryFilter.entrySet()) {
-				queryFilterList.add(new QueryFilter(filter.getKey(), "=", filter.getValue()));
-			}
-			queryRequest
-					.setQueryFilter(QueryFilter.and(queryFilterList.toArray(new QueryFilter[queryFilterList.size()])));
-		}
+        if (null != queryFilter && queryFilter.size() > 0) {
+            List<QueryFilter> queryFilterList = new ArrayList<QueryFilter>();
+            for (Map.Entry<String, String> filter : queryFilter.entrySet()) {
+                queryFilterList.add(new QueryFilter(filter.getKey(), "=", filter.getValue()));
+            }
+            queryRequest
+                    .setQueryFilter(QueryFilter.and(queryFilterList.toArray(new QueryFilter[queryFilterList.size()])));
+        }
 
-		if (queryParam != null && queryParam.size() > 0) {
-			for (Map.Entry<String, String> param : queryParam.entrySet()) {
-				queryRequest.addParam(param.getKey(), param.getValue());
-			}
-		}
+        if (queryParam != null && queryParam.size() > 0) {
+            for (Map.Entry<String, String> param : queryParam.entrySet()) {
+                queryRequest.addParam(param.getKey(), param.getValue());
+            }
+        }
 
-		QueryResponse queryResponse = restApi.query(queryRequest);
+        QueryResponse queryResponse = restApi.query(queryRequest);
 
-		if (!queryResponse.wasSuccessful()) {
-			throw new AutomicException(queryResponse.getErrors()[0]);
-		}
-		return queryResponse;
+        if (!queryResponse.wasSuccessful()) {
+            throw new AutomicException(queryResponse.getErrors()[0]);
+        }
+        return queryResponse;
 
-	}
+    }
 
-	/**
-	 * this method is used to read the custom input fields from file and add
-	 * them to the json.
-	 * 
-	 * @param fileName
-	 * @param jsonObj
-	 * @throws AutomicException
-	 */
-	public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
+    /**
+     * this method is used to read the custom input fields from file and add them to the json.
+     * 
+     * @param fileName
+     * @param jsonObj
+     * @throws AutomicException
+     */
+    public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
 
 		Properties prop = new Properties();
 
@@ -103,122 +102,121 @@ public class RallyUtil {
 
 	}
 
-	/**
-	 * Get the workspace ref of the WSAPI object.
-	 * 
-	 * @param restApi
-	 * @param workspaceName
-	 *            Name of the workspace
-	 * @return
-	 * @throws AutomicException
-	 */
-	public static String getWorspaceRef(RallyRestApi restApi, String workspaceName) throws AutomicException {
-		QueryRequest queryRequest = new QueryRequest(Constants.WORKSPACE);
-		queryRequest.setQueryFilter(new QueryFilter("Name", "=", workspaceName));
+    /**
+     * Get the workspace ref of the WSAPI object.
+     * 
+     * @param restApi
+     * @param workspaceName
+     *            Name of the workspace
+     * @return
+     * @throws AutomicException
+     */
+    public static String getWorspaceRef(RallyRestApi restApi, String workspaceName) throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(Constants.WORKSPACE);
+        queryRequest.setQueryFilter(new QueryFilter("Name", "=", workspaceName));
 
-		QueryResponse workspaceQueryResponse;
-		try {
-			workspaceQueryResponse = restApi.query(queryRequest);
-		} catch (IOException e) {
-			ConsoleWriter.writeln(e);
-			throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
-		}
+        QueryResponse workspaceQueryResponse;
+        try {
+            workspaceQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+        }
 
-		if (!workspaceQueryResponse.wasSuccessful()) {
-			throw new AutomicException(workspaceQueryResponse.getErrors()[0]);
-		}
+        if (!workspaceQueryResponse.wasSuccessful()) {
+            throw new AutomicException(workspaceQueryResponse.getErrors()[0]);
+        }
 
-		int totalResultCount = workspaceQueryResponse.getTotalResultCount();
+        int totalResultCount = workspaceQueryResponse.getTotalResultCount();
 
-		if (totalResultCount != 1) {
-			throw new AutomicException(
-					String.format("Workspace named %s found %s ,expected 1", workspaceName, totalResultCount));
-		}
-		return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
-	}
+        if (totalResultCount != 1) {
+            throw new AutomicException(String.format("Workspace named %s found %s ,expected 1", workspaceName,
+                    totalResultCount));
+        }
+        return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+    }
 
-	/**
-	 * Get the project ref of the WSAPI object.
-	 * 
-	 * @param restApi
-	 * @param projectName
-	 *            Name of the project
-	 * @param workspaceRef
-	 *            Reference of the workspace in which the project is located.
-	 *            May be absolute or relative.
-	 * @return
-	 * @throws AutomicException
-	 */
-	public static String getProjectRef(RallyRestApi restApi, String projectName, String workspaceRef)
-			throws AutomicException {
-		QueryRequest queryRequest = new QueryRequest(Constants.PROJECT);
-		queryRequest.setQueryFilter(new QueryFilter("Name", "=", projectName));
+    /**
+     * Get the project ref of the WSAPI object.
+     * 
+     * @param restApi
+     * @param projectName
+     *            Name of the project
+     * @param workspaceRef
+     *            Reference of the workspace in which the project is located. May be absolute or relative.
+     * @return
+     * @throws AutomicException
+     */
+    public static String getProjectRef(RallyRestApi restApi, String projectName, String workspaceRef)
+            throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(Constants.PROJECT);
+        queryRequest.setQueryFilter(new QueryFilter("Name", "=", projectName));
 
-		if (CommonUtil.checkNotEmpty(workspaceRef)) {
-			queryRequest.setWorkspace(workspaceRef);
-		}
+        if (CommonUtil.checkNotEmpty(workspaceRef)) {
+            queryRequest.setWorkspace(workspaceRef);
+        }
 
-		QueryResponse projectQueryResponse;
-		try {
-			projectQueryResponse = restApi.query(queryRequest);
-		} catch (IOException e) {
-			ConsoleWriter.writeln(e);
-			throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
-		}
+        QueryResponse projectQueryResponse;
+        try {
+            projectQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+        }
 
-		if (!projectQueryResponse.wasSuccessful()) {
-			throw new AutomicException(projectQueryResponse.getErrors()[0]);
-		}
+        if (!projectQueryResponse.wasSuccessful()) {
+            throw new AutomicException(projectQueryResponse.getErrors()[0]);
+        }
 
-		int totalResultCount = projectQueryResponse.getTotalResultCount();
+        int totalResultCount = projectQueryResponse.getTotalResultCount();
 
-		if (totalResultCount != 1) {
-			throw new AutomicException(
-					String.format("Project named %s found %s ,expected 1", projectName, totalResultCount));
-		}
-		return projectQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
-	}
+        if (totalResultCount != 1) {
+            throw new AutomicException(String.format("Project named %s found %s ,expected 1", projectName,
+                    totalResultCount));
+        }
+        return projectQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+    }
 
-	/**
-	 * Get the work item ref of the WSAPI object.
-	 * 
-	 * @param restApi
-	 * @param formattedId
-	 *            Formatted Id of the work item. E.g US12/TS20 etc
-	 * @param workspaceRef
-	 *            Reference of the workspace in which the work item is located
-	 * @param type
-	 *            Type of workitem - hierarchicalrequirement/defect/task etc
-	 * @return
-	 * @throws AutomicException
-	 */
-	public static String getWorkItemRef(RallyRestApi restApi, String formattedId, String workspaceRef, String type)
-			throws AutomicException {
-		QueryRequest queryRequest = new QueryRequest(type);
-		queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
-		if (CommonUtil.checkNotEmpty(workspaceRef)) {
-			queryRequest.setWorkspace(workspaceRef);
-		}
+    /**
+     * Get the work item ref of the WSAPI object.
+     * 
+     * @param restApi
+     * @param formattedId
+     *            Formatted Id of the work item. E.g US12/TS20 etc
+     * @param workspaceRef
+     *            Reference of the workspace in which the work item is located
+     * @param type
+     *            Type of workitem - hierarchicalrequirement/defect/task etc
+     * @return
+     * @throws AutomicException
+     */
+    public static String getWorkItemRef(RallyRestApi restApi, String formattedId, String workspaceRef, String type)
+            throws AutomicException {
+        QueryRequest queryRequest = new QueryRequest(type);
+        queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
+        if (CommonUtil.checkNotEmpty(workspaceRef)) {
+            queryRequest.setWorkspace(workspaceRef);
+        }
 
-		QueryResponse storyQueryResponse;
-		try {
-			storyQueryResponse = restApi.query(queryRequest);
-		} catch (IOException e) {
-			ConsoleWriter.writeln(e);
-			throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
-		}
+        QueryResponse storyQueryResponse;
+        try {
+            storyQueryResponse = restApi.query(queryRequest);
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+        }
 
-		if (!storyQueryResponse.wasSuccessful()) {
-			throw new AutomicException(storyQueryResponse.getErrors()[0]);
-		}
+        if (!storyQueryResponse.wasSuccessful()) {
+            throw new AutomicException(storyQueryResponse.getErrors()[0]);
+        }
 
-		int totalResultCount = storyQueryResponse.getTotalResultCount();
+        int totalResultCount = storyQueryResponse.getTotalResultCount();
 
-		if (totalResultCount != 1) {
-			throw new AutomicException(
-					String.format("User story id %s found %s ,expected 1", formattedId, totalResultCount));
-		}
-		return storyQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
-	}
+        if (totalResultCount != 1) {
+            throw new AutomicException(String.format("User story id %s found %s ,expected 1", formattedId,
+                    totalResultCount));
+        }
+        return storyQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+    }
 
 }

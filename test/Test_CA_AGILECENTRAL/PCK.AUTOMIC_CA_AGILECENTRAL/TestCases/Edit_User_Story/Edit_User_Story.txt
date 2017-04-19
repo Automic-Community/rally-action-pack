@@ -16,8 +16,11 @@ Edit user story with providing valid inputs
                       [Tags]    main_scenarios
                       OK        ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
+Edit user story with providing Workspace name, UserStoryId,Project name,UserStoryName & Schedule state
+                      NOK       ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Empty}          ${Schedule_State}    ${Empty}
+
 Assertion without providing Project name,User story name,Description,Schedule state & Custom fields
-                      NOK       Invalid              ${UserStory_Id}    ${Empty}           ${Empty}             ${Empty}          ${Empty}             ${Empty}
+                      NOK       ${Workspace_Name}    ${UserStory_Id}    ${Empty}           ${Empty}             ${Empty}          ${Empty}             ${Empty}
 
 Assertion with invalid workspace name
                       NOK       Invalid              ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
@@ -34,7 +37,7 @@ Assertion with invalid Schedule state
 Assertion with invalid Custom fields
                       NOK       ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    Invalid
 
-Assert Server workspace name as mandatory field
+Assert workspace name as mandatory field
                       NOK       ${Empty}             ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
 Assert Userstory Id as mandatory field

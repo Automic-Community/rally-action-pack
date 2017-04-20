@@ -1,0 +1,70 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        add_attachment
+Test Template     Add Attachment Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    WorkspaceName        WorkItemType    WorkItemId         FilePath        Description
+Add attachment with providing valid inputs
+                      [Tags]    main_scenarios
+                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}    ${Description}
+
+Add attachment without providing Workspace name & Description with valid inputs
+                      OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}    ${Empty}
+
+Assertion with invalid workspace name
+                      NOK       Invalid              User Story      ${UserStory_Id}    ${File_Path}    ${Description}
+
+Assertion with invalid Workitem Id
+                      NOK       ${Workspace_Name}    User Story      Invalid            ${File_Path}    ${Description}
+
+Assertion with invalid File path
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    Invalid         ${Description}
+
+Assert Workitem Id as mandatory field
+                      NOK       ${Workspace_Name}    User Story      ${Empty}           ${File_Path}    ${Description}
+
+Assert File path as mandatory field
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${Empty}        ${Description}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "Add Attachment"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Add Attachment Template
+    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${WorkItemType}    ${WorkItemId}    ${FilePath}    ${Description}
+    [Documentation]    This action adds the attachment to a work item.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
+    ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
+    ...    -${WorkItemType}: This field specifies type of Work Item to which you are adding an attachment.
+    ...    -${WorkItemId}: This field specifies ID of the work item you want to attachment.
+    ...    -${FilePath}: This field specifies full path of the file you want to attach to the user story.
+    ...    -${Description}: This field specifies the attachment description.
+    Generate String
+    Init Action    ${_ADD_ATTACHMENT_ACTION}
+    Connect To Agile_Central
+    Run Keyword If    '${WorkspaceName}' == 'Invalid'    Action Set    &UC4RB_AC_WORKSPACE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
+    Action Set    &UC4RB_AC_ITEM_TYPE#    ${WorkItemType}
+    Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORK_ITEM_ID#    ${WorkItemId}
+    Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORK_ITEM_ID#    ${WorkItemId}
+    Run Keyword If    '${FilePath}' == 'Invalid'    Action Set    &UC4RB_AC_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_FILE_PATH#    ${FilePath}
+    Run Keyword If    '${Description}' == 'Invalid'    Action Set    &UC4RB_AC_DESCRIPTION#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+
+Teardown
+    Log    *******End Test "Add Attachment"*******

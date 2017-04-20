@@ -20,11 +20,6 @@ import com.rallydev.rest.response.UpdateResponse;
 public class ChangeWorkItemStatusAction extends AbstractHttpAction {
 
     /**
-     * Work item type : hierarchicalrequirement/Defect/Task
-     */
-    private String workItemType;
-
-    /**
      * Schedule status of the work item
      */
     private String workItemStatus;
@@ -34,11 +29,17 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
      */
     private String workItemRef;
 
+    /**
+     * Formatted Id of the work item to be deleted
+     */
+    private String blockReason;
+
     public ChangeWorkItemStatusAction() {
         addOption("workspace", false, "Workspace name");
         addOption("workitemid", true, "Work item ID");
         addOption("workitemstatus", true, "Work item status");
         addOption("workitemtype", true, "Work item type");
+        addOption("blockedreason", false, "Blocked reason");
     }
 
     @Override
@@ -47,15 +48,14 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         try {
             // Json to update the status
             JsonObject updatedWorkItem = new JsonObject();
-            String[] statusList = workItemStatus.split(",");
-            for (String status : statusList) {
-                String[] stat = status.split("=");
-                if (stat.length != 2) {
-                    throw new AutomicException(String.format(
-                            "Invalid value[%s] for status. Provide the value in a key-value comma separated manner.",
-                            workItemStatus));
+            if ("None".equalsIgnoreCase(workItemStatus)) {
+                updatedWorkItem.addProperty("Ready", false);
+                updatedWorkItem.addProperty("Blocked", false);
+            } else {
+                updatedWorkItem.addProperty(workItemStatus, true);
+                if ("Blocked".equalsIgnoreCase(workItemStatus) && CommonUtil.checkNotEmpty(blockReason)) {
+                    updatedWorkItem.addProperty("BlockedReason", blockReason);
                 }
-                updatedWorkItem.addProperty(stat[0], stat[1]);
             }
 
             // Updating the status for the given work item
@@ -69,7 +69,6 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
             ConsoleWriter.writeln(e);
             throw new AutomicException(e.getMessage());
         }
-
     }
 
     private void prepareInputs() throws AutomicException {
@@ -78,13 +77,16 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         workItemStatus = getOptionValue("workitemstatus");
         AgileCentralValidator.checkNotEmpty(workItemStatus, "Work item status");
 
-        // Work item type
-        workItemType = getOptionValue("workitemtype");
+        // Work item type : hierarchicalrequirement/Defect/Task
+        String workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Work Item type");
 
         // Work item ID
         String workItemId = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(workItemId, "Work item ID");
+
+        // Blocked reason
+        blockReason = getOptionValue("blockedreason");
 
         // Workspace name where the user story is located
         String workSpaceRef = "";

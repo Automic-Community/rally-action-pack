@@ -66,28 +66,49 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="New Status" tooltip="Provide a list of status with true or false as value in the format; Status1=value1,Status2=value2. E.g.Blocked=true,Ready=false" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" nl="1" strict="1" text="New Status" tooltip="Select the status for the user story. E.g. Blocked." vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
+         
+         
+         
+      <properties>
+        <entry listparam="" name="reference" reftype="STATIC">PCK.AUTOMIC_CA_AGILECENTRAL.PRV.VARA.STATUS_CHOICE</entry>
+        <entry name="xmlkey"/>
+        <entry name="xmlpath"/>
+        <entry name="text">New Status</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_AC_ITEM_STATUSs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Select the status for the user story. E.g. Blocked.</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="onchangereset"/>
+        <entry name="customfield"/>
+        <entry name="resetable">1</entry>
+      <entry name="initvalue"/>
+         </properties>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_REASONs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Blocked reason" tooltip="Provide the description for the blocked status." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
-        <entry name="text">New Status</entry>
+        <entry name="text">Blocked reason</entry>
         <entry name="multiline">0</entry>
         <entry name="multilineIcon">0</entry>
         <entry name="multiselect">0</entry>
         <entry name="separator">;</entry>
         <entry name="len"/>
         <entry name="quotes"/>
-        <entry name="id">UC4RB_AC_ITEM_STATUSs.00</entry>
+        <entry name="id">UC4RB_AC_REASONs.00</entry>
         <entry name="regex"/>
         <entry name="inputassistance">0</entry>
         <entry name="enabled">0</entry>
-        <entry name="required">1</entry>
+        <entry name="required">0</entry>
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Provide a list of status with true or false as value in the format; Status1=value1,Status2=value2. E.g.Blocked=true,Ready=false</entry>
+        <entry name="tooltip">Provide the description for the blocked status.</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
@@ -97,7 +118,7 @@
     </text></readpanel></dialog>]]></XUIEDITOR>
 </PROMPTSETXUI>
 <PROMPTSETDATA state="1">
-<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_AC_WORKSPACEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_WORKSPACE#" ReadFromTable="OPSE"></UC4RB_AC_WORKSPACEs.00><UC4RB_AC_ITEM_IDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_ITEM_ID#" ReadFromTable="OPSE"></UC4RB_AC_ITEM_IDs.00><UC4RB_AC_ITEM_STATUSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_ITEM_STATUS#" ReadFromTable="OPSE"></UC4RB_AC_ITEM_STATUSs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_AC_WORKSPACEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_WORKSPACE#" ReadFromTable="OPSE"></UC4RB_AC_WORKSPACEs.00><UC4RB_AC_ITEM_IDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_ITEM_ID#" ReadFromTable="OPSE"></UC4RB_AC_ITEM_IDs.00><UC4RB_AC_ITEM_STATUSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_ITEM_STATUS#" ReadFromTable="OPSE">None</UC4RB_AC_ITEM_STATUSs.00><UC4RB_AC_REASONs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_AC_REASON#" ReadFromTable="OPSE"></UC4RB_AC_REASONs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
 </PROMPTSETDATA>
 <DOCU_Docu state="1" type="text">
 <DOC/>

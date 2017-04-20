@@ -66,9 +66,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -144,9 +144,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -208,9 +208,9 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 <UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -336,7 +336,7 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
 
 = General description =
-This action changes the status provided in a comma separated manner for provided user story.
+This action changes the status of provided user story.
 
 = Failure Conditions =
 (none)
@@ -349,7 +349,8 @@ This action changes the status provided in a comma separated manner for provided
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id 	: Provide ID of the user story for which you want to change status. E.g. US11	
-* New Status		: Provide a list of status with true or false as value in the format; Status1=value1,Status2=value2. E.g.Blocked=true,Ready=false
+* New Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
+* Blocked reason	: Provide the description for the blocked status.
 * Sudo Password         : The password for the sudo command.
 * Options              	: Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -375,7 +376,7 @@ Note : Provide either API Token or Username-Password. If both are provided API T
 Logs will be displayed in the AE report.
 
 = Example =
-* New Status : Blocked=true,Ready=false]]></DOC>
+(none)]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

@@ -18,6 +18,7 @@ import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
 import com.automic.agilecentral.util.RallyUtil;
 import com.automic.agilecentral.validator.AgileCentralValidator;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.rallydev.rest.request.UpdateRequest;
 import com.rallydev.rest.response.QueryResponse;
@@ -146,71 +147,66 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
      * @return
      * @throws AutomicException
      */
-   /* private List<String> getWorkItemRefList() throws AutomicException {
-        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
 
-        List<String> workItemIdList = new ArrayList<>(Arrays.asList(workItemIds.split(",")));
-        Map<String, List<String>> queryFilter = new HashMap<>();
-        queryFilter.put("FormattedID", workItemIdList);
-        QueryResponse queryResponse = null;
-        try {
-            queryResponse = RallyUtil.queryOR(rallyRestTarget, workItemType, workSpace, queryFilter, fetch, null);
-        } catch (IOException e) {
-            ConsoleWriter.writeln(e);
-            throw new AutomicException(String
-                    .format("Error occured while fetching reference type for work items of type %s", workItemType));
-        }
-
-        int totalResults = queryResponse.getTotalResultCount();
-        if (totalResults == 0 || totalResults != workItemIdList.size()) {
-            ConsoleWriter.writeln(queryResponse.getResults());
-            throw new AutomicException(String.format("Error while retrieving work items expected %s, recieved %s",
-                    workItemIdList.size(), totalResults));
-        }
-
-        List<String> workItemRefArray = new ArrayList<>();
-        for (JsonElement elem : queryResponse.getResults()) {
-            workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
-
-        }
-
-        return workItemRefArray;
-    }*/
-    
     private List<String> getWorkItemRefList() throws AutomicException {
         List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
+
         List<String> workItemIdList = new ArrayList<>(Arrays.asList(workItemIds.split(",")));
-        List<String> workItemRefArray = new ArrayList<>();
         Map<String, List<String>> queryFilter = new HashMap<>();
+        List<String> workItemRefArray = new ArrayList<>();
+
+        // break the list into the sets of 15
+
+        int start = 0;
+
+        int requestSize = 15;
+        int totalRequestSize = workItemIdList.size();
+
+        int totalRequest = totalRequestSize / requestSize;
+        int extra = totalRequestSize % requestSize;
+
+        if (totalRequest==0 && extra != 0) {
+            totalRequest = totalRequest + 1;
+            requestSize = extra;
+        }
+        int end = requestSize;
+
         QueryResponse queryResponse = null;
-        
-        StringBuffer str= new StringBuffer();
-        for(String id:workItemIdList){
-            queryFilter.put("FormattedID", Arrays.asList(new String[]{id}));
-           
+        while (true) {
+            List<String> requestList = workItemIdList.subList(start, end);
+            queryFilter.put("FormattedID", requestList);
+
             try {
                 queryResponse = RallyUtil.queryOR(rallyRestTarget, workItemType, workSpace, queryFilter, fetch, null);
-                int totalResults = queryResponse.getTotalResultCount();
-                if(totalResults == 0){
-                    throw new AutomicException(String.format("Work item %s not found",id));
-                   
-                }else{
-                    str.append(id);
-                    str.append(",");
-                    workItemRefArray.add(queryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString()); 
-                }
-                
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
                 throw new AutomicException(String
-                        .format("Error occured while fetching reference type for work items of type %s", workItemType));
+                        .format("Error occured while fetching details of work items ,some work items might not exists"));
             }
-            
+
+            int totalResults = queryResponse.getTotalResultCount();
+            if (totalResults == 0 || totalResults != requestList.size()) {
+                ConsoleWriter.writeln(queryResponse.getResults());
+                throw new AutomicException(String.format("Error while retrieving work items expected %s, recieved %s",
+                        workItemIdList.size(), totalResults));
+            }
+
+            for (JsonElement elem : queryResponse.getResults()) {
+                workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
+
+            }
+            //break loop as soon as end of list is reached.
+            if (end >= totalRequestSize) {
+                break;
+            }
+
+            start = start + requestSize;
+            end = end + requestSize;
+            end = (end > totalRequestSize) ? totalRequestSize : end;
+
         }
-        str.deleteCharAt(str.length()-1);
-        ConsoleWriter.writeln(str);
+
         return workItemRefArray;
-        
     }
 
 }

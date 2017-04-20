@@ -2,13 +2,11 @@ package com.automic.agilecentral.actions;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
+import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
 import com.automic.agilecentral.util.RallyUtil;
 import com.automic.agilecentral.validator.AgileCentralValidator;
@@ -53,7 +51,6 @@ public class AddCommentAction extends AbstractHttpAction {
     private JsonObject prepareAndValidateInputs() throws AutomicException {
         // Validate Workspace name
         String workSpaceName = getOptionValue("workspace");
-        AgileCentralValidator.checkNotEmpty(workSpaceName, "Workspace name");
         // Validate Work item type
         String workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Work Item type");
@@ -62,21 +59,18 @@ public class AddCommentAction extends AbstractHttpAction {
         AgileCentralValidator.checkNotEmpty(workItemId, "Work Item ID");
         // Validate Comment file path
         String temp = getOptionValue("commentfilepath");
-        AgileCentralValidator.checkNotEmpty(workItemId, "Comment to work item ");
+        AgileCentralValidator.checkNotEmpty(temp, "Comment to work item ");
         File file = new File(temp);
         AgileCentralValidator.checkFileExists(file);
 
         // Reading Comment file
-        String comment = null;
-        try {
-            comment = new String(Files.readAllBytes(Paths.get(temp)), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while reading comment from temp file" + e.getMessage());
-        }
+        String comment = CommonUtil.readFileIntoString(temp);
 
         // Resolving Workspace & work Item reference
-        String workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);
+        String workSpaceRef = null;
+        if (CommonUtil.checkNotEmpty(workSpaceName)) {
+            workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);
+        }
         String workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemId, workSpaceRef, workItemType);
 
         // Preparing comment json Object

@@ -366,7 +366,7 @@ Note: Agile Central use two id to identify unique work item:
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
 * Workspace name	: Provide workspace name in which your project is located. E.g. Acme
 * Work Item type	: Specify type of Work Item you are commenting. E.g. User Story
-* Work Item Id 		: Provide ID of the work item you want to edit. E.g. US126
+* Work Item Id 		: PSpecify workitem id for which you want to add comment. E.g. US126
 * Comment 		: Provide comment to the Work Item. E.g. User story updated
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).

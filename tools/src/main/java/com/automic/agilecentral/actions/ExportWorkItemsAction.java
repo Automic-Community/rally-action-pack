@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,6 +24,12 @@ import com.rallydev.rest.request.QueryRequest;
 import com.rallydev.rest.response.QueryResponse;
 import com.rallydev.rest.util.Fetch;
 
+/**
+ * This used to import data from Agile Central and saved in csv format
+ * 
+ * @author Anurag Upadhyay
+ *
+ */
 public class ExportWorkItemsAction extends AbstractHttpAction {
 
     private String[] fields;
@@ -92,8 +99,9 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
 
         if (CommonUtil.checkNotEmpty(field)) {
             fields = field.split(",");
-            for (int i = 0; i < fields.length; i++)
+            for (int i = 0; i < fields.length; i++) {
                 fields[i] = fields[i].trim();
+            }
             queryRequest.setFetch(new Fetch(fields));
         }
 
@@ -107,7 +115,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
         return queryRequest;
     }
 
-    public void csvWriter(JsonArray results, String[] fields, String filePath) throws IOException {
+    private void csvWriter(JsonArray results, String[] fields, String filePath) throws IOException {
         FileWriter writer = new FileWriter(filePath);
         List<String> fieldsData = new ArrayList<String>(fields.length);
         // Add Headers
@@ -121,10 +129,10 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                     JsonObject jObj = (JsonObject) defect.get(field);
                     if (jObj.has("_refObjectName")) {
                         fieldsData.add(jObj.get("_refObjectName").getAsString());
-                    }else{
+                    } else {
                         fieldsData.add("");
                     }
-                }else{
+                } else {
                     fieldsData.add("");
                 }
             }
@@ -138,17 +146,24 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
     }
 
     private String[] getFields(JsonArray results) throws IOException {
+        // Prepare exclude headers
+        String[] excludeHeaderArr = new String[] { "_rallyAPIMajor", "_rallyAPIMinor", "_ref", "_refObjectUUID",
+                "_objectVersion", "ObjectUUID", "VersionId", "HasParent", "_type" };
+        Set<String> excludeHeaders = new HashSet<String>(Arrays.asList(excludeHeaderArr));
         JsonElement jsonEle = results.get(0);
         JsonObject jsonObj = jsonEle.getAsJsonObject();
         Set<Entry<String, JsonElement>> entrySet = jsonObj.entrySet();
         List<String> fields = new ArrayList<String>();
         for (Map.Entry<String, JsonElement> entry : entrySet) {
-            if (jsonObj.get(entry.getKey()).isJsonPrimitive()) {
-                fields.add(entry.getKey());
-            } else if (jsonObj.get(entry.getKey()).isJsonObject()) {
-                JsonObject jObj = (JsonObject) jsonObj.get(entry.getKey());
-                if (jObj.has("_refObjectName")) {
-                    fields.add(entry.getKey());
+            String key = entry.getKey();
+            if (!excludeHeaders.contains(key)) {
+                if (jsonObj.get(key).isJsonPrimitive()) {
+                    fields.add(key);
+                } else if (jsonObj.get(key).isJsonObject()) {
+                    JsonObject jObj = (JsonObject) jsonObj.get(key);
+                    if (jObj.has("_refObjectName")) {
+                        fields.add(key);
+                    }
                 }
             }
         }

@@ -139,11 +139,13 @@ public class CommonUtil {
                     filePath, e.getMessage()));
         }
     }
-/**
- * Method to validate provided file is Writable
- * @param file
- * @return boolean
- */
+
+    /**
+     * Method to validate provided file is Writable
+     * 
+     * @param file
+     * @return boolean
+     */
     public static boolean isWritable(File file) {
         boolean flag = false;
         try {
@@ -153,7 +155,7 @@ public class CommonUtil {
                 flag = true;
             }
             return flag;
-        } catch (Exception e) {
+        } catch (IOException e) {
             return flag;
         }
     }

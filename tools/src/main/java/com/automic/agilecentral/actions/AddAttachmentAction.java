@@ -33,11 +33,17 @@ public class AddAttachmentAction extends AbstractHttpAction {
      */
     private File filePath;
 
+    /**
+     * Discription of the attachment
+     */
+    private String description;
+
     public AddAttachmentAction() {
         addOption("workspace", false, "Workspace name");
         addOption("workitemid", true, "Work item ID");
         addOption("filepath", true, "File path");
         addOption("workitemtype", true, "Work item type");
+        addOption("description", false, "Description");
     }
 
     @Override
@@ -67,6 +73,10 @@ public class AddAttachmentAction extends AbstractHttpAction {
             myAttachment.addProperty("ContentType", Files.probeContentType(filePath.toPath()));
             myAttachment.addProperty("Name", filePath.getName());
 
+            if (CommonUtil.checkNotEmpty(description)) {
+                myAttachment.addProperty("Description", description);
+            }
+
             CreateRequest attachmentCreateRequest = new CreateRequest("Attachment", myAttachment);
             CreateResponse attachmentResponse = rallyRestTarget.create(attachmentCreateRequest);
             if (!attachmentResponse.wasSuccessful()) {
@@ -85,6 +95,9 @@ public class AddAttachmentAction extends AbstractHttpAction {
         String tempFile = getOptionValue("filepath");
         filePath = new File(tempFile);
         AgileCentralValidator.checkFileExists(filePath);
+        if (filePath.length() == 0) {
+            throw new AutomicException(String.format("The file[%s] is empty.", filePath));
+        }
 
         // Work item type
         String workItemType = getOptionValue("workitemtype");
@@ -93,6 +106,9 @@ public class AddAttachmentAction extends AbstractHttpAction {
         // Work item ID
         String workItemId = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(workItemId, "Work item ID");
+
+        // description
+        description = getOptionValue("description");
 
         // Workspace name where the user story is located
         String workSpaceRef = "";

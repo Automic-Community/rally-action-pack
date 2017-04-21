@@ -28,6 +28,8 @@
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>

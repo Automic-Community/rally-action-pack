@@ -350,7 +350,7 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
 
 = General description =
-This action used to add comment to provided work Item.
+This action used to add comment to provided work Item using work item's formatted id.
 
 Note: Agile Central use two id to identify unique work item:
 1. Object Id that is unique across workspace, we get this id for any work item from url. E.g. https://demo-rally.rallydev.com/#/729701d/detail/userstory/1522731/revisions. In this example object id is 1522731
@@ -360,13 +360,13 @@ Note: Agile Central use two id to identify unique work item:
 (none)
 
 = Inputs =
-* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
+* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Workspace name	: Provide workspace name in which your project is located. E.g. Acme
+* Workspace name	: Provide workspace name in which your work item is located. E.g. Acme
 * Work Item type	: Specify type of Work Item you are commenting. E.g. User Story
-* Work Item Id 		: PSpecify workitem id for which you want to add comment. E.g. US126
+* Work Item Id 		: Specify workitem id for which you want to add comment. E.g. US126
 * Comment 		: Provide comment to the Work Item. E.g. User story updated
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).

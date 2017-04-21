@@ -66,7 +66,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
@@ -146,7 +145,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
@@ -212,7 +210,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 <UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
@@ -342,20 +339,27 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT
 
 = General description =
-This action used to add attachment to provided work Item.
+This action is used to add the file attachment for the provided work Item. Optionally, you can also provide the description to the attachment as well.
+
+If you provide API Token as well as Username/Password, API Token will be used for authentication.
+
+Note: Agile Central provides two different Ids for each work item.
+1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
 
 = Failure Conditions =
-(none)
+If specified file size is 0.
 
 = Inputs =
-* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
-* Username		: Specify username for authentication.
-* Password		: Specify password for authentication.
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Workspace name	: Provide workspace name in which your story is located. E.g. Acme
+* Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* Username		: Specify username for authentication. Required if you do not specify API Token.
+* Password		: Specify password for authentication. Required if you do not specify API Token.
+* Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
+* Workspace name	: Provide workspace name in which your story is located. E.g. Acme.
 * Work Item type	: Specify type of Work Item to which you are adding an attachment. E.g. User Story
-* Work Item Id 		: Provide ID of the work item you want to edit. E.g. US126
-* File Path 		: Full path of the file you want to attach to the Work item. E.g. C:/Temp/MyFile.zip
+* Work Item Id 		: Provide formatted ID of the work item you want to edit. E.g. US126
+* File Path 		: Full path of the file that you want to attach to the Work item. E.g. C:/Temp/MyFile.zip
 * Description 		: Specify the attachment description.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
@@ -366,7 +370,7 @@ This action used to add attachment to provided work Item.
 = Behavior =
 (none)
 
-=Return Value=
+= Return Value =
 (none)
 
 = Outputs =
@@ -377,7 +381,7 @@ This action used to add attachment to provided work Item.
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

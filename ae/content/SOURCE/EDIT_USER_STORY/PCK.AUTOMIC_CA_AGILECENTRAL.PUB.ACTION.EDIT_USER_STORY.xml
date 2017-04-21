@@ -390,32 +390,34 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY
 
 = General description =
-This action use to edit a user story.One can edit the following fields in the story : Project name, story name, Description, Schedule State.
+This action use to edit the specified user story. One can edit the following fields in the story : Project name, story name, Description, Schedule State.
 Apart from these user can also provide the custom fields in the appropriate manner to edit their values.
 
-Note: Agile Central use two id to identify unique work item:
-1. Object Id that is unique across workspace, we get this id for any work item from url. E.g. https://demo-rally.rallydev.com/#/729701d/detail/userstory/1522731/revisions. In this example object id is 1522731
-2. Formatted ID is unique across project. E.g. US126, US127 etc 
+If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
+Note: Agile Central provides two different Ids for each work item.
+1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 * If user doesn't provide any of the fields : Project name, Work Item name, Description, Schedule State, Custom Fields.
 
 = Inputs =
-* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
-* Username		: Specify username for authentication.
-* Password		: Specify password for authentication.
-* API Token             : Specify API token for authentication.
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Workspace name	: Provide workspace name in which your project is located. E.g. Acme
-* User Story Id		: Provide ID of the user story you want to edit. E.g US121 
+* Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* Username		: Specify username for authentication. Required if you do not specify API Token.
+* Password		: Specify password for authentication. Required if you do not specify API Token.
+* Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
+* Workspace name	: Provide workspace name in which your user story is located. E.g. Acme
+* User Story Id		: Provide Formatted ID of the user story you want to edit. E.g US121 
 * Project name 		: Specify new project name to the work item. E.g. Customer Site
 * User Story name 	: Specify new user story name to edit. E.g. User story
 * Description 		: Provide new description to your work item. E.g. Edit a story
 * Schedule State 	: Provide new schedule state to the work item. E.g. Idea
-* Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as separator.
+* Custom Fields 	: Provide list of other fields with values that you want to set. Field and values must be provided in the format <Field Name>=<Field Value>. 
+Every field must be specified in the new line.
 			E.g. Name2=Value2
-			     Name3=Value3	
+			     Name3=Value3
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -425,7 +427,7 @@ Note: Agile Central use two id to identify unique work item:
 = Behavior =
 (none)
 
-=Return Value=
+= Return Value =
 (none)
 
 = Outputs =
@@ -436,11 +438,12 @@ Note: Agile Central use two id to identify unique work item:
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 Custom field example:
-Blocked=true	]]></DOC>
+Blocked=true
+Name=My User Story]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

@@ -350,23 +350,26 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
 
 = General description =
-This action used to add comment to provided work Item using work item's formatted id.
+This action adds the comment to provided work Item using work item's formatted id.
 
-Note: Agile Central use two id to identify unique work item:
-1. Object Id that is unique across workspace, we get this id for any work item from url. E.g. https://demo-rally.rallydev.com/#/729701d/detail/userstory/1522731/revisions. In this example object id is 1522731
-2. Formatted ID is unique across project. E.g. US126, US127 etc
+If you provide API Token as well as Username/Password, API Token will be used for authentication.
+
+Note: Agile Central provides two different Ids for each work item.
+1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 (none)
 
 = Inputs =
-* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
-* Username		: Specify username for authentication.
-* Password		: Specify password for authentication.
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* Username		: Specify username for authentication. Required if you do not specify API Token.
+* Password		: Specify password for authentication. Required if you do not specify API Token.
+* Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Provide workspace name in which your work item is located. E.g. Acme
-* Work Item type	: Specify type of Work Item you are commenting. E.g. User Story
-* Work Item Id 		: Specify workitem id for which you want to add comment. E.g. US126
+* Work Item type	: Specify type of Work Item for which you want to add the comment. E.g. User Story
+* Work Item Id 		: Specify workitem Formatted ID for which you want to add comment. E.g. US126
 * Comment 		: Provide comment to the Work Item. E.g. User story updated
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
@@ -377,7 +380,7 @@ Note: Agile Central use two id to identify unique work item:
 = Behavior =
 (none)
 
-=Return Value=
+= Return Value =
 (none)
 
 = Outputs =
@@ -388,7 +391,7 @@ Note: Agile Central use two id to identify unique work item:
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

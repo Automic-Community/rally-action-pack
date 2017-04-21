@@ -11,31 +11,31 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    WorkspaceName        WorkItemType    WorkItemId         FilePath        Description
+*** Test Cases ***    OK_NOK    WorkspaceName        WorkItemType    WorkItemId         FilePath              Description
 Add attachment with providing valid inputs
                       [Tags]    main_scenarios
-                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}    ${Description}
+                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}          ${Description}
 
 Add attachment without providing Workspace name & Description with valid inputs
-                      OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}    ${Empty}
+                      OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}          ${Empty}
 
 Assertion with providing the valid file path but it has no content
-                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}    ${Description}
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${Empty_File_Path}    ${Description}
 
 Assertion with invalid workspace name
-                      NOK       Invalid              User Story      ${UserStory_Id}    ${File_Path}    ${Description}
+                      NOK       Invalid              User Story      ${UserStory_Id}    ${File_Path}          ${Description}
 
 Assertion with invalid Workitem Id
-                      NOK       ${Workspace_Name}    User Story      Invalid            ${File_Path}    ${Description}
+                      NOK       ${Workspace_Name}    User Story      Invalid            ${File_Path}          ${Description}
 
 Assertion with invalid File path
-                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    Invalid         ${Description}
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    Invalid               ${Description}
 
 Assert Workitem Id as mandatory field
-                      NOK       ${Workspace_Name}    User Story      ${Empty}           ${File_Path}    ${Description}
+                      NOK       ${Workspace_Name}    User Story      ${Empty}           ${File_Path}          ${Description}
 
 Assert File path as mandatory field
-                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${Empty}        ${Description}
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${Empty}              ${Description}
 
 *** Keywords ***
 Startup

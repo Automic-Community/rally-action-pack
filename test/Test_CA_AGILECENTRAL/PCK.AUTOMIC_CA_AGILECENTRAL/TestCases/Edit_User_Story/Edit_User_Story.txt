@@ -72,8 +72,7 @@ Edit User Story Template
     ...    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}
     Run Keyword If    '${UserStoryName}' == 'Invalid'    Action Set    &UC4RB_AC_ITEM_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_ITEM_NAME#    ${UserStoryName}
-    Run Keyword If    '${Description}' == 'Invalid'    Action Set    &UC4RB_AC_DESCRIPTION#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
     Run Keyword If    '${ScheduleState}' == 'Invalid'    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
     Run Keyword If    '${CustomFields}' == 'Invalid'    Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set

@@ -18,4 +18,4 @@ ${Custom_Fields}    Demo=test
 ${UserStory_Id}    US13
 ${File_Path}      ${EXECDIR}\\file.txt
 ${Empty_File_Path}    ${EXECDIR}\\empty_file.txt
-${File_directory}    E:\New folder
+${File_directory}    ${EXECDIR}

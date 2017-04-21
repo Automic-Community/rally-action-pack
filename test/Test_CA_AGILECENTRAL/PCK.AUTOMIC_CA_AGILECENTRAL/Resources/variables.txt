@@ -17,3 +17,6 @@ ${Schedule_State}    In-Progress
 ${Custom_Fields}    Demo=test
 ${UserStory_Id}    US13
 ${Id_Of_User_Stories}    US13,US12
+${File_Path}      ${EXECDIR}\\file.txt
+${Empty_File_Path}    ${EXECDIR}\\empty_file.txt
+

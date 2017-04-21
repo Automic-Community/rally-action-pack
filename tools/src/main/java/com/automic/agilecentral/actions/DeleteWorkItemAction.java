@@ -1,6 +1,7 @@
 package com.automic.agilecentral.actions;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CommonUtil;
@@ -38,7 +39,7 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
             DeleteResponse deleteResponse;
             deleteResponse = rallyRestTarget.delete(deleteRequest);
             if (!deleteResponse.wasSuccessful()) {
-                throw new AutomicException(deleteResponse.getErrors()[0]);
+                throw new AutomicException(Arrays.toString(deleteResponse.getErrors()));
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);

@@ -71,7 +71,7 @@ public class RallyUtil {
             workspaceQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!workspaceQueryResponse.wasSuccessful()) {
@@ -112,7 +112,7 @@ public class RallyUtil {
             projectQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!projectQueryResponse.wasSuccessful()) {
@@ -154,7 +154,7 @@ public class RallyUtil {
             storyQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!storyQueryResponse.wasSuccessful()) {

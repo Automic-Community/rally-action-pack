@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT">
 <XHEADER state="1">
-<Title>Bulk edit user stories</Title>
+<Title>Add attachment</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -63,15 +63,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORK_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORK_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -102,7 +102,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="BULK_EDIT_USER_STORY" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.BULK_EDIT_USER_STORIES@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="ADD_ATTACHMENT" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.ADD_ATTACHMENT@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -143,15 +143,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORK_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORK_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -178,52 +178,7 @@
 <calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
 <postconditions>
 <PostCon>
-<conditions id="CONDITIONS">
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_CUSTOM_FIELDS#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="EMPTY"/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
-<param altview="0" name="XC_P03" type="V" value="##911010">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
-</params>
-</action>
-</when>
-</condition>
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_DESCRIPTION#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="EMPTY"/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
-<param altview="0" name="XC_P03" type="V" value="##911010">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
-</params>
-</action>
-</when>
-</condition>
-</conditions>
+<conditions id="CONDITIONS"/>
 </PostCon>
 </postconditions>
 </task>
@@ -254,15 +209,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORK_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORK_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_FILE_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_FILE_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -343,9 +298,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.BULK_EDIT_USER_STORIES" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.ADD_ATTACHMENT" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
@@ -384,34 +339,24 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES
+PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT
 
 = General description =
-This action use to edit one or more user story.One can edit the following fields in the story : Project name,Description, Schedule State.
-Apart from these user can also provide the custom fields in the appropriate manner to edit their values.
-
-=NOTE=
-This action will throw an error and quit as soon as an error occurred while updating the fields of a particular user story.
-This might result in partial updation of the user stories.
-
+This action used to add attachment to provided work Item.
 
 = Failure Conditions =
-* If user doesn't provide any of the fields : Project name,Description, Schedule State, Custom Fields.
+(none)
 
 = Inputs =
-* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
+* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
-* API Token             : Specify API token for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
-* Workspace name	: Provide workspace name in which your user stories are located. E.g. Acme
-* User Story Ids	: Provide IDs of the user story you want to edit. E.g US121,US221,US231
-* Project name 		: Specify new project name to the user story. E.g. Customer Site
-* Description 		: Provide new description to your user story. E.g. Edit a story
-* Schedule State 	: Provide new schedule state to the user story. E.g. Idea
-* Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as separator.
-			E.g. Name2=Value2
-			     Name3=Value3	
+* Workspace name	: Provide workspace name in which your story is located. E.g. Acme
+* Work Item type	: Specify type of Work Item to which you are adding an attachment. E.g. User Story
+* Work Item Id 		: Provide ID of the work item you want to edit. E.g. US126
+* File Path 		: Full path of the file you want to attach to the Work item. E.g. C:/Temp/MyFile.zip
+* Description 		: Specify the attachment description.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -435,8 +380,7 @@ This might result in partial updation of the user stories.
 AE logs will be displayed in the AE report.
 
 = Example =
-Custom field example:
-Blocked=true	]]></DOC>
+(none)]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

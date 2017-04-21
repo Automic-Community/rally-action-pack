@@ -84,23 +84,23 @@ public class RallyUtil {
      */
     public static void processCustomFields(String fileName, JsonObject jsonObj) throws AutomicException {
 
-		Properties prop = new Properties();
+        Properties prop = new Properties();
 
-		try (FileInputStream input = new FileInputStream(fileName)) {
-			prop.load(input);
-			Set<String> keys = prop.stringPropertyNames();
-			for (String key : keys) {
-				if (CommonUtil.checkNotEmpty(key)) {
-					jsonObj.addProperty(key, prop.getProperty(key));
-				}
-			}
+        try (FileInputStream input = new FileInputStream(fileName)) {
+            prop.load(input);
+            Set<String> keys = prop.stringPropertyNames();
+            for (String key : keys) {
+                if (CommonUtil.checkNotEmpty(key)) {
+                    jsonObj.addProperty(key, prop.getProperty(key));
+                }
+            }
 
-		} catch (IOException e) {
-			ConsoleWriter.writeln(e);
-			throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
-		}
+        } catch (IOException e) {
+            ConsoleWriter.writeln(e);
+            throw new AutomicException("Error occured while processing custom fields :: " + e.getMessage());
+        }
 
-	}
+    }
 
     /**
      * Get the workspace ref of the WSAPI object.
@@ -120,7 +120,7 @@ public class RallyUtil {
             workspaceQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceName);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!workspaceQueryResponse.wasSuccessful()) {
@@ -161,7 +161,7 @@ public class RallyUtil {
             projectQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!projectQueryResponse.wasSuccessful()) {
@@ -203,7 +203,7 @@ public class RallyUtil {
             storyQueryResponse = restApi.query(queryRequest);
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
-            throw new AutomicException("Error occured while getting workspace id for workspace name =" + workspaceRef);
+            throw new AutomicException(e.getMessage());
         }
 
         if (!storyQueryResponse.wasSuccessful()) {

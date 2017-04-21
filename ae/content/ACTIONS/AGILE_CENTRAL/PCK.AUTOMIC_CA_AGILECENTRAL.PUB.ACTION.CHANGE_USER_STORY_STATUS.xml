@@ -350,7 +350,7 @@ This action changes the status of provided user story.
 * Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id 	: Provide ID of the user story for which you want to change status. E.g. US11	
 * New Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
-* Blocked reason	: Provide the description for the blocked status.
+* Blocked Reason	: Specify the reason, if you are setting new status as Blocked.
 * Sudo Password         : The password for the sudo command.
 * Options              	: Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

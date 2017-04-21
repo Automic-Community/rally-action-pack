@@ -35,11 +35,6 @@ import com.rallydev.rest.response.UpdateResponse;
 public class BulkEditWorkItemAction extends AbstractHttpAction {
 
     private static final int REQUEST_SIZE = 15;
-    private String workSpace;
-    private String project;
-    private String workItemType;
-    private String workItemIds;
-    private String scheduleState;
 
     public BulkEditWorkItemAction() {
         addOption("workitemids", true, "Work item ids");
@@ -76,8 +71,8 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
 
     private JsonObject prepareJsonObject() throws AutomicException {
         // checking if required inputs are provided
-        project = getOptionValue("projectname");
-        scheduleState = getOptionValue("schedulestate");
+        String project = getOptionValue("projectname");
+        String scheduleState = getOptionValue("schedulestate");
         String customFilePath = getOptionValue("customfilepath");
         String descFilePath = getOptionValue("descriptionfilepath");
 
@@ -111,21 +106,12 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
             String description = CommonUtil.readFileIntoString(descFilePath);
             updateObj.addProperty("Description", description);
         }
-
         return updateObj;
     }
 
     private List<String> prepareWorkItemReferences() throws AutomicException {
-        workItemType = getOptionValue("workitemtype");
-        AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
-
-        workSpace = getOptionValue("workspacename");
-        if (CommonUtil.checkNotEmpty(workSpace)) {
-            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
-        }
-
         // checking if given work item exists
-        workItemIds = getOptionValue("workitemids");
+        String workItemIds = getOptionValue("workitemids");
         AgileCentralValidator.checkNotEmpty(workItemIds, "Work item ids");
 
         String[] workItemsArray = workItemIds.split(",");
@@ -147,6 +133,14 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
     }
 
     private List<String> retrieveWorkItemRefs(List<String> workItemList) throws AutomicException {
+        String workItemType = getOptionValue("workitemtype");
+        AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
+
+        String workSpace = getOptionValue("workspacename");
+        if (CommonUtil.checkNotEmpty(workSpace)) {
+            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
+        }
+        
         List<String> workItemRefArray = new ArrayList<>(workItemList.size());
         Map<String, List<String>> queryFilter = new HashMap<>();
         List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));

@@ -19,11 +19,6 @@ import com.rallydev.rest.response.DeleteResponse;
  */
 public class DeleteWorkItemAction extends AbstractHttpAction {
 
-    /**
-     * Formatted Id of the user story to be deleted
-     */
-    private String workItemRef;
-
     public DeleteWorkItemAction() {
         addOption("workspace", false, "Workspace name");
         addOption("workitemid", true, "Work Item ID");
@@ -32,7 +27,7 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
 
     @Override
     protected void executeSpecific() throws AutomicException {
-        prepareInputs();
+        String workItemRef = getWorkItemRef();
         try {
             // deleting the work item
             DeleteRequest deleteRequest = new DeleteRequest(workItemRef);
@@ -48,9 +43,9 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
 
     }
 
-    private void prepareInputs() throws AutomicException {
+    private String getWorkItemRef() throws AutomicException {
         // Workspace name where the user story is located
-        String workSpaceRef = "";
+        String workSpaceRef = null;
         String workSpaceName = getOptionValue("workspace");
         if (CommonUtil.checkNotEmpty(workSpaceName)) {
             workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);
@@ -62,8 +57,7 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
 
         String temp = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(temp, "Work Item ID");
-        workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, temp, workSpaceRef, workItemType);
-
+        return RallyUtil.getWorkItemRef(rallyRestTarget, temp, workSpaceRef, workItemType);
     }
 
 }

@@ -19,6 +19,10 @@ import com.rallydev.rest.response.UpdateResponse;
  *
  */
 public class ChangeWorkItemStatusAction extends AbstractHttpAction {
+    
+    private static final String BLOCKED = "blocked";
+    private static final String READY = "ready";
+    private static final String NONE = "none";
 
     /**
      * Json containing the status to be set.
@@ -29,11 +33,6 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
      * reference of the work item
      */
     private String workItemRef;
-
-    /**
-     * Reason for the blocked status
-     */
-    private String blockReason;
 
     public ChangeWorkItemStatusAction() {
         addOption("workspace", false, "Workspace name");
@@ -71,19 +70,20 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         updatedWorkItem = new JsonObject();
 
         switch (workItemStatus.toLowerCase()) {
-            case "none":
+            case NONE:
                 updatedWorkItem.addProperty("Ready", false);
                 updatedWorkItem.addProperty("Blocked", false);
                 break;
 
-            case "ready":
+            case READY:
                 updatedWorkItem.addProperty("Ready", true);
                 updatedWorkItem.addProperty("Blocked", false);
                 break;
 
-            case "blocked":
+            case BLOCKED:
                 updatedWorkItem.addProperty("Blocked", true);
                 updatedWorkItem.addProperty("Ready", false);
+                String blockReason = getOptionValue("blockedreason");
                 if (CommonUtil.checkNotEmpty(blockReason)) {
                     updatedWorkItem.addProperty("BlockedReason", blockReason);
                 }
@@ -100,10 +100,7 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         // Work item ID
         String workItemId = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(workItemId, "Work item ID");
-
-        // Blocked reason
-        blockReason = getOptionValue("blockedreason");
-
+        
         // Workspace name where the user story is located
         String workSpaceRef = null;
         String workSpaceName = getOptionValue("workspace");

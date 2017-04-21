@@ -21,13 +21,8 @@ import com.rallydev.rest.response.UpdateResponse;
  */
 public class EditWorkItemAction extends AbstractHttpAction {
 
-    private String workSpace;
-    private String project;
-    private String workItemName;
-    private String workItemType;
     private String workItemId;
-    private String scheduleState;
-
+    
     public EditWorkItemAction() {
         addOption("workitemid", true, "Work item id");
         addOption("workitemtype", true, "Work item type you wanted to edit");
@@ -60,19 +55,19 @@ public class EditWorkItemAction extends AbstractHttpAction {
     private UpdateRequest checkInputsAndPrepareRequest() throws AutomicException {
         JsonObject updateObj = new JsonObject();
 
-        workItemType = getOptionValue("workitemtype");
+        String workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
         String workItemRef = null;
 
-        workSpace = getOptionValue("workspacename");
+        String workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
             workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
             updateObj.addProperty(Constants.WORKSPACE, workSpace);
         }
 
         // checking if given project exists
-        project = getOptionValue("projectname");
+        String project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
             project = RallyUtil.getProjectRef(rallyRestTarget, project, null);
             updateObj.addProperty(Constants.PROJECT, project);
@@ -84,13 +79,13 @@ public class EditWorkItemAction extends AbstractHttpAction {
         workItemRef = RallyUtil.getWorkItemRef(rallyRestTarget, workItemId, workSpace, workItemType);
 
         // adding new work item name
-        workItemName = getOptionValue("workitemname");
+        String workItemName = getOptionValue("workitemname");
         if (CommonUtil.checkNotEmpty(workItemName)) {
             updateObj.addProperty("Name", workItemName);
         }
 
         // adding new work item scheduled state
-        scheduleState = getOptionValue("schedulestate");
+        String scheduleState = getOptionValue("schedulestate");
         if (CommonUtil.checkNotEmpty(scheduleState)) {
             updateObj.addProperty("ScheduleState", scheduleState);
         }
@@ -113,7 +108,5 @@ public class EditWorkItemAction extends AbstractHttpAction {
 
         ConsoleWriter.writeln("Request Json Object: " + updateObj);
         return new UpdateRequest(workItemRef, updateObj);
-
     }
-
 }

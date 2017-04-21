@@ -56,7 +56,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
                 try {
                     rallyRestTarget.close();
                 } catch (IOException e) {
-                    ConsoleWriter.write("Error while closing Rally client");
+                    ConsoleWriter.writeln("Unable to close Rally client");
                 }
             }
         }
@@ -72,7 +72,7 @@ public abstract class AbstractHttpAction extends AbstractAction {
             baseUrl = new URI(temp);
         } catch (URISyntaxException e) {
             ConsoleWriter.writeln(e);
-            String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "URL", temp);
+            String msg = String.format(ExceptionConstants.INVALID_INPUT_PARAMETER, "CA Agile Central URL", temp);
             throw new AutomicException(msg);
         }
 
@@ -95,12 +95,12 @@ public abstract class AbstractHttpAction extends AbstractAction {
         rallyRestTarget.setWsapiVersion(apiVersion);
 
         // if cert validation needs to be skipped
-        if (CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION))) {
+        if (CommonUtil.convert2Bool(getOptionValue(Constants.SKIP_CERT_VALIDATION))
+                && Constants.HTTPS.equalsIgnoreCase(baseUrl.getScheme())) {
             int port = CommonUtil.getEnvParameter(Constants.ENV_PORT, Constants.AC_PORT);
             SchemeRegistry registry = rallyRestTarget.getClient().getConnectionManager().getSchemeRegistry();
-            registry.register(new Scheme("https", port, buildSSLSocketFactory()));
+            registry.register(new Scheme(Constants.HTTPS, port, buildSSLSocketFactory()));
         }
-
     }
 
     /**

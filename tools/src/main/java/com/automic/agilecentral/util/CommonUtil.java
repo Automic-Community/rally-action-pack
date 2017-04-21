@@ -94,12 +94,6 @@ public class CommonUtil {
         return ret;
     }
 
-    public static final String formatDate(final String message) {
-        final StringBuilder sb = new StringBuilder();
-
-        return sb.toString();
-    }
-
     /**
      *
      * Method to read the value as defined in environment. If value is not valid integer, then it returns the default
@@ -128,11 +122,9 @@ public class CommonUtil {
 
         File file = new File(filePath);
         AgileCentralValidator.checkFileExists(file);
-
         try {
             String content = new String(Files.readAllBytes(Paths.get(filePath)));
             return content;
-
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
             throw new AutomicException(String.format("Error occured while reading contents from file [%s] : %s ",

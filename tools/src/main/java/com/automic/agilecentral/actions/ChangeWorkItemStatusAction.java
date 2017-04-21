@@ -1,6 +1,7 @@
 package com.automic.agilecentral.actions;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CommonUtil;
@@ -12,7 +13,7 @@ import com.rallydev.rest.request.UpdateRequest;
 import com.rallydev.rest.response.UpdateResponse;
 
 /**
- * This class changes the schedule state of the given work item.
+ * This class changes the status of the given work item.
  * 
  * @author shrutinambiar
  *
@@ -20,17 +21,17 @@ import com.rallydev.rest.response.UpdateResponse;
 public class ChangeWorkItemStatusAction extends AbstractHttpAction {
 
     /**
-     * Schedule status of the work item
+     * Json containing the status to be set.
      */
-    private String workItemStatus;
+    private JsonObject updatedWorkItem;
 
     /**
-     * Formatted Id of the work item to be deleted
+     * reference of the work item
      */
     private String workItemRef;
 
     /**
-     * Formatted Id of the work item to be deleted
+     * Reason for the blocked status
      */
     private String blockReason;
 
@@ -46,24 +47,13 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
     protected void executeSpecific() throws AutomicException {
         prepareInputs();
         try {
-            // Json to update the status
-            JsonObject updatedWorkItem = new JsonObject();
-            if ("None".equalsIgnoreCase(workItemStatus)) {
-                updatedWorkItem.addProperty("Ready", false);
-                updatedWorkItem.addProperty("Blocked", false);
-            } else {
-                updatedWorkItem.addProperty(workItemStatus, true);
-                if ("Blocked".equalsIgnoreCase(workItemStatus) && CommonUtil.checkNotEmpty(blockReason)) {
-                    updatedWorkItem.addProperty("BlockedReason", blockReason);
-                }
-            }
-
             // Updating the status for the given work item
             UpdateRequest updateRequest = new UpdateRequest(workItemRef, updatedWorkItem);
             UpdateResponse updateResponse = rallyRestTarget.update(updateRequest);
             if (!updateResponse.wasSuccessful()) {
-                throw new AutomicException(updateResponse.getErrors()[0]);
+                throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
             }
+
             ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
@@ -74,8 +64,34 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
     private void prepareInputs() throws AutomicException {
 
         // Work item status
-        workItemStatus = getOptionValue("workitemstatus");
+        String workItemStatus = getOptionValue("workitemstatus");
         AgileCentralValidator.checkNotEmpty(workItemStatus, "Work item status");
+
+        // Json to update the status
+        updatedWorkItem = new JsonObject();
+
+        switch (workItemStatus.toLowerCase()) {
+            case "none":
+                updatedWorkItem.addProperty("Ready", false);
+                updatedWorkItem.addProperty("Blocked", false);
+                break;
+
+            case "ready":
+                updatedWorkItem.addProperty("Ready", true);
+                updatedWorkItem.addProperty("Blocked", false);
+                break;
+
+            case "blocked":
+                updatedWorkItem.addProperty("Blocked", true);
+                updatedWorkItem.addProperty("Ready", false);
+                if (CommonUtil.checkNotEmpty(blockReason)) {
+                    updatedWorkItem.addProperty("BlockedReason", blockReason);
+                }
+                break;
+            default:
+                throw new AutomicException(String.format("Invalid status[%s]. Specify None, Ready or Blocked.",
+                        workItemStatus));
+        }
 
         // Work item type : hierarchicalrequirement/Defect/Task
         String workItemType = getOptionValue("workitemtype");
@@ -89,7 +105,7 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         blockReason = getOptionValue("blockedreason");
 
         // Workspace name where the user story is located
-        String workSpaceRef = "";
+        String workSpaceRef = null;
         String workSpaceName = getOptionValue("workspace");
         if (CommonUtil.checkNotEmpty(workSpaceName)) {
             workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);

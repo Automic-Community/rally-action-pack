@@ -34,6 +34,7 @@ import com.rallydev.rest.response.UpdateResponse;
  */
 public class BulkEditWorkItemAction extends AbstractHttpAction {
 
+    private static final int REQUEST_SIZE = 15;
     private String workSpace;
     private String project;
     private String workItemType;
@@ -54,12 +55,15 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
     @Override
     protected void executeSpecific() throws AutomicException {
 
-        List<UpdateRequest> updateRequest = checkInputsAndPrepareRequest();
+        JsonObject updateObj = new JsonObject();
 
-        for (UpdateRequest req : updateRequest) {
+        List<String> workItemRefArray = checkInputsAndPrepareRequest(updateObj);
+        UpdateRequest req;
+        for (String ref : workItemRefArray) {
             try {
-                UpdateResponse updateResponse = rallyRestTarget.update(req);
+                req = new UpdateRequest(ref, updateObj);
 
+                UpdateResponse updateResponse = rallyRestTarget.update(req);
                 if (!updateResponse.wasSuccessful()) {
                     ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
                     throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
@@ -68,13 +72,15 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
                         .writeln(String.format("Work Item %s updated", updateResponse.getObject().get("FormattedID")));
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
-                throw new AutomicException(String.format("Error occured while updating work item id: %s", workItemIds));
+                throw new AutomicException(
+                        String.format("Error occured while updating work item ids: %s", e.getMessage()));
             }
+
         }
 
     }
 
-    private List<UpdateRequest> checkInputsAndPrepareRequest() throws AutomicException {
+    private List<String> checkInputsAndPrepareRequest(JsonObject updateObj) throws AutomicException {
 
         // checking if required inputs are provided
         project = getOptionValue("projectname");
@@ -82,21 +88,18 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         String customFilePath = getOptionValue("customfilepath");
         String descFilePath = getOptionValue("descriptionfilepath");
 
-        if ((project == null || project.isEmpty()) && (scheduleState == null || scheduleState.isEmpty())
-                && (customFilePath == null || customFilePath.isEmpty())
-                && (descFilePath == null || descFilePath.isEmpty())) {
+        if (CommonUtil.checkNotEmpty(project) && CommonUtil.checkNotEmpty(scheduleState)
+                && CommonUtil.checkNotEmpty(customFilePath) && CommonUtil.checkNotEmpty(descFilePath)) {
             throw new AutomicException("Please provide atleast one of the following: Project Name,Description,"
                     + "Schedule State or Custom Fields");
         }
-
-        JsonObject updateObj = new JsonObject();
 
         workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
         // checking if given work item exists
         workItemIds = getOptionValue("workitemids");
-       
+        AgileCentralValidator.checkNotEmpty(workItemIds, "Work item ids");
 
         workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
@@ -111,7 +114,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         // checking if given project exists
 
         if (CommonUtil.checkNotEmpty(project)) {
-            project = RallyUtil.getProjectRef(rallyRestTarget, project, workSpace);
+            project = RallyUtil.getProjectRef(rallyRestTarget, project, null);
             updateObj.addProperty(Constants.PROJECT, project);
         }
 
@@ -135,11 +138,8 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
             updateObj.addProperty("Description", description);
 
         }
-        List<UpdateRequest> bulkUpdateRequest = new ArrayList<>();
-        for (String ref : workItemRefArray) {
-            bulkUpdateRequest.add(new UpdateRequest(ref, updateObj));
-        }
-        return bulkUpdateRequest;
+
+        return workItemRefArray;
 
     }
 
@@ -149,60 +149,66 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
      */
 
     private List<String> getWorkItemRefList() throws AutomicException {
-        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));     
+        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
 
-        Set<String> workItemIdList = new HashSet<>(Arrays.asList(workItemIds.split(",")));
+        String[] workItemsArray = workItemIds.split(",");
+        Set<String> uniqueWorkItemSet = new HashSet<>(workItemsArray.length);
+        for (String s : workItemsArray) {
+            String tmp = s.trim();
+            if (!tmp.isEmpty()) {
+                uniqueWorkItemSet.add(tmp);
+            }
+        }
+
+        // check the size 0
+        if(uniqueWorkItemSet.size()<1){
+            throw new AutomicException(String.format("Please provide valid work items %s",workItemIds));
+        }
+
         Map<String, List<String>> queryFilter = new HashMap<>();
-        List<String> workItemRefArray = new ArrayList<>();
+        List<String> workItemRefArray = new ArrayList<>(uniqueWorkItemSet.size());
 
         // break the list into the sets of 15
 
         int start = 0;
-
-        int requestSize = 15;
-        int totalRequestSize = workItemIdList.size();
-
-        int totalRequest = totalRequestSize / requestSize;
-        int extra = totalRequestSize % requestSize;
-
-        if (totalRequest == 0 && extra != 0) {
-            totalRequest = totalRequest + 1;
-            requestSize = extra;
-        }
-        int end = requestSize;
+        int end;
+        int totalRequestSize = uniqueWorkItemSet.size();
 
         QueryResponse queryResponse = null;
-        while (true) {
-            List<String> requestList = new ArrayList<String>(workItemIdList);
+        List<String> workItemList = new ArrayList<String>(uniqueWorkItemSet);
+
+        while (start < totalRequestSize) {
+
+            end = start + REQUEST_SIZE;
+            if (end > totalRequestSize) {
+                end = totalRequestSize;
+            }
+            // start and end should give the data.
+
+            List<String> requestList = workItemList.subList(start, end);
             queryFilter.put("FormattedID", requestList);
 
             try {
                 queryResponse = RallyUtil.queryOR(rallyRestTarget, workItemType, workSpace, queryFilter, fetch, null);
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
-                throw new AutomicException(String.format(
-                        "Error occured while fetching details of work items : %s",e.getMessage()));
+                throw new AutomicException(
+                        String.format("Error occured while fetching details of work items : %s", e.getMessage()));
             }
 
             int totalResults = queryResponse.getTotalResultCount();
             if (totalResults == 0 || totalResults != requestList.size()) {
                 ConsoleWriter.writeln(queryResponse.getResults());
-                throw new AutomicException("Error occured while fetching details of work items ,some work items might not exists");
+                throw new AutomicException(
+                        "Error occured while fetching details of work items ,some work items might not exists");
             }
 
             for (JsonElement elem : queryResponse.getResults()) {
                 workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
 
             }
-            // break loop as soon as end of list is reached.
-            if (end >= totalRequestSize) {
-                break;
-            }
 
-            start = start + requestSize;
-            end = end + requestSize;
-            end = (end > totalRequestSize) ? totalRequestSize : end;
-
+            start = end;
         }
 
         return workItemRefArray;

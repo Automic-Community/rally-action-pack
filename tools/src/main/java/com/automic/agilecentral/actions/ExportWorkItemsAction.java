@@ -23,12 +23,12 @@ import com.rallydev.rest.request.QueryRequest;
 import com.rallydev.rest.response.QueryResponse;
 import com.rallydev.rest.util.Fetch;
 
-public class ExportUserStories extends AbstractHttpAction {
+public class ExportWorkItemsAction extends AbstractHttpAction {
 
     private String[] fields;
     private String filePath;
 
-    public ExportUserStories() {
+    public ExportWorkItemsAction() {
         addOption("workspace", false, "Workspace name");
         addOption("workitemtype", true, "Work item type");
         addOption("filters", false, "Result filter");

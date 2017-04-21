@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_USER_STORIES">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS">
 <XHEADER state="1">
-<Title>Export User Stories</Title>
+<Title>Export Work Items</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -63,16 +63,16 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">User Story</UC4RB_AC_ITEM_TYPEs.00>
-<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">500</UC4RB_AC_ITEMS_LIMITs.00>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -103,7 +103,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="EXPORT_USER_STORIES" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.EXPORT_USER_STORIES@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="EXPORT_WORK_ITEMS" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.EXPORT_WORK_ITEMS@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -144,16 +144,16 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">User Story</UC4RB_AC_ITEM_TYPEs.00>
-<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">500</UC4RB_AC_ITEMS_LIMITs.00>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -211,16 +211,16 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
-<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">User Story</UC4RB_AC_ITEM_TYPEs.00>
-<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES">500</UC4RB_AC_ITEMS_LIMITs.00>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -301,9 +301,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_USER_STORIES" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">

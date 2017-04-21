@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.EXPORT_USER_STORIES@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.EXPORT_WORK_ITEMS@GENERIC">
 <XHEADER state="1">
-<Title>Export User Stories</Title>
+<Title>Export Work Items</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -110,7 +110,7 @@
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "ExportUserStories"
+: SET &ACTION_NAME# = "ExportWorkItemsAction"
 
 ! Build java arguments
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.PREPARE_CMD
@@ -157,8 +157,8 @@
   &UC4RB_AC_CMD#
 
 ! Status messages
-: SET &UC4RB_LOGGING_INFO# = "******** EXPORT USER STORIES ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** EXPORT USER STORIES ACTION FAILED ********"
+: SET &UC4RB_LOGGING_INFO# = "******** EXPORT WORK ITEMS ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** EXPORT WORK ITEMS ACTION FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 

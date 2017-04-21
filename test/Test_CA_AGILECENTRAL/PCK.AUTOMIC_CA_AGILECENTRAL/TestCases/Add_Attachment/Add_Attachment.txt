@@ -16,6 +16,10 @@ Add attachment with providing valid inputs
                       [Tags]    main_scenarios
                       OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}          ${Description}
 
+Add attachment with providing valid inputs & file path as file directory
+                      [Tags]    main_scenarios
+                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_directory}     ${Description}
+
 Add attachment without providing Workspace name & Description with valid inputs
                       OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}          ${Empty}
 
@@ -60,12 +64,9 @@ Add Attachment Template
     Action Set    &UC4RB_AC_ITEM_TYPE#    ${WorkItemType}
     Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_WORK_ITEM_ID#    ${WorkItemId}
-    Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_WORK_ITEM_ID#    ${WorkItemId}
     Run Keyword If    '${FilePath}' == 'Invalid'    Action Set    &UC4RB_AC_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_FILE_PATH#    ${FilePath}
-    Run Keyword If    '${Description}' == 'Invalid'    Action Set    &UC4RB_AC_DESCRIPTION#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
     Action Execute
     Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
 

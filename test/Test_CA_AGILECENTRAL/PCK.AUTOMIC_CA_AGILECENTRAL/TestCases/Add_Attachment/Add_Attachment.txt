@@ -16,11 +16,11 @@ Add attachment with providing valid inputs
                       [Tags]    main_scenarios
                       OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}          ${Description}
 
-Add attachment with providing valid inputs & file path as file directory
-                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${EXECDIR}            ${Description}
-
 Add attachment without providing Workspace name & Description with valid inputs
                       OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}          ${Empty}
+
+Add attachment while providing directory not file name
+                      NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${EXECDIR}            ${Description}
 
 Assertion with providing the valid file path but it has no content
                       NOK       ${Workspace_Name}    User Story      ${UserStory_Id}    ${Empty_File_Path}    ${Description}
@@ -61,8 +61,8 @@ Add Attachment Template
     Run Keyword If    '${WorkspaceName}' == 'Invalid'    Action Set    &UC4RB_AC_WORKSPACE#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
     Action Set    &UC4RB_AC_ITEM_TYPE#    ${WorkItemType}
-    Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_WORK_ITEM_ID#    ${WorkItemId}
+    Run Keyword If    '${WorkItemId}' == 'Invalid'    Action Set    &UC4RB_AC_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_ITEM_ID#    ${WorkItemId}
     Run Keyword If    '${FilePath}' == 'Invalid'    Action Set    &UC4RB_AC_FILE_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_FILE_PATH#    ${FilePath}
     Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}

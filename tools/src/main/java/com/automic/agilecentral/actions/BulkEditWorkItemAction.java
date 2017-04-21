@@ -26,10 +26,10 @@ import com.rallydev.rest.response.QueryResponse;
 import com.rallydev.rest.response.UpdateResponse;
 
 /**
- * @author sumitsamson This class is used to perform updation on more than one work item i.e user story,defects etc. It
- *         will throw an error and quit as soon as an error occurred while updating the fields of a particular work
- *         item.This might result in partial updation of the work items.Following fields can be updated for more than
- *         one work items using this action :Project Name,Description,Schedule State and Custom fields.
+ * This class is used to perform update on more than one work item i.e user story,defects etc. It will throw an error
+ * and quits as soon as an error occurred while updating the fields of a particular work item.This might result in
+ * partial update of the work items.Following fields can be updated for more than one work items using this action
+ * :Project Name,Description,Schedule State and Custom fields.
  * 
  */
 public class BulkEditWorkItemAction extends AbstractHttpAction {
@@ -49,39 +49,32 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         addOption("descriptionfilepath", false, "Description file path");
         addOption("schedulestate", false, "New schedule state of work item");
         addOption("customfilepath", false, "Custom fields file path");
-
     }
 
     @Override
     protected void executeSpecific() throws AutomicException {
+        JsonObject updateObj = prepareJsonObject();
+        List<String> workItemRefArray = prepareWorkItemReferences();
 
-        JsonObject updateObj = new JsonObject();
-
-        List<String> workItemRefArray = checkInputsAndPrepareRequest(updateObj);
-        UpdateRequest req;
         for (String ref : workItemRefArray) {
             try {
-                req = new UpdateRequest(ref, updateObj);
-
+                UpdateRequest req = new UpdateRequest(ref, updateObj);
                 UpdateResponse updateResponse = rallyRestTarget.update(req);
                 if (!updateResponse.wasSuccessful()) {
                     ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
                     throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
                 }
-                ConsoleWriter
-                        .writeln(String.format("Work Item %s updated", updateResponse.getObject().get("FormattedID")));
+                ConsoleWriter.writeln(String.format("Work Item %s updated",
+                        updateResponse.getObject().get("FormattedID")));
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
-                throw new AutomicException(
-                        String.format("Error occured while updating work item ids: %s", e.getMessage()));
+                throw new AutomicException(String.format("Error occured while updating work item ids: %s",
+                        e.getMessage()));
             }
-
         }
-
     }
 
-    private List<String> checkInputsAndPrepareRequest(JsonObject updateObj) throws AutomicException {
-
+    private JsonObject prepareJsonObject() throws AutomicException {
         // checking if required inputs are provided
         project = getOptionValue("projectname");
         scheduleState = getOptionValue("schedulestate");
@@ -93,39 +86,20 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
             throw new AutomicException("Please provide atleast one of the following: Project Name,Description,"
                     + "Schedule State or Custom Fields");
         }
-
-        workItemType = getOptionValue("workitemtype");
-        AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
-
-        // checking if given work item exists
-        workItemIds = getOptionValue("workitemids");
-        AgileCentralValidator.checkNotEmpty(workItemIds, "Work item ids");
-
-        workSpace = getOptionValue("workspacename");
-        if (CommonUtil.checkNotEmpty(workSpace)) {
-            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
-            updateObj.addProperty(Constants.WORKSPACE, workSpace);
-        }
-
-        // getting work item references
-
-        List<String> workItemRefArray = getWorkItemRefList();
+        JsonObject updateObj = new JsonObject();
 
         // checking if given project exists
-
         if (CommonUtil.checkNotEmpty(project)) {
             project = RallyUtil.getProjectRef(rallyRestTarget, project, null);
             updateObj.addProperty(Constants.PROJECT, project);
         }
 
         // adding new work item scheduled state
-
         if (CommonUtil.checkNotEmpty(scheduleState)) {
             updateObj.addProperty("ScheduleState", scheduleState);
         }
 
         // Custom fields addition
-
         if (CommonUtil.checkNotEmpty(customFilePath)) {
             File file = new File(customFilePath);
             AgileCentralValidator.checkFileExists(file);
@@ -136,20 +110,23 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         if (CommonUtil.checkNotEmpty(descFilePath)) {
             String description = CommonUtil.readFileIntoString(descFilePath);
             updateObj.addProperty("Description", description);
-
         }
 
-        return workItemRefArray;
-
+        return updateObj;
     }
 
-    /**
-     * @return
-     * @throws AutomicException
-     */
+    private List<String> prepareWorkItemReferences() throws AutomicException {
+        workItemType = getOptionValue("workitemtype");
+        AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
-    private List<String> getWorkItemRefList() throws AutomicException {
-        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
+        workSpace = getOptionValue("workspacename");
+        if (CommonUtil.checkNotEmpty(workSpace)) {
+            workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
+        }
+
+        // checking if given work item exists
+        workItemIds = getOptionValue("workitemids");
+        AgileCentralValidator.checkNotEmpty(workItemIds, "Work item ids");
 
         String[] workItemsArray = workItemIds.split(",");
         Set<String> uniqueWorkItemSet = new HashSet<>(workItemsArray.length);
@@ -161,56 +138,52 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         }
 
         // check the size 0
-        if(uniqueWorkItemSet.size()<1){
-            throw new AutomicException(String.format("Please provide valid work items %s",workItemIds));
+        if (uniqueWorkItemSet.size() == 0) {
+            throw new AutomicException(String.format("Please provide valid work items %s", workItemIds));
         }
 
+        List<String> workItemList = new ArrayList<String>(uniqueWorkItemSet);
+        return retrieveWorkItemRefs(workItemList);
+    }
+
+    private List<String> retrieveWorkItemRefs(List<String> workItemList) throws AutomicException {
+        List<String> workItemRefArray = new ArrayList<>(workItemList.size());
         Map<String, List<String>> queryFilter = new HashMap<>();
-        List<String> workItemRefArray = new ArrayList<>(uniqueWorkItemSet.size());
+        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
 
-        // break the list into the sets of 15
-
+        int totalRequestSize = workItemList.size();
         int start = 0;
         int end;
-        int totalRequestSize = uniqueWorkItemSet.size();
-
-        QueryResponse queryResponse = null;
-        List<String> workItemList = new ArrayList<String>(uniqueWorkItemSet);
-
         while (start < totalRequestSize) {
-
             end = start + REQUEST_SIZE;
             if (end > totalRequestSize) {
                 end = totalRequestSize;
             }
-            // start and end should give the data.
-
             List<String> requestList = workItemList.subList(start, end);
             queryFilter.put("FormattedID", requestList);
 
+            QueryResponse queryResponse = null;
             try {
                 queryResponse = RallyUtil.queryOR(rallyRestTarget, workItemType, workSpace, queryFilter, fetch, null);
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
-                throw new AutomicException(
-                        String.format("Error occured while fetching details of work items : %s", e.getMessage()));
+                throw new AutomicException(String.format("Error occured while fetching details of work items : %s",
+                        requestList));
             }
 
             int totalResults = queryResponse.getTotalResultCount();
-            if (totalResults == 0 || totalResults != requestList.size()) {
+            if (totalResults != requestList.size()) {
                 ConsoleWriter.writeln(queryResponse.getResults());
-                throw new AutomicException(
-                        "Error occured while fetching details of work items ,some work items might not exists");
+                ConsoleWriter.writeln("Expected Count: " + requestList.size() + " Actual Count: " + totalResults);
+                ConsoleWriter.writeln("Some of the Work items does not exist " + requestList);
+                throw new AutomicException("Invalid work items have been provided.");
             }
 
             for (JsonElement elem : queryResponse.getResults()) {
                 workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
-
             }
-
             start = end;
         }
-
         return workItemRefArray;
     }
 

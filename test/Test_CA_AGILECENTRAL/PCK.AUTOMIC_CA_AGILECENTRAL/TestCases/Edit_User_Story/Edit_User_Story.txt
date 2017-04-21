@@ -19,6 +19,9 @@ Edit user story with providing valid inputs
 Edit user story with providing UserStoryId,Project name,UserStoryName & Schedule state
                       OK        ${Empty}             ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Empty}          ${Schedule_State}    ${Empty}
 
+Assertion with invalid Custom fields
+                      OK        ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    Invalid
+
 Assertion without providing Project name,User story name,Description,Schedule state & Custom fields
                       NOK       ${Workspace_Name}    ${UserStory_Id}    ${Empty}           ${Empty}             ${Empty}          ${Empty}             ${Empty}
 
@@ -33,9 +36,6 @@ Assertion with invalid project name
 
 Assertion with invalid Schedule state
                       NOK       ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    Invalid              ${Custom_Fields}
-
-Assertion with invalid Custom fields
-                      OK        ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    Invalid
 
 Assert Userstory Id as mandatory field
                       NOK       ${Workspace_Name}    ${Empty}           ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}

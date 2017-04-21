@@ -17,7 +17,7 @@ Add attachment with providing valid inputs
                       OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_Path}          ${Description}
 
 Add attachment with providing valid inputs & file path as file directory
-                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${File_directory}     ${Description}
+                      OK        ${Workspace_Name}    User Story      ${UserStory_Id}    ${EXECDIR}            ${Description}
 
 Add attachment without providing Workspace name & Description with valid inputs
                       OK        ${Empty}             User Story      ${UserStory_Id}    ${File_Path}          ${Empty}

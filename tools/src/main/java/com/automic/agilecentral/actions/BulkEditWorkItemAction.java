@@ -8,9 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
+import java.util.Set;
 
 import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
@@ -83,7 +84,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
 
         if ((project == null || project.isEmpty()) && (scheduleState == null || scheduleState.isEmpty())
                 && (customFilePath == null || customFilePath.isEmpty())
-                || (descFilePath == null || descFilePath.isEmpty())) {
+                && (descFilePath == null || descFilePath.isEmpty())) {
             throw new AutomicException("Please provide atleast one of the following: Project Name,Description,"
                     + "Schedule State or Custom Fields");
         }
@@ -95,10 +96,9 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
 
         // checking if given work item exists
         workItemIds = getOptionValue("workitemids");
-        if (!Pattern.matches("[a-zA-z0-9,]+[^,]", workItemIds)) {
-            throw new AutomicException(String.format("User Story input is not proper %s", workItemIds));
-        }
+       
 
+        workSpace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workSpace)) {
             workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
             updateObj.addProperty(Constants.WORKSPACE, workSpace);
@@ -149,9 +149,9 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
      */
 
     private List<String> getWorkItemRefList() throws AutomicException {
-        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
+        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));     
 
-        List<String> workItemIdList = new ArrayList<>(Arrays.asList(workItemIds.split(",")));
+        Set<String> workItemIdList = new HashSet<>(Arrays.asList(workItemIds.split(",")));
         Map<String, List<String>> queryFilter = new HashMap<>();
         List<String> workItemRefArray = new ArrayList<>();
 
@@ -165,7 +165,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         int totalRequest = totalRequestSize / requestSize;
         int extra = totalRequestSize % requestSize;
 
-        if (totalRequest==0 && extra != 0) {
+        if (totalRequest == 0 && extra != 0) {
             totalRequest = totalRequest + 1;
             requestSize = extra;
         }
@@ -173,29 +173,28 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
 
         QueryResponse queryResponse = null;
         while (true) {
-            List<String> requestList = workItemIdList.subList(start, end);
+            List<String> requestList = new ArrayList<String>(workItemIdList);
             queryFilter.put("FormattedID", requestList);
 
             try {
                 queryResponse = RallyUtil.queryOR(rallyRestTarget, workItemType, workSpace, queryFilter, fetch, null);
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
-                throw new AutomicException(String
-                        .format("Error occured while fetching details of work items ,some work items might not exists"));
+                throw new AutomicException(String.format(
+                        "Error occured while fetching details of work items : %s",e.getMessage()));
             }
 
             int totalResults = queryResponse.getTotalResultCount();
             if (totalResults == 0 || totalResults != requestList.size()) {
                 ConsoleWriter.writeln(queryResponse.getResults());
-                throw new AutomicException(String.format("Error while retrieving work items expected %s, recieved %s",
-                        workItemIdList.size(), totalResults));
+                throw new AutomicException("Error occured while fetching details of work items ,some work items might not exists");
             }
 
             for (JsonElement elem : queryResponse.getResults()) {
                 workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
 
             }
-            //break loop as soon as end of list is reached.
+            // break loop as soon as end of list is reached.
             if (end >= totalRequestSize) {
                 break;
             }

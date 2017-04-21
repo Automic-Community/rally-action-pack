@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.BULK_EDIT_USER_STORY@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.BULK_EDIT_USER_STORIES@GENERIC">
 <XHEADER state="1">
-<Title>Bulk edit user story</Title>
+<Title>Bulk edit user stories</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -168,6 +168,8 @@
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -customfilepath &UC4RB_AC_ESCAPED_STRING#")
 :   SET &COUNT# = 1
 :   PUBLISH &UC4RB_CUSTOM_FIELDS_FILE_PATH#,,"TASK"
+: ELSE
+:    SET &UC4RB_AC_CUSTOM_FIELDS# = "EMPTY"
 : ENDIF
 
 
@@ -186,6 +188,8 @@
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -descriptionfilepath &UC4RB_AC_ESCAPED_STRING#")
 :   SET &COUNT# = 1
 :   PUBLISH &UC4RB_DESCRIPTION_FILE_PATH#,,"TASK"
+: ELSE
+:    SET &UC4RB_AC_DESCRIPTION# = "EMPTY"
 : ENDIF
 
 

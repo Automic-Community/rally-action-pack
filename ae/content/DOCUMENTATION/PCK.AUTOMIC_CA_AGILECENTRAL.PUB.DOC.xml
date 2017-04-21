@@ -15,7 +15,8 @@ CA Agile Central is an enterprise-class platform that's purpose-built for scalin
 * Export a user story
 
 
-=Supported CA SV versions=
+=Supported CA Agile Central versions=
+v2.0
 
 =Setup=
 * Oracle JRE 1.7 or higher must be installed on Agent OS and "java" must be set as executable on the same.
@@ -26,7 +27,7 @@ PCK.AUTOMIC_CA_AGILE_CENTRAL.PUB.VARA.PACKAGE_PARAMETERS
 * API version and https port defined in this vara
 
 =Actions=
-Following actions are supported for CA SV.
+Following actions are supported for CA AGILE CENTRAL.
 
 * Action Name: PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.DELETE_USER_STORY 
 * Action Description: This action deletes the given user story along with the tasks associated to it.
@@ -37,7 +38,7 @@ Following actions are supported for CA SV.
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY
 * Action Description: This action is use to edit a user story.
 
-* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORY
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES
 * Action Description: This action is use to edit one or more user stories.]]></DOC>
 </DOCU_Docu>
 </DOCU>

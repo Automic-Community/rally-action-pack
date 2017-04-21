@@ -24,8 +24,8 @@
 </ATTR_VARA>
 <VARA state="1">
 <Variables>
-<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
-<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORY/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name=" PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>

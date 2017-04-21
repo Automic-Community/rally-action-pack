@@ -26,13 +26,13 @@
 <Variables>
 <row Name="Categories" Value="CA Agile Central Integration" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Company" Value="Automic Software GmbH" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Dependencies" Value="PCK.ITPA_SHARED ~&gt; 1.2.2 , PCK.AUTOMIC_FILESYSTEM ~&gt; 1.1" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Dependencies" Value="PCK.ITPA_SHARED ~&gt; 1.1 , PCK.AUTOMIC_FILESYSTEM ~&gt; 1.1" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Description" Value="Provides integration with CA Agile Central" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Homepage" Value="www.automic.com" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="License" Value="Automic License" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Name" Value="PCK.AUTOMIC_CA_AGILECENTRAL" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Package Format Version" Value="0.1.0" Value1="" Value2="" Value3="" Value4=""/>
-<row Name="Title" Value="NEW.PACKAGE" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="Title" Value="Automic CA Agile Central Package" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="Version" Value="1.0.0" Value1="" Value2="" Value3="" Value4=""/>
 </Variables>
 </VARA>

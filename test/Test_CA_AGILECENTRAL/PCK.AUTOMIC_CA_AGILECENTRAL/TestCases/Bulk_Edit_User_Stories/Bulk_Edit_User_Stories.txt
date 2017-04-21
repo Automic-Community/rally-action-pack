@@ -64,8 +64,8 @@ Bulk Edit User Stories Template
     ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
     Run Keyword If    '${IdOfUserStories}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_WORK_ITEM_ID#    ${IdOfUserStories}
-    Run Keyword If    '${ProjectName}' == 'Invalid'    Action Set    &UC4RB_AC_PRJCT_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}
+    Run Keyword If    '${ProjectName}' == 'Invalid'    Action Set    &UC4RB_AC_PROJECT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_PROJECT#    ${ProjectName}
     Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
     Run Keyword If    '${ScheduleState}' == 'Invalid'    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}

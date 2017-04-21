@@ -3,6 +3,7 @@ package com.automic.agilecentral.actions;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -16,7 +17,7 @@ import com.rallydev.rest.request.CreateRequest;
 import com.rallydev.rest.response.CreateResponse;
 
 /**
- * Attaches a file to the given work item
+ * Attache a file to the given work item
  * 
  * @author shrutinambiar
  *
@@ -24,7 +25,7 @@ import com.rallydev.rest.response.CreateResponse;
 public class AddAttachmentAction extends AbstractHttpAction {
 
     /**
-     * Formatted Id of the work item to be deleted
+     * ObjectId of the work item
      */
     private String workItemRef;
 
@@ -34,7 +35,7 @@ public class AddAttachmentAction extends AbstractHttpAction {
     private File filePath;
 
     /**
-     * Discription of the attachment
+     * Description of the attachment
      */
     private String description;
 
@@ -62,7 +63,7 @@ public class AddAttachmentAction extends AbstractHttpAction {
             CreateRequest attachmentContentCreateRequest = new CreateRequest("AttachmentContent", attachmentContent);
             CreateResponse attachmentContentResponse = rallyRestTarget.create(attachmentContentCreateRequest);
             if (!attachmentContentResponse.wasSuccessful()) {
-                throw new AutomicException(attachmentContentResponse.getErrors()[0]);
+                throw new AutomicException(Arrays.toString(attachmentContentResponse.getErrors()));
             }
 
             // Attach the file uploaded to the story
@@ -70,7 +71,13 @@ public class AddAttachmentAction extends AbstractHttpAction {
             myAttachment.addProperty("Artifact", workItemRef);
             myAttachment.addProperty("Content", attachmentContentResponse.getObject().getAsJsonObject().get("_ref")
                     .getAsString());
-            myAttachment.addProperty("ContentType", Files.probeContentType(filePath.toPath()));
+
+            String contentType = Files.probeContentType(filePath.toPath());
+            if (contentType == null) {
+                contentType = "";
+            }
+            ConsoleWriter.writeln(String.format("Content Type of the file[%s] : [%s]", filePath, contentType));
+            myAttachment.addProperty("ContentType", contentType);
             myAttachment.addProperty("Name", filePath.getName());
 
             if (CommonUtil.checkNotEmpty(description)) {
@@ -80,8 +87,9 @@ public class AddAttachmentAction extends AbstractHttpAction {
             CreateRequest attachmentCreateRequest = new CreateRequest("Attachment", myAttachment);
             CreateResponse attachmentResponse = rallyRestTarget.create(attachmentCreateRequest);
             if (!attachmentResponse.wasSuccessful()) {
-                throw new AutomicException(attachmentResponse.getErrors()[0]);
+                throw new AutomicException(Arrays.toString(attachmentResponse.getErrors()));
             }
+            ConsoleWriter.writeln("Response Json Object: " + attachmentResponse.getObject());
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
             throw new AutomicException(e.getMessage());
@@ -111,7 +119,7 @@ public class AddAttachmentAction extends AbstractHttpAction {
         description = getOptionValue("description");
 
         // Workspace name where the user story is located
-        String workSpaceRef = "";
+        String workSpaceRef = null;
         String workSpaceName = getOptionValue("workspace");
         if (CommonUtil.checkNotEmpty(workSpaceName)) {
             workSpaceRef = RallyUtil.getWorspaceRef(rallyRestTarget, workSpaceName);

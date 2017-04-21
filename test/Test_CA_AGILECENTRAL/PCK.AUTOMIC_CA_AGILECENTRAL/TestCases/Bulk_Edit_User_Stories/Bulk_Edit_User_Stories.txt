@@ -16,7 +16,7 @@ Bulk edit user stories with providing valid inputs
                       [Tags]    main_scenarios
                       OK        ${Workspace_Name}    ${Id_Of_User_Stories}    ${Project_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
 
-Bulk edit user story with providing only UserStoryId & Schedule state
+Bulk edit user stories with providing only UserStoryId & Schedule state
                       OK        ${Empty}             ${Id_Of_User_Stories}    ${Empty}           ${Empty}          ${Schedule_State}    ${Empty}
 
 Assertion without providing Project name,Description,Schedule state & Custom fields
@@ -33,6 +33,9 @@ Assertion with invalid project name
 
 Assertion with invalid Schedule state
                       NOK       ${Workspace_Name}    ${Id_Of_User_Stories}    ${Project_Name}    ${Description}    Invalid              ${Custom_Fields}
+
+Assertion with invalid Custom Fields
+                      OK        ${Workspace_Name}    ${Id_Of_User_Stories}    ${Project_Name}    ${Description}    ${Schedule_State}    Invalid
 
 Assert Userstory Id as mandatory field
                       NOK       ${Workspace_Name}    ${Empty}                 ${Project_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
@@ -63,8 +66,7 @@ Bulk Edit User Stories Template
     ...    &UC4RB_AC_WORK_ITEM_ID#    ${IdOfUserStories}
     Run Keyword If    '${ProjectName}' == 'Invalid'    Action Set    &UC4RB_AC_PRJCT_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_PRJCT_NAME#    ${ProjectName}
-    Run Keyword If    '${Description}' == 'Invalid'    Action Set    &UC4RB_AC_DESCRIPTION#    ${Generated_Name}_${Time}    ELSE    Action Set
-    ...    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
     Run Keyword If    '${ScheduleState}' == 'Invalid'    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
     Run Keyword If    '${CustomFields}' == 'Invalid'    Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set

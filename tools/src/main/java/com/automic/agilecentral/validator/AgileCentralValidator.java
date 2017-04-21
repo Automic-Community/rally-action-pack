@@ -42,4 +42,10 @@ public final class AgileCentralValidator {
             throw new AutomicException(String.format(ExceptionConstants.INVALID_FILE, file));
         }
     }
+    
+    public static final void checkFileWritable(File file) throws AutomicException {
+        if (!CommonUtil.isWritable(file)) {
+            throw new AutomicException(String.format(ExceptionConstants.INVALID_FILE_PATH, file));
+        }
+    }
 }

@@ -36,11 +36,13 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
      */
     private static final String[] EXCLUDEHEADERS = new String[] { "_rallyAPIMajor", "_rallyAPIMinor", "_ref",
             "_refObjectUUID", "_objectVersion", "ObjectUUID", "VersionId", "HasParent", "_type" };
-
+    private static final int PAGE_SIZE_THRESHOLD = 200;
+    private static final int LIMIT_THRESHHOLD = 200;
     private String[] fields;
     private String filePath;
     private int lineCount;
     private String field;
+    private int limit;
 
     public ExportWorkItemsAction() {
         addOption("workspace", false, "Workspace name");
@@ -54,15 +56,11 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
     @Override
     protected void executeSpecific() throws AutomicException {
         QueryRequest queryRequest = prepareAndValidateInputs();
-
-        // Preparing add comment request the work item
-
         try {
             QueryResponse queryResponse = this.rallyRestTarget.query(queryRequest);
-
             if (queryResponse.wasSuccessful()) {
                 JsonArray results = queryResponse.getResults();
-
+                int totalResultCount = queryResponse.getTotalResultCount();
                 if (results != null && results.size() > 0) {
                     if (fields == null) {
                         fields = getFields(results);
@@ -70,21 +68,52 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                         // Validate fields exist in json data
                         checkFieldExist(results, fields);
                     }
-                    csvWriter(results, fields, filePath);
+                    createCSV(totalResultCount, queryRequest, fields);
                 }
                 filePath = lineCount > 0 ? filePath : "";
                 ConsoleWriter.writeln("UC4RB_AC_EXPORT_FILE_PATH ::=" + filePath);
-                // This should contain total record count.
-                ConsoleWriter.writeln("UC4RB_AC_TOTAL_RESULT_COUNT ::=" + lineCount);
-                ConsoleWriter.writeln("Total available record count : " + queryResponse.getTotalResultCount());
+                ConsoleWriter.writeln("UC4RB_AC_TOTAL_RESULT_COUNT ::=" + totalResultCount);
             } else {
-                throw new AutomicException(Arrays.toString(queryResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(queryResponse.getErrors()));
+                throw new AutomicException("Unable to export work items");
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
             throw new AutomicException(e.getMessage());
         }
 
+    }
+
+    private void createCSV(final int totalRecords, QueryRequest queryRequest, final String[] headers)
+            throws AutomicException {
+
+        int totalRequestSize = 0;
+        if (limit == 0) {
+            totalRequestSize = totalRecords;
+        } else {
+            totalRequestSize = totalRecords > limit ? limit : totalRecords;
+        }
+        int start = 0;
+        try (CSVWriter writer = new CSVWriter(filePath, headers)) {
+            while (start < totalRequestSize) {
+                queryRequest.setStart(start);
+                QueryResponse queryResponse = this.rallyRestTarget.query(queryRequest);
+                if (queryResponse.wasSuccessful()) {
+                    ConsoleWriter.newLine();
+                    ConsoleWriter.writeln("Start with index : " + start);
+                    ConsoleWriter.writeln("Fetched Record size : " + queryResponse.getResults().size());
+                    csvWriter(queryResponse.getResults(), fields, filePath, writer);
+                }
+
+                start = start + LIMIT_THRESHHOLD + 1;
+                if (start > totalRequestSize) {
+                    start = totalRequestSize;
+                }
+            }
+            ConsoleWriter.newLine();
+        } catch (IOException e) {
+            throw new AutomicException(" Error in writing csv file" + e.getMessage());
+        }
     }
 
     private QueryRequest prepareAndValidateInputs() throws AutomicException {
@@ -108,8 +137,8 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
             throw new AutomicException(" Error in getting unique absolute path " + e.getMessage());
         }
         // Validate count
-        String limit = getOptionValue("limit");
-        AgileCentralValidator.checkNotEmpty(limit, "Maximum Items");
+        String rowLimit = getOptionValue("limit");
+        AgileCentralValidator.checkNotEmpty(rowLimit, "Maximum Items");
 
         QueryRequest queryRequest = new QueryRequest(workItemType);
 
@@ -121,36 +150,31 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
         if (CommonUtil.checkNotEmpty(field)) {
             fields = field.split(",");
             fields = validateAndPreapreFields(field.split(","));
-            // Handle duplictae names.
             queryRequest.setFetch(new Fetch(fields));
         }
 
         queryRequest.addParam("query", filters);
-        int recordLimit = CommonUtil.parseStringValue(limit, -1);
-        // Check for negative values.
-        if (recordLimit != 0) {
-            queryRequest.setPageSize(recordLimit);
-            queryRequest.setLimit(recordLimit);
-        }
+
+        queryRequest.setPageSize(PAGE_SIZE_THRESHOLD);
+        queryRequest.setLimit(LIMIT_THRESHHOLD);
+        limit = CommonUtil.parseStringValue(rowLimit, -1);
 
         return queryRequest;
     }
 
-    private void csvWriter(JsonArray results, String[] fields, String filePath) throws AutomicException {
+    private void csvWriter(JsonArray results, String[] fields, String filePath, CSVWriter writer)
+            throws AutomicException {
         if (fields != null && fields.length > 0) {
-            CSVWriter writer = null;
             try {
-                writer = new CSVWriter(filePath, fields);
                 List<String> fieldsData = new ArrayList<String>(fields.length);
-                // Add Headers
-                //writer.writeLine(Arrays.asList(fields));
                 for (JsonElement result : results) {
                     JsonObject workItem = result.getAsJsonObject();
                     for (String field : fields) {
-                        if (workItem.get(field) != null && workItem.get(field).isJsonPrimitive()) {
-                            fieldsData.add(workItem.get(field).getAsString());
-                        } else if (workItem.get(field) != null && workItem.get(field).isJsonObject()) {
-                            JsonObject jObj = (JsonObject) workItem.get(field);
+                        JsonElement jeObj = workItem.get(field);
+                        if (jeObj != null && jeObj.isJsonPrimitive()) {
+                            fieldsData.add(jeObj.getAsString());
+                        } else if (jeObj != null && jeObj.isJsonObject()) {
+                            JsonObject jObj = (JsonObject) jeObj;
                             if (jObj.has("_refObjectName")) {
                                 fieldsData.add(jObj.get("_refObjectName").getAsString());
                             } else {
@@ -166,14 +190,6 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                 }
             } catch (IOException e) {
                 throw new AutomicException(" Error in writing csv file" + e.getMessage());
-            } finally {
-                if (writer != null) {
-                    try {
-                        writer.close();
-                    } catch (IOException ex) {
-                        // log it
-                    }
-                }
             }
         }
 
@@ -203,30 +219,40 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
     }
 
     private void checkFieldExist(JsonArray results, String[] fields) throws AutomicException {
-        // Check for case insensitive as well.
         JsonElement jsonEle = results.get(0);
         JsonObject jsonObj = jsonEle.getAsJsonObject();
-        for (String field : fields) {
+        Set<Entry<String, JsonElement>> entrySet = jsonObj.entrySet();
+        for (int i = 0; i < fields.length; i++) {
             if (!jsonObj.has(field)) {
-                throw new AutomicException(String.format("Provided Field [%s] does not exist.", field));
+                boolean flag = true;
+                for (Map.Entry<String, JsonElement> entry : entrySet) {
+                    String key = entry.getKey();
+                    if (CommonUtil.checkNotEmpty(key) && fields[i].equalsIgnoreCase(key)) {
+                        fields[i] = key;
+                        flag = false;
+                    }
+                }
+                if (flag) {
+                    throw new AutomicException(String.format("Provided Field [%s] does not exist.", field));
+                }
             }
         }
     }
 
     private String[] validateAndPreapreFields(String[] array) throws AutomicException {
-        List<String> fields = new ArrayList<String>(array.length);
+        Set<String> uniqueFields = new HashSet<String>();
         if (array != null && array.length > 0) {
             for (int i = 0; i < array.length; i++) {
                 String value = array[i].trim();
                 if (CommonUtil.checkNotEmpty(value)) {
-                    fields.add(value);
+                    uniqueFields.add(value);
                 }
             }
         }
-        if (fields.isEmpty()) {
-            throw new AutomicException("Invalid Fields have been provided [" + field + "");
+        if (uniqueFields.isEmpty()) {
+            throw new AutomicException(String.format("Invalid Fields have been provided [%s] ", field));
         }
-        return fields.toArray(new String[0]);
+        return uniqueFields.toArray(new String[0]);
     }
 
 }

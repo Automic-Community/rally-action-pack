@@ -9,23 +9,22 @@ import java.util.List;
 /**
  * This Class used to create csv file
  * 
- * @author anuragupadhyay
- *
  */
-public class CSVWriter {
+public class CSVWriter implements AutoCloseable {
 
     private static final char DEFAULT_SEPARATOR = ',';
     private static final String QUOTE_CHARACTER = "\"";
     private static final String DOUBLEQUOTE_CHARACTER = "\"\"";
 
     private BufferedWriter bw = null;
+    private FileWriter fw = null;
 
     public CSVWriter(String filePath, String[] headers) throws IOException {
-        bw = new BufferedWriter(new FileWriter(filePath));
+        fw = new FileWriter(filePath);
+        bw = new BufferedWriter(fw);
         writeLine(Arrays.asList(headers));
     }
 
-     
     /**
      * Method to write line in csv file
      * 
@@ -49,7 +48,7 @@ public class CSVWriter {
         sb.append("\n");
         bw.append(sb.toString());
     }
-    
+
     private String escapeData(String value) {
         String result = value;
         if (result.contains(QUOTE_CHARACTER)) {
@@ -62,8 +61,17 @@ public class CSVWriter {
         bw.flush();
     }
 
+    @Override
     public void close() throws IOException {
-        bw.close();
+
+        if (bw != null) {
+            bw.close();
+        }
+
+        if (fw != null) {
+            fw.close();
+        }
+
     }
 
 }

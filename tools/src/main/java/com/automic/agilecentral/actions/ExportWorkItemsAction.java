@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.automic.agilecentral.constants.ExceptionConstants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CSVUtils;
 import com.automic.agilecentral.util.CommonUtil;
@@ -56,10 +57,15 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
             QueryResponse queryResponse = this.rallyRestTarget.query(queryRequest);
 
             if (queryResponse.wasSuccessful()) {
-                if (fields == null) {
-                    fields = getFields(queryResponse.getResults());
-                }
-                if (queryResponse.getResults().size() > 0) {
+                JsonArray results = queryResponse.getResults();
+
+                if (results != null && results.size() > 0) {
+                    if (fields == null) {
+                        fields = getFields(queryResponse.getResults());
+                    } else {
+                        // Validate fields exist in json data
+                        checkFieldExist(results, fields);
+                    }
                     csvWriter(queryResponse.getResults(), fields, filePath);
                 }
                 filePath = lineCount > 0 ? filePath : "";
@@ -109,9 +115,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
 
         if (CommonUtil.checkNotEmpty(field)) {
             fields = field.split(",");
-            for (int i = 0; i < fields.length; i++) {
-                fields[i] = fields[i].trim();
-            }
+            fields = validateAndPreapreFields(field.split(","));
             queryRequest.setFetch(new Fetch(fields));
         }
 
@@ -153,9 +157,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                 }
 
             } catch (IOException e) {
-
                 throw new AutomicException(" Error in writing csv file" + e.getMessage());
-
             }
         }
 
@@ -182,6 +184,32 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                     }
                 }
             }
+        }
+        return fields.toArray(new String[0]);
+    }
+
+    private void checkFieldExist(JsonArray results, String[] fields) throws AutomicException {
+        JsonElement jsonEle = results.get(0);
+        JsonObject jsonObj = jsonEle.getAsJsonObject();
+        for (String field : fields) {
+            if (!jsonObj.has(field)) {
+                throw new AutomicException(String.format("Provided Field [%s] does not exist.", field));
+            }
+        }
+    }
+
+    private String[] validateAndPreapreFields(String[] array) throws AutomicException {
+        List<String> fields = new ArrayList<String>();
+        if (array != null && array.length > 0) {
+            for (int i = 0; i < array.length; i++) {
+                String value = array[i].trim();
+                if (CommonUtil.checkNotEmpty(value)) {
+                    fields.add(value);
+                }
+            }
+        }
+        if (fields.isEmpty()) {
+            throw new AutomicException("Invalid Fields value.");
         }
         return fields.toArray(new String[0]);
     }

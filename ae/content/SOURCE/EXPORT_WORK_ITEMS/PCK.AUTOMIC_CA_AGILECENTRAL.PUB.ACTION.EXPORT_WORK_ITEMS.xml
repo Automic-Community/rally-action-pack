@@ -66,7 +66,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
@@ -147,7 +146,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
@@ -214,7 +212,6 @@
 <node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
-<ELEMENT ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="ELEMENT" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 <UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
@@ -345,10 +342,12 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
 
 = General description =
-This action used to export user stories in csv format and saved in a given path. 
+This action used to export work items in csv format and saves csv file to provided path(If Path to Export is not provided, default is Agent's Temp directory). If Maximum Items fields provided value is 0, all the satisfied records will be fetched.  
 
 = Failure Conditions =
-(none)
+* If provided Fields to Export does not exist.
+* If provided Fields to Export are invalid.E.g. , , , 
+* If Provided Path for Export are invalid. E.g. E:/dir
 
 = Inputs =
 * Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
@@ -364,7 +363,7 @@ This action used to export user stories in csv format and saved in a given path.
 				3. Value to which comparison will be made to 
 				E.g. (Blocked = False). For more information follow example section.
 * Fields to Export 	: Provide field names you want to export as comma separated. E.g. FormattedID,Name,State,Priority
-* Path for Export 	: Provide full path in which user stories will be exported. E.g. /Users/AE/csv/developer.csv
+* Path for Export 	: PProvide full path in which work items will be exported. E.g. /Users/AE/csv/developer.csv
 * Maximum Items         : Specify maximum number of work items to be exported. Zero (0) means no limitation.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).

@@ -49,14 +49,15 @@ public class CreateWorkItemAction extends AbstractHttpAction {
         try {
             CreateResponse createResponse = rallyRestTarget.create(createRequest);
             ConsoleWriter.writeln("Response Json Object: " + createResponse.getObject());
-            if (createResponse.wasSuccessful()) {
-                ConsoleWriter.writeln(
-                        "UC4RB_AC_WORK_ITEM_ID ::=" + createResponse.getObject().get("FormattedID").getAsString());
-                ConsoleWriter.writeln("UC4RB_AC_WORK_ITEM_OBJ_ID ::=" + createResponse.getObject().get("ObjectID"));
 
-            } else {
-                throw new AutomicException(Arrays.toString(createResponse.getErrors()));
+            if (!createResponse.wasSuccessful()) {
+                ConsoleWriter.writeln(Arrays.toString(createResponse.getErrors()));
+                throw new AutomicException("Unable to create the work item.");
             }
+
+            ConsoleWriter.writeln("UC4RB_AC_WORK_ITEM_ID ::="
+                    + createResponse.getObject().get(Constants.FORMATTED_ID).getAsString());
+            ConsoleWriter.writeln("UC4RB_AC_WORK_ITEM_OBJ_ID ::=" + createResponse.getObject().get("ObjectID"));
 
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
@@ -68,7 +69,7 @@ public class CreateWorkItemAction extends AbstractHttpAction {
     private void checkandPrepareInputs(JsonObject newObj) throws AutomicException {
         String workItemName = getOptionValue("workitemname");
         AgileCentralValidator.checkNotEmpty(workItemName, "Name of user story");
-        newObj.addProperty("Name", workItemName);
+        newObj.addProperty(Constants.NAME, workItemName);
 
         workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
@@ -87,7 +88,7 @@ public class CreateWorkItemAction extends AbstractHttpAction {
 
         String scheduleState = getOptionValue("schedulestate");
         if (CommonUtil.checkNotEmpty(scheduleState)) {
-            newObj.addProperty("ScheduleState", scheduleState);
+            newObj.addProperty(Constants.SCHEDULE_STATE, scheduleState);
         }
 
         // Custom fields addition
@@ -105,7 +106,7 @@ public class CreateWorkItemAction extends AbstractHttpAction {
             AgileCentralValidator.checkFileExists(file);
             try {
                 String description = new String(Files.readAllBytes(Paths.get(temp)));
-                newObj.addProperty("Description", description);
+                newObj.addProperty(Constants.DESCRIPTION, description);
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
                 throw new AutomicException("Error occured while reading description from temp file" + e.getMessage());

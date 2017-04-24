@@ -39,7 +39,8 @@ public class AddCommentAction extends AbstractHttpAction {
             CreateResponse createResponse = this.rallyRestTarget.create(createRequest);
             ConsoleWriter.writeln("Response Json Object: " + createResponse.getObject());
             if (!createResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(createResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(createResponse.getErrors()));
+                throw new AutomicException("Unable to add the comment to wotk item.");
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
@@ -77,7 +78,7 @@ public class AddCommentAction extends AbstractHttpAction {
         JsonObject newComment = new JsonObject();
         newComment.addProperty("Type", Constants.CONVERSATION_POST);
         newComment.addProperty("Text", comment);
-        newComment.addProperty("Artifact", workItemRef);
+        newComment.addProperty(Constants.ARTIFACT, workItemRef);
 
         return newComment;
     }

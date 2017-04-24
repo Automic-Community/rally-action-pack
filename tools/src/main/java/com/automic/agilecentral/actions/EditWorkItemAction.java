@@ -15,14 +15,13 @@ import com.rallydev.rest.request.UpdateRequest;
 import com.rallydev.rest.response.UpdateResponse;
 
 /**
- * @author sumitsamson
- * This class is used to edit the work item (user story,defect etc.).
+ * @author sumitsamson This class is used to edit the work item (user story,defect etc.).
  *
  */
 public class EditWorkItemAction extends AbstractHttpAction {
 
     private String workItemId;
-    
+
     public EditWorkItemAction() {
         addOption("workitemid", true, "Work item id");
         addOption("workitemtype", true, "Work item type you wanted to edit");
@@ -43,7 +42,8 @@ public class EditWorkItemAction extends AbstractHttpAction {
             UpdateResponse updateResponse = rallyRestTarget.update(updateRequest);
             ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
             if (!updateResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(updateResponse.getErrors()));
+                throw new AutomicException("Unable to update the work item.");
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
@@ -81,13 +81,13 @@ public class EditWorkItemAction extends AbstractHttpAction {
         // adding new work item name
         String workItemName = getOptionValue("workitemname");
         if (CommonUtil.checkNotEmpty(workItemName)) {
-            updateObj.addProperty("Name", workItemName);
+            updateObj.addProperty(Constants.NAME, workItemName);
         }
 
         // adding new work item scheduled state
         String scheduleState = getOptionValue("schedulestate");
         if (CommonUtil.checkNotEmpty(scheduleState)) {
-            updateObj.addProperty("ScheduleState", scheduleState);
+            updateObj.addProperty(Constants.SCHEDULE_STATE, scheduleState);
         }
 
         // Custom fields addition
@@ -102,7 +102,7 @@ public class EditWorkItemAction extends AbstractHttpAction {
         temp = getOptionValue("descriptionfilepath");
         if (CommonUtil.checkNotEmpty(temp)) {
             String description = CommonUtil.readFileIntoString(temp);
-            updateObj.addProperty("Description", description);
+            updateObj.addProperty(Constants.DESCRIPTION, description);
 
         }
 

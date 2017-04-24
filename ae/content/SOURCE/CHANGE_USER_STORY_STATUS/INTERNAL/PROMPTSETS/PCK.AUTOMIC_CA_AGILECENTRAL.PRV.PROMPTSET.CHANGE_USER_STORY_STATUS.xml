@@ -66,7 +66,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" nl="1" strict="1" text="New Status" tooltip="Select the status for the user story. E.g. Blocked." vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
+    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" nl="1" strict="1" text="New Status" tooltip="Select a new status for the user story. E.g. Blocked." vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
          
          
          
@@ -80,14 +80,14 @@
         <entry name="dynamic">0</entry>
         <entry name="enabled">0</entry>
         <entry name="focus">0</entry>
-        <entry name="tooltip">Select the status for the user story. E.g. Blocked.</entry>
+        <entry name="tooltip">Select a new status for the user story. E.g. Blocked.</entry>
         <entry name="modifiable">1</entry>
         <entry name="onchangereset"/>
         <entry name="customfield"/>
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_REASONs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Blocked Reason" tooltip="Specify the reason, if you are setting new status as Blocked." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_REASONs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Blocked Reason" tooltip="Specify if you are setting new status as Blocked." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -108,7 +108,7 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Specify the reason, if you are setting new status as Blocked.</entry>
+        <entry name="tooltip">Specify if you are setting new status as Blocked.</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>

@@ -356,7 +356,7 @@ If specified file size is 0.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
-* Workspace name	: Provide workspace name in which your story is located. E.g. Acme.
+* Workspace name	: Provide workspace name in which your work item is located. E.g. Acme.
 * Work Item type	: Specify type of Work Item to which you are adding an attachment. E.g. User Story
 * Work Item Id 		: Provide formatted ID of the work item you want to edit. E.g. US126
 * File Path 		: Full path of the file that you want to attach to the Work item. E.g. C:/Temp/MyFile.zip

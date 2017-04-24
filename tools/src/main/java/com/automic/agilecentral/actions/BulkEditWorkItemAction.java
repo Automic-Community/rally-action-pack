@@ -57,10 +57,11 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
                 UpdateResponse updateResponse = rallyRestTarget.update(req);
                 if (!updateResponse.wasSuccessful()) {
                     ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
-                    throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
+                    ConsoleWriter.writeln(Arrays.toString(updateResponse.getErrors()));
+                    throw new AutomicException("Unable to update the work item(s).");
                 }
                 ConsoleWriter.writeln(String.format("Work Item %s updated",
-                        updateResponse.getObject().get("FormattedID")));
+                        updateResponse.getObject().get(Constants.FORMATTED_ID)));
             } catch (IOException e) {
                 ConsoleWriter.writeln(e);
                 throw new AutomicException(String.format("Error occured while updating work item ids: %s",
@@ -91,7 +92,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
 
         // adding new work item scheduled state
         if (CommonUtil.checkNotEmpty(scheduleState)) {
-            updateObj.addProperty("ScheduleState", scheduleState);
+            updateObj.addProperty(Constants.SCHEDULE_STATE, scheduleState);
         }
 
         // Custom fields addition
@@ -104,7 +105,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         // adding new work item description
         if (CommonUtil.checkNotEmpty(descFilePath)) {
             String description = CommonUtil.readFileIntoString(descFilePath);
-            updateObj.addProperty("Description", description);
+            updateObj.addProperty(Constants.DESCRIPTION, description);
         }
         return updateObj;
     }
@@ -140,10 +141,10 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         if (CommonUtil.checkNotEmpty(workSpace)) {
             workSpace = RallyUtil.getWorspaceRef(rallyRestTarget, workSpace);
         }
-        
+
         List<String> workItemRefArray = new ArrayList<>(workItemList.size());
         Map<String, List<String>> queryFilter = new HashMap<>();
-        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { "_ref" }));
+        List<String> fetch = new ArrayList<>(Arrays.asList(new String[] { Constants.REFERENCE }));
 
         int totalRequestSize = workItemList.size();
         int start = 0;
@@ -154,7 +155,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
                 end = totalRequestSize;
             }
             List<String> requestList = workItemList.subList(start, end);
-            queryFilter.put("FormattedID", requestList);
+            queryFilter.put(Constants.FORMATTED_ID, requestList);
 
             QueryResponse queryResponse = null;
             try {
@@ -174,7 +175,7 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
             }
 
             for (JsonElement elem : queryResponse.getResults()) {
-                workItemRefArray.add(elem.getAsJsonObject().get("_ref").getAsString());
+                workItemRefArray.add(elem.getAsJsonObject().get(Constants.REFERENCE).getAsString());
             }
             start = end;
         }

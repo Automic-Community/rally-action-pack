@@ -19,10 +19,10 @@ import com.rallydev.rest.response.UpdateResponse;
  *
  */
 public class ChangeWorkItemStatusAction extends AbstractHttpAction {
-    
-    private static final String BLOCKED = "blocked";
-    private static final String READY = "ready";
-    private static final String NONE = "none";
+
+    private static final String BLOCKED = "BLOCKED";
+    private static final String READY = "READY";
+    private static final String NONE = "NONE";
 
     /**
      * Json containing the status to be set.
@@ -50,7 +50,8 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
             UpdateRequest updateRequest = new UpdateRequest(workItemRef, updatedWorkItem);
             UpdateResponse updateResponse = rallyRestTarget.update(updateRequest);
             if (!updateResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(updateResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(updateResponse.getErrors()));
+                throw new AutomicException("Unable to change the status of work item.");
             }
 
             ConsoleWriter.writeln("Response Json Object: " + updateResponse.getObject());
@@ -69,20 +70,20 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         // Json to update the status
         updatedWorkItem = new JsonObject();
 
-        switch (workItemStatus.toLowerCase()) {
+        switch (workItemStatus.toUpperCase()) {
             case NONE:
-                updatedWorkItem.addProperty("Ready", false);
-                updatedWorkItem.addProperty("Blocked", false);
+                updatedWorkItem.addProperty(READY, false);
+                updatedWorkItem.addProperty(BLOCKED, false);
                 break;
 
             case READY:
-                updatedWorkItem.addProperty("Ready", true);
-                updatedWorkItem.addProperty("Blocked", false);
+                updatedWorkItem.addProperty(READY, true);
+                updatedWorkItem.addProperty(BLOCKED, false);
                 break;
 
             case BLOCKED:
-                updatedWorkItem.addProperty("Blocked", true);
-                updatedWorkItem.addProperty("Ready", false);
+                updatedWorkItem.addProperty(BLOCKED, true);
+                updatedWorkItem.addProperty(READY, false);
                 String blockReason = getOptionValue("blockedreason");
                 if (CommonUtil.checkNotEmpty(blockReason)) {
                     updatedWorkItem.addProperty("BlockedReason", blockReason);
@@ -100,7 +101,7 @@ public class ChangeWorkItemStatusAction extends AbstractHttpAction {
         // Work item ID
         String workItemId = getOptionValue("workitemid");
         AgileCentralValidator.checkNotEmpty(workItemId, "Work item ID");
-        
+
         // Workspace name where the user story is located
         String workSpaceRef = null;
         String workSpaceName = getOptionValue("workspace");

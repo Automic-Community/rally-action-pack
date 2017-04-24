@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.automic.agilecentral.constants.ExceptionConstants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CSVUtils;
 import com.automic.agilecentral.util.CommonUtil;
@@ -37,6 +36,11 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
     private String[] fields;
     private String filePath;
     private int lineCount;
+    /**
+     * Exclude fields
+     */
+    private final String[] excludeHeaderArr = new String[] { "_rallyAPIMajor", "_rallyAPIMinor", "_ref",
+            "_refObjectUUID", "_objectVersion", "ObjectUUID", "VersionId", "HasParent", "_type" };
 
     public ExportWorkItemsAction() {
         addOption("workspace", false, "Workspace name");
@@ -164,9 +168,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
     }
 
     private String[] getFields(JsonArray results) throws IOException {
-        // Prepare exclude headers
-        String[] excludeHeaderArr = new String[] { "_rallyAPIMajor", "_rallyAPIMinor", "_ref", "_refObjectUUID",
-                "_objectVersion", "ObjectUUID", "VersionId", "HasParent", "_type" };
+
         Set<String> excludeHeaders = new HashSet<String>(Arrays.asList(excludeHeaderArr));
         JsonElement jsonEle = results.get(0);
         JsonObject jsonObj = jsonEle.getAsJsonObject();

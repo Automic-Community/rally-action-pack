@@ -34,7 +34,8 @@ public class DeleteWorkItemAction extends AbstractHttpAction {
             DeleteResponse deleteResponse;
             deleteResponse = rallyRestTarget.delete(deleteRequest);
             if (!deleteResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(deleteResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(deleteResponse.getErrors()));
+                throw new AutomicException("Unable to delete the work item.");
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);

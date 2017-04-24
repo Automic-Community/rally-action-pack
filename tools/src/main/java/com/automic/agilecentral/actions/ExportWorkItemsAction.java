@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.automic.agilecentral.constants.ExceptionConstants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CSVUtils;
 import com.automic.agilecentral.util.CommonUtil;
@@ -33,6 +32,7 @@ import com.rallydev.rest.util.Fetch;
  *
  */
 public class ExportWorkItemsAction extends AbstractHttpAction {
+    private static final String REF_OBJ_NAME = "_refObjectName";
 
     private String[] fields;
     private String filePath;
@@ -73,7 +73,8 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                 ConsoleWriter.writeln("UC4RB_AC_TOTAL_RESULT_COUNT ::=" + lineCount);
                 ConsoleWriter.writeln("Total available record count : " + queryResponse.getTotalResultCount());
             } else {
-                throw new AutomicException(Arrays.toString(queryResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(queryResponse.getErrors()));
+                throw new AutomicException("Unable to export the work item.");
             }
         } catch (IOException e) {
             ConsoleWriter.writeln(e);
@@ -142,8 +143,8 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                             fieldsData.add(workItem.get(field).getAsString());
                         } else if (workItem.get(field) != null && workItem.get(field).isJsonObject()) {
                             JsonObject jObj = (JsonObject) workItem.get(field);
-                            if (jObj.has("_refObjectName")) {
-                                fieldsData.add(jObj.get("_refObjectName").getAsString());
+                            if (jObj.has(REF_OBJ_NAME)) {
+                                fieldsData.add(jObj.get(REF_OBJ_NAME).getAsString());
                             } else {
                                 fieldsData.add("");
                             }
@@ -179,7 +180,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                     fields.add(key);
                 } else if (jsonObj.get(key).isJsonObject()) {
                     JsonObject jObj = (JsonObject) jsonObj.get(key);
-                    if (jObj.has("_refObjectName")) {
+                    if (jObj.has(REF_OBJ_NAME)) {
                         fields.add(key);
                     }
                 }

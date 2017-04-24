@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
 
+import com.automic.agilecentral.constants.Constants;
 import com.automic.agilecentral.exception.AutomicException;
 import com.automic.agilecentral.util.CommonUtil;
 import com.automic.agilecentral.util.ConsoleWriter;
@@ -58,19 +59,20 @@ public class AddAttachmentAction extends AbstractHttpAction {
 
             // create AttachmentContent from imageBase64String
             JsonObject attachmentContent = new JsonObject();
-            attachmentContent.addProperty("Content", imageBase64);
+            attachmentContent.addProperty(Constants.CONTENT, imageBase64);
 
             CreateRequest attachmentContentCreateRequest = new CreateRequest("AttachmentContent", attachmentContent);
             CreateResponse attachmentContentResponse = rallyRestTarget.create(attachmentContentCreateRequest);
             if (!attachmentContentResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(attachmentContentResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(attachmentContentResponse.getErrors()));
+                throw new AutomicException("Unable to attach the file");
             }
 
             // Attach the file uploaded to the story
             JsonObject myAttachment = new JsonObject();
-            myAttachment.addProperty("Artifact", workItemRef);
-            myAttachment.addProperty("Content", attachmentContentResponse.getObject().getAsJsonObject().get("_ref")
-                    .getAsString());
+            myAttachment.addProperty(Constants.ARTIFACT, workItemRef);
+            myAttachment.addProperty(Constants.CONTENT,
+                    attachmentContentResponse.getObject().getAsJsonObject().get(Constants.REFERENCE).getAsString());
 
             String contentType = Files.probeContentType(filePath.toPath());
             if (contentType == null) {
@@ -78,16 +80,17 @@ public class AddAttachmentAction extends AbstractHttpAction {
             }
             ConsoleWriter.writeln(String.format("Content Type of the file[%s] : [%s]", filePath, contentType));
             myAttachment.addProperty("ContentType", contentType);
-            myAttachment.addProperty("Name", filePath.getName());
+            myAttachment.addProperty(Constants.NAME, filePath.getName());
 
             if (CommonUtil.checkNotEmpty(description)) {
-                myAttachment.addProperty("Description", description);
+                myAttachment.addProperty(Constants.DESCRIPTION, description);
             }
 
             CreateRequest attachmentCreateRequest = new CreateRequest("Attachment", myAttachment);
             CreateResponse attachmentResponse = rallyRestTarget.create(attachmentCreateRequest);
             if (!attachmentResponse.wasSuccessful()) {
-                throw new AutomicException(Arrays.toString(attachmentResponse.getErrors()));
+                ConsoleWriter.writeln(Arrays.toString(attachmentResponse.getErrors()));
+                throw new AutomicException("Unable to attach the file to the work item.");
             }
             ConsoleWriter.writeln("Response Json Object: " + attachmentResponse.getObject());
         } catch (IOException e) {

@@ -18,7 +18,7 @@ public class ExceptionConstants {
 
  // Certificate errors
     public static final String ERROR_SKIPPING_CERT = "Error skipping the certificate validation";
-    public static final String INVALID_FILE_PATH = "Invalid file path [%s], possibly application can not write at specified path";
+    public static final String INVALID_FILE_PATH = "Invalid file path [%s]";
     
     
     private ExceptionConstants() {

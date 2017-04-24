@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS">
 <XHEADER state="1">
-<Title>Create User Story</Title>
+<Title>Change user story status</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -63,15 +63,13 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_STORY_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_STORY_NAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -102,7 +100,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="CREATE_WORK_ITEM" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.CREATE_USER_STORY@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="CHANGE_USER_STORY_STATUS" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.CHANGE_USER_STORY_STATUS@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -143,15 +141,13 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_STORY_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_STORY_NAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -178,52 +174,7 @@
 <calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
 <postconditions>
 <PostCon>
-<conditions id="CONDITIONS">
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_CUSTOM_FIELDS#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
-<param altview="0" name="XC_P03" type="V" value="##911010">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_CUSTOM_FIELDS_FILE_PATH#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
-</params>
-</action>
-</when>
-</condition>
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_DESCRIPTION#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
-<param altview="0" name="XC_P03" type="V" value="##911010">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="NO" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_DESCRIPTION_FILE_PATH#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DEL_DIR"/>
-</params>
-</action>
-</when>
-</condition>
-</conditions>
+<conditions id="CONDITIONS"/>
 </PostCon>
 </postconditions>
 </task>
@@ -254,15 +205,13 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY">
-<UC4RB_AC_CUSTOM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_CUSTOM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_DESCRIPTIONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_DESCRIPTION#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_PROJECTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_PROJECT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_SCHEDULE_STATEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_SCHEDULE_STATE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_STORY_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_STORY_NAME#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
+<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
+<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -343,9 +292,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CREATE_USER_STORY" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
@@ -384,12 +333,18 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
+PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
 
 = General description =
-This action is used to create a new user story. 
+This action is used to change the status of provided user story using its Formatted Id.
+
+Note: A user cannot block or unblock a parent user story. Parent user stories can only be blocked through one of its children.
 
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
+
+Note: Agile Central provides two different Ids for each work item.
+1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 (none)
@@ -400,31 +355,27 @@ If you provide API Token as well as Username/Password, API Token will be used fo
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
-* Workspace name	: Provide workspace name in which your project is located. E.g. Acme
-* Project name 		: Specify project name in which you want to create a user story. E.g. Customer Site
-* User Story name 	: Specify user story name to create. E.g. User story
-* Description 		: Provide description to your user story. E.g. Edit a story
-* Schedule State 	: Provide schedule state to the user story. Eg. Idea
-* Custom Fields 	: Provide list of other fields with values that you want to set. Field and values must be provided in the format <Field Name>=<Field Value>. 
-Every field must be specified in the new line.
-			E.g. Name2=Value2
-			     Name3=Value3
+* Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
+* User Story Id 	: Provide Formatted ID of the user story for which you want to change status. E.g. US11	
+* New Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
+* Blocked Reason	: Specify the block reason, if you are setting the new status as Blocked. This field will be ignored, if new status is not specified as Blocked.
 * Sudo Password         : The password for the sudo command.
-* Options               : Run using sudo password (and sudo username if specified).
+* Options              	: Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
 * Overwrite Agent	: Overwrites the default agent
 * Overwrite Login	: Overwrites the default login
+
+Note : Provide either API Token or Username-Password. If both are provided API Token is used.
 
 = Behavior =
 (none)
 
 = Return Value =
-* UC4RB_AC_WORK_ITEM_OBJ_ID : User Story object ID.
-* UC4RB_AC_WORK_ITEM_ID : User Story Formatted ID.
+(none)
 
 = Outputs =
 * Return code is 0 in case of success.
-* Return code is 1 in case of failure.
+* Return code is non zero in case of failure.
 
 = Rollback =
 (none)

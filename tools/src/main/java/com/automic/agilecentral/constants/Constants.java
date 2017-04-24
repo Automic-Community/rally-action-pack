@@ -16,9 +16,7 @@ public class Constants {
     public static final String USERNAME = "username";
     public static final String SKIP_CERT_VALIDATION = "ssl";
     public static final String BASIC_AUTH = "basicauth";
-    public static final String WORKSPACE = "WORKSPACE";
-    public static final String PROJECT = "PROJECT";
-
+    
     public static final String YES = "YES";
     public static final String TRUE = "TRUE";
     public static final String ONE = "1";
@@ -29,6 +27,9 @@ public class Constants {
     
     public static final String AC_API_VERSION = "v2.0";    
     public static final int AC_PORT = 443;
+    
+    public static final String WORKSPACE = "WORKSPACE";
+    public static final String PROJECT = "PROJECT";
     public static final String CONVERSATION_POST = "ConversationPost";
 
     private Constants() {

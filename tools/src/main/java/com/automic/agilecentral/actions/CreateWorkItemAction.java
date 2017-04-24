@@ -25,14 +25,9 @@ import com.rallydev.rest.response.CreateResponse;
  */
 public class CreateWorkItemAction extends AbstractHttpAction {
 
-    private String workspace;
-    private String project;
-    private String workItemName;
     private String workItemType;
-    private String scheduleState;
 
     public CreateWorkItemAction() {
-
         addOption("workitemname", true, "Name of the work item");
         addOption("workitemtype", true, "Work item type you wanted to create");
         addOption("workspacename", false, "Workspace in which project is located");
@@ -71,26 +66,26 @@ public class CreateWorkItemAction extends AbstractHttpAction {
     }
 
     private void checkandPrepareInputs(JsonObject newObj) throws AutomicException {
-        workItemName = getOptionValue("workitemname");
+        String workItemName = getOptionValue("workitemname");
         AgileCentralValidator.checkNotEmpty(workItemName, "Name of user story");
         newObj.addProperty("Name", workItemName);
 
         workItemType = getOptionValue("workitemtype");
         AgileCentralValidator.checkNotEmpty(workItemType, "Type of work item e.g HIERARCHICALREQUIREMENT ,DEFECT etc");
 
-        workspace = getOptionValue("workspacename");
+        String workspace = getOptionValue("workspacename");
         if (CommonUtil.checkNotEmpty(workspace)) {
             workspace = RallyUtil.getWorspaceRef(rallyRestTarget, workspace);
             newObj.addProperty(Constants.WORKSPACE, workspace);
         }
 
-        project = getOptionValue("projectname");
+        String project = getOptionValue("projectname");
         if (CommonUtil.checkNotEmpty(project)) {
             project = RallyUtil.getProjectRef(rallyRestTarget, project, workspace);
             newObj.addProperty(Constants.PROJECT, project);
         }
 
-        scheduleState = getOptionValue("schedulestate");
+        String scheduleState = getOptionValue("schedulestate");
         if (CommonUtil.checkNotEmpty(scheduleState)) {
             newObj.addProperty("ScheduleState", scheduleState);
         }
@@ -115,9 +110,6 @@ public class CreateWorkItemAction extends AbstractHttpAction {
                 ConsoleWriter.writeln(e);
                 throw new AutomicException("Error occured while reading description from temp file" + e.getMessage());
             }
-
         }
-
     }
-
 }

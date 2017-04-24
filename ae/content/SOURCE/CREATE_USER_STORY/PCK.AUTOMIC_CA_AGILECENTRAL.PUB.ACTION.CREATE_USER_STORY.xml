@@ -387,24 +387,28 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CREATE_USER_STORY
 
 = General description =
-This action use to create new user story. 
+This action is used to create a new user story. 
+
+If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
 = Failure Conditions =
 (none)
 
 = Inputs =
-* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
-* Username		: Specify username for authentication.
-* Password		: Specify password for authentication.
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* Username		: Specify username for authentication. Required if you do not specify API Token.
+* Password		: Specify password for authentication. Required if you do not specify API Token.
+* Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Provide workspace name in which your project is located. E.g. Acme
 * Project name 		: Specify project name in which you want to create a user story. E.g. Customer Site
 * User Story name 	: Specify user story name to create. E.g. User story
 * Description 		: Provide description to your user story. E.g. Edit a story
 * Schedule State 	: Provide schedule state to the user story. Eg. Idea
-* Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as seprator.
+* Custom Fields 	: Provide list of other fields with values that you want to set. Field and values must be provided in the format <Field Name>=<Field Value>. 
+Every field must be specified in the new line.
 			E.g. Name2=Value2
-			     Name3=Value3	
+			     Name3=Value3
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -414,9 +418,9 @@ This action use to create new user story.
 = Behavior =
 (none)
 
-=Return Value=
-* UC4RB_AC_WORK_ITEM_OBJ_ID : Created user story object ID.
-* UC4RB_AC_WORK_ITEM_ID : Created user story formatted ID.
+= Return Value =
+* UC4RB_AC_WORK_ITEM_OBJ_ID : User Story object ID.
+* UC4RB_AC_WORK_ITEM_ID : User Story Formatted ID.
 
 = Outputs =
 * Return code is 0 in case of success.
@@ -426,7 +430,7 @@ This action use to create new user story.
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
 (none)]]></DOC>

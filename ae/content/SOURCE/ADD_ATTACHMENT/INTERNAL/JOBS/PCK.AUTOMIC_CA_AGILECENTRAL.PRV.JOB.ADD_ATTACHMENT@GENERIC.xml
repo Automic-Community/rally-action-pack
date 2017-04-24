@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.DELETE_USER_STORY@GENERIC">
+<JOBS_GENERIC AttrType="GENERIC" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.ADD_ATTACHMENT@GENERIC">
 <XHEADER state="1">
-<Title>Delete a user story</Title>
+<Title>Add attachment</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -111,7 +111,7 @@
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ATTACH_RESOURCE
 
 ! Define action specific java options and values
-: SET &ACTION_NAME# = "DeleteWorkItemAction"
+: SET &ACTION_NAME# = "AddAttachmentAction"
 
 ! Build java arguments
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.PREPARE_CMD
@@ -123,19 +123,36 @@
 :   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workspace &UC4RB_AC_ESCAPED_STRING#")
 : ENDIF
 
-! User Story ID
+! Work item ID
 : SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_ITEM_ID#
 : INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
 : SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemid &UC4RB_AC_ESCAPED_STRING#")
 
+! Work item type
+: SET &VALUE#=&UC4RB_AC_ITEM_TYPE#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.READ_WORK_ITEM_TYPE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -workitemtype &KEY#")
+
+! File Path
+: SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_FILE_PATH#
+: INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+: SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -filepath &UC4RB_AC_ESCAPED_STRING#")
+
+! Workspace
+: IF &UC4RB_AC_DESCRIPTION# <> ""
+:   SET &UC4RB_AC_ESCAPED_STRING# = &UC4RB_AC_DESCRIPTION#
+:   INC PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.ESCAPE_ARG_VALUE
+:   SET &UC4RB_AC_CMD# = STR_CAT(&UC4RB_AC_CMD#, " -description &UC4RB_AC_ESCAPED_STRING#")
+: ENDIF
+
 : PRINT &UC4RB_AC_CMD#
 
 ! Invoking java binary
-  &UC4RB_AC_CMD# -workitemtype hierarchicalrequirement
+  &UC4RB_AC_CMD#
 
 ! Status messages
-: SET &UC4RB_LOGGING_INFO# = "******** DELETE USER STORY ACTION EXECUTED SUCCESSFULLY ********"
-: SET &UC4RB_LOGGING_ERROR# = "******** DELETE USER STORY ACTION FAILED ********"
+: SET &UC4RB_LOGGING_INFO# = "******** ADD ATTACHMENT ACTION EXECUTED SUCCESSFULLY ********"
+: SET &UC4RB_LOGGING_ERROR# = "******** ADD ATTACHMENT ACTION FAILED ********"
 
 !------------------------------------------ Error Handling -----------------------------------------------------------------------------------------------------
 

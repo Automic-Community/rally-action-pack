@@ -338,7 +338,7 @@ PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
 = General description =
 This action is used to change the status of provided user story using its Formatted Id.
 
-Note: A user cannot block or unblock a parent user story. Parent user stories can only be blocked through one of its children.
+Note: A user cannot block or unblock a parent user story. Parent user stories can only be blocked or unblocked through one of its children. E.g. If a user story exist say US1 and it has 2 child stories, US2 and US3. User cannot set or unset the parent story(US1) to blocked or unblocked state.
 
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
@@ -357,8 +357,8 @@ Note: Agile Central provides two different Ids for each work item.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id 	: Provide Formatted ID of the user story for which you want to change status. E.g. US11	
-* Target Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
-* Blocked Reason	: Specify the block reason, if you are setting the target status as Blocked. This field will be ignored, if target status is not specified as Blocked.
+* New Status		: Select a new status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
+* Blocked Reason	: Specify if you are setting the new status as Blocked. This field will be ignored, if target status is not specified as Blocked.
 * Sudo Password         : The password for the sudo command.
 * Options              	: Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

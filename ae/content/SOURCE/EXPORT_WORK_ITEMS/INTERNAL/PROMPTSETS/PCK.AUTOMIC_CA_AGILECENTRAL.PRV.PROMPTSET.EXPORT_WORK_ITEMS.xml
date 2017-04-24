@@ -10,7 +10,7 @@
 <DESIGNER/>
 </PROMPTDESIGNER>
 <PROMPTSETXUI state="1">
-<XUIEDITOR><![CDATA[<dialog height="422" icon="PRPT" id="PRPTS" left="0" top="0" width="441"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Export Work Items"><properties><entry name="text">Export Work Items</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_WORKSPACEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Workspace Name" tooltip="Specify workspace name for which you want to export work items. E.g. Acme" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+<XUIEDITOR><![CDATA[<dialog height="422" icon="PRPT" id="PRPTS" left="0" top="0" width="702"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Export Work Items"><properties><entry name="text">Export Work Items</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_WORKSPACEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Workspace Name" tooltip="Specify workspace name for which you want to export work items. E.g. Acme" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -59,7 +59,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_ITEM_FILTERs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Filters" tooltip="Define filters you want consider in export." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_ITEM_FILTERs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Filters" tooltip="Define filters you want consider in export. E.g. (Blocked = False)" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
          
       <properties>
         <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
@@ -80,7 +80,7 @@
         <entry name="upper">0</entry>
         <entry name="focus">0</entry>
         <entry name="showaspassword">0</entry>
-        <entry name="tooltip">Define filters you want consider in export.</entry>
+        <entry name="tooltip">Define filters you want consider in export. E.g. (Blocked = False)</entry>
         <entry name="modifiable">1</entry>
         <entry name="customfield"/>
         <entry name="onchangereset"/>
@@ -143,7 +143,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><integer alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_ITEMS_LIMITs.00" max="" min="0" nl="1" text="Maximum Items" tooltip="">
+    </text><integer alt="1" enabled="1" fill="b" focus="0" id="UC4RB_AC_ITEMS_LIMITs.00" max="" min="0" nl="1" text="Maximum Items" tooltip="Specify maximum number of work items to be exported. Zero (0) means no limitation. E.g. 100">
       <properties>
         <entry listparam="N" name="reference" reftype="STATIC">UC_DATATYPE_NUMERIC</entry>
         <entry name="text">Maximum Items</entry>
@@ -153,9 +153,9 @@
         <entry name="id">UC4RB_AC_ITEMS_LIMITs.00</entry>
         <entry name="enabled">0</entry>
         <entry name="focus">0</entry>
-        <entry name="tooltip"/>
+        <entry name="tooltip">Specify maximum number of work items to be exported. Zero (0) means no limitation. E.g. 100</entry>
         <entry name="modifiable">1</entry>
-        <entry name="customfield">Specify maximum number of work items to be exported. Zero (0) means no limitation. E.g. 100</entry>
+        <entry name="customfield"/>
       <entry name="initvalue">0</entry>
          </properties>
     </integer></readpanel></dialog>]]></XUIEDITOR>

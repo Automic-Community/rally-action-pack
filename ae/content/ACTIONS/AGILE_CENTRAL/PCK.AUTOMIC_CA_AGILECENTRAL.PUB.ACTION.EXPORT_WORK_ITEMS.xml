@@ -341,7 +341,67 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC/>
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
+
+= General description =
+This action used to export user stories in csv format and saved in a given path. 
+
+= Failure Conditions =
+(none)
+
+= Inputs =
+* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
+* Username		: Specify username for authentication.
+* Password		: Specify password for authentication.
+* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Workspace name	: Specify workspace name for which you want to export work items. E.g. Acme
+* Work Item type	: Specify type of work items you are going to export. E.g. User Story
+* Filters		: Define filters you want consider in export. 
+     			  Filter consists of three parts
+				1. Field on which filter will be applied
+				2. Operator for comparison
+				3. Value to which comparison will be made to 
+				E.g. (Blocked = False). For more information follow example section.
+* Fields to Export 	: Provide field names you want to export as comma separated. E.g. FormattedID,Name,State,Priority
+* Path for Export 	: Provide full path in which user stories will be exported. E.g. /Users/AE/csv/developer.csv
+* Maximum Items         : Specify maximum number of work items to be exported. Zero (0) means no limitation.
+* Sudo Password         : The password for the sudo command.
+* Options               : Run using sudo password (and sudo username if specified).
+* Sudo Username         : The username to be used for the sudo command. 	
+* Overwrite Agent	: Overwrites the default agent
+* Overwrite Login	: Overwrites the default login
+
+= Behavior =
+(none)
+
+=Return Value=
+* UC4RB_AC_EXPORT_FILE_PATH : Exported CSV file full path.
+* UC4RB_AC_TOTAL_RESULT_COUNT : Count of fetched result
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is 1 in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+AE logs will be displayed in the AE report.
+
+= Example =
+* Work Items With Specific Text In The Name :
+ (Name contains "Technical Debt")
+* User Stories That Have Parents, But They Are Not Portfolio Items :
+ ((PortfolioItem = null) AND (Parent != null))
+* User Stories Without Parent User Stories
+ (Parent = null)
+* User Stories With A Schedule State Value Between Defined And Accepted :
+ ((ScheduleState > "Defined") AND (ScheduleState < "Accepted"))
+* User Stories Without Defects
+  (Defects.ObjectID = null)
+* For further information follow the link :https://help.rallydev.com/grid-queries
+]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

@@ -1,5 +1,6 @@
 package com.automic.agilecentral.actions;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
 
     private String[] fields;
     private String filePath;
+    private int lineCount;
 
     public ExportWorkItemsAction() {
         addOption("workspace", false, "Workspace name");
@@ -57,9 +59,12 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
                 if (fields == null) {
                     fields = getFields(queryResponse.getResults());
                 }
-                csvWriter(queryResponse.getResults(), fields, filePath);
+                if (queryResponse.getResults().size() > 0) {
+                    csvWriter(queryResponse.getResults(), fields, filePath);
+                }
+                filePath = lineCount > 0 ? filePath : "";
                 ConsoleWriter.writeln("UC4RB_AC_EXPORT_FILE_PATH ::=" + filePath);
-                ConsoleWriter.writeln("UC4RB_AC_TOTAL_RESULT_COUNT ::=" + queryResponse.getResults().size());
+                ConsoleWriter.writeln("UC4RB_AC_TOTAL_RESULT_COUNT ::=" + lineCount);
                 ConsoleWriter.writeln("Total available record count : " + queryResponse.getTotalResultCount());
             } else {
                 throw new AutomicException(Arrays.toString(queryResponse.getErrors()));
@@ -82,10 +87,15 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
         String field = getOptionValue("fields");
 
         // Validate export file path
-        filePath = getOptionValue("exportfilepath");
-        AgileCentralValidator.checkNotEmpty(filePath, "Export file path");
-        File file = new File(filePath);
+        String temp = getOptionValue("exportfilepath");
+        AgileCentralValidator.checkNotEmpty(temp, "Export file path");
+        File file = new File(temp);
         AgileCentralValidator.checkFileWritable(file);
+        try {
+            filePath = file.getCanonicalPath();
+        } catch (IOException e) {
+            throw new AutomicException(" Error in getting unique absolute path " + e.getMessage());
+        }
         // Validate count
         String limit = getOptionValue("limit");
         AgileCentralValidator.checkNotEmpty(limit, "Maximum Items");
@@ -115,33 +125,39 @@ public class ExportWorkItemsAction extends AbstractHttpAction {
         return queryRequest;
     }
 
-    private void csvWriter(JsonArray results, String[] fields, String filePath) throws IOException {
-        FileWriter writer = new FileWriter(filePath);
-        List<String> fieldsData = new ArrayList<String>(fields.length);
-        // Add Headers
-        CSVUtils.writeLine(writer, Arrays.asList(fields));
-        for (JsonElement result : results) {
-            JsonObject defect = result.getAsJsonObject();
-            for (String field : fields) {
-                if (defect.get(field) != null && defect.get(field).isJsonPrimitive()) {
-                    fieldsData.add(defect.get(field).getAsString());
-                } else if (defect.get(field) != null && defect.get(field).isJsonObject()) {
-                    JsonObject jObj = (JsonObject) defect.get(field);
-                    if (jObj.has("_refObjectName")) {
-                        fieldsData.add(jObj.get("_refObjectName").getAsString());
-                    } else {
-                        fieldsData.add("");
+    private void csvWriter(JsonArray results, String[] fields, String filePath) throws AutomicException {
+        if (fields != null && fields.length > 0) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+                List<String> fieldsData = new ArrayList<String>(fields.length);
+                // Add Headers
+                CSVUtils.writeLine(bw, Arrays.asList(fields));
+                for (JsonElement result : results) {
+                    JsonObject workItem = result.getAsJsonObject();
+                    for (String field : fields) {
+                        if (workItem.get(field) != null && workItem.get(field).isJsonPrimitive()) {
+                            fieldsData.add(workItem.get(field).getAsString());
+                        } else if (workItem.get(field) != null && workItem.get(field).isJsonObject()) {
+                            JsonObject jObj = (JsonObject) workItem.get(field);
+                            if (jObj.has("_refObjectName")) {
+                                fieldsData.add(jObj.get("_refObjectName").getAsString());
+                            } else {
+                                fieldsData.add("");
+                            }
+                        } else {
+                            fieldsData.add("");
+                        }
                     }
-                } else {
-                    fieldsData.add("");
+                    CSVUtils.writeLine(bw, fieldsData);
+                    fieldsData.clear();
+                    lineCount++;
                 }
-            }
-            CSVUtils.writeLine(writer, fieldsData);
-            fieldsData.clear();
-        }
 
-        writer.flush();
-        writer.close();
+            } catch (IOException e) {
+
+                throw new AutomicException(" Error in writing csv file" + e.getMessage());
+
+            }
+        }
 
     }
 

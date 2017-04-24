@@ -126,7 +126,9 @@
 </node>
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
-<Values/>
+<Values>
+<row ERTUsage="0" Mod="0" Name="&amp;EMPTY#" Value=""/>
+</Values>
 <Mode>1</Mode>
 </VALUE>
 </node>
@@ -183,13 +185,13 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_CUSTOM_FIELDS#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
+<param altview="0" name="XC_P03" type="V" value="&amp;EMPTY#"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
 <param altview="0" name="XC_P03" type="V" value="##911010">
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
@@ -205,13 +207,13 @@
 <params>
 <param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_AC_DESCRIPTION#"/>
 <param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="1" name="XC_P03" type="V" value="&quot;&quot;"/>
+<param altview="0" name="XC_P03" type="V" value="&amp;EMPTY#"/>
 </params>
 <when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
 <action active="1" id="EXECUTE OBJECT" once="0" type="A" uiinfo="">
 <params>
 <param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="#915032:getobjprompt:0:3"/>
+<param altview="0" name="XC_P02" type="V" value="#915032:getobjprompt:0:3"/>
 <param altview="0" name="XC_P03" type="V" value="##911010">
 <param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
 <param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
@@ -334,7 +336,9 @@
 <dyntree>
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
-<Values/>
+<Values>
+<row ERTUsage="0" Name="&amp;EMPTY#" Value=""/>
+</Values>
 <Mode>1</Mode>
 </VALUE>
 </node>

@@ -11,28 +11,28 @@ Resource          ../../Resources/keywords.txt
 Resource          ../../Resources/variables.txt
 Resource          ../../Resources/actions.txt
 
-*** Test Cases ***    OK_NOK    WorkspaceName        WorkItemType    Filters                                 FieldsToExport      PathForExport                     MaximumItems
+*** Test Cases ***    OK_NOK    WorkspaceName        WorkItemType    Filters                                   FieldsToExport      PathForExport                     MaximumItems
 Export 100 workitems while providing workspace name and work item type only
                       [Tags]    main_scenarios
-                      OK        ${Workspace_Name}    User Story      ${EMPTY}                                ${EMPTY}            ${EMPTY}                          1
+                      OK        ${Workspace_Name}    User Story      ${EMPTY}                                  ${EMPTY}            ${EMPTY}                          1
 
 Assert Workspace Name as Optinal Field and exporting specific fields to execution directory
-                      OK        ${EMPTY}             User Story      (Blocked = False)                       FormattedID,Name    ${EXECDIR}\\AutomationTest.csv    500
-
-Assert action behavior with invalid Fields to Export
-                      OK        ${Workspace_Name}    User Story      ${EMPTY}                                Invalid             ${EMPTY}                          10
+                      OK        ${EMPTY}             User Story      (Blocked = False)                         FormattedID,Name    ${EXECDIR}\\AutomationTest.csv    500
 
 Assert action behavior when Maximum Items is set to 0
-                      OK        ${Workspace_Name}    User Story      ((Blocked = False)AND(Ready = True))    ${EMPTY}            ${EMPTY}                          0
+                      OK        ${Workspace_Name}    User Story      ((Blocked = False) AND (Ready = True))    ${EMPTY}            ${EMPTY}                          0
 
 Assert action behavior with invalid Workspace
-                      NOK       Invalid              User Story      ${EMPTY}                                ${EMPTY}            ${EMPTY}                          50
+                      NOK       Invalid              User Story      ${EMPTY}                                  ${EMPTY}            ${EMPTY}                          50
+
+Assert action behavior with invalid Fields to Export
+                      NOK       ${Workspace_Name}    User Story      ${EMPTY}                                  Invalid             ${EMPTY}                          10
 
 Assert behavior with invalid Filters and asserting Path For Export as optinal field
-                      NOK       ${EMPTY}             User Story      (abc=test)                              ${EMPTY}            ${EMPTY}                          100
+                      NOK       ${EMPTY}             User Story      (abc=test)                                ${EMPTY}            ${EMPTY}                          100
 
 Assert action behavior with invalid Path for Export
-                      NOK       ${Workspace_Name}    User Story      ${EMPTY}                                ${EMPTY}            Invalid                           50
+                      NOK       ${Workspace_Name}    User Story      ${EMPTY}                                  ${EMPTY}            Invalid                           50
 
 *** Keywords ***
 Startup
@@ -58,7 +58,7 @@ Export Work Items Template
     ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
     Action Set    &UC4RB_AC_ITEM_TYPE#    ${WorkItemType}
     Action Set    &UC4RB_AC_ITEM_FILTER#    ${Filters}
-    Run Keyword If    '${FieldsToExport}' == 'Generated'    Action Set    &UC4RB_AC_ITEM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set
+    Run Keyword If    '${FieldsToExport}' == 'Invalid'    Action Set    &UC4RB_AC_ITEM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_ITEM_FIELDS#    ${FieldsToExport}
     Run Keyword If    '${PathForExport}' == 'Invalid'    Action Set    &UC4RB_AC_EXPORT_PATH#    ${Generated_Name}_${Time}    ELSE    Action Set
     ...    &UC4RB_AC_EXPORT_PATH#    ${PathForExport}
@@ -66,8 +66,9 @@ Export Work Items Template
     Action Execute
     Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
     Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable Count Value Should Be    &UC4RB_AC_TOTAL_RESULT_COUNT#    ELSE    Action Object Variable Should Not Be Found    &UC4RB_AC_TOTAL_RESULT_COUNT#
-    Run Keyword If    '${OK_NOK}' == 'OK'    Action Object Variable File Path Should Be    &UC4RB_AC_EXPORT_FILE_PATH#    .csv    ELSE    Action Object Variable Should Not Be Found
-    ...    &UC4RB_AC_EXPORT_FILE_PATH#
+    Run Keyword If    '${OK_NOK}' == 'OK' and '&UC4RB_AC_TOTAL_RESULT_COUNT#' == '0'    Action Object Variable Should Not Be Found    &UC4RB_AC_EXPORT_FILE_PATH#
+    Run Keyword If    '${OK_NOK}' == 'OK' and '&UC4RB_AC_TOTAL_RESULT_COUNT#' > '0'    Action Object Variable Should Be Found    &UC4RB_AC_EXPORT_FILE_PATH#
+    Run Keyword If    '${OK_NOK}' == 'NOK'    Action Object Variable Should Not Be Found    &UC4RB_AC_EXPORT_FILE_PATH#
 
 Teardown
     Log    *******End Test "EXPORT WORK ITEMS"*******

@@ -52,7 +52,7 @@ Following actions are supported for CA AGILE CENTRAL.
 * Action Description: This action adds file attachment to provided work item.
 
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
-* Action Description: This action used to export user stories in csv format and saves to provided path. 
+* Action Description: This action used to export work items in csv format and saves to provided path. 
 ]]></DOC>
 </DOCU_Docu>
 </DOCU>

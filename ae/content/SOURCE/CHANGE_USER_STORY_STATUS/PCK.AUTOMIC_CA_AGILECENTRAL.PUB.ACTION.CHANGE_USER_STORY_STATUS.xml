@@ -357,8 +357,8 @@ Note: Agile Central provides two different Ids for each work item.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id 	: Provide Formatted ID of the user story for which you want to change status. E.g. US11	
-* New Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
-* Blocked Reason	: Specify the block reason, if you are setting the new status as Blocked. This field will be ignored, if new status is not specified as Blocked.
+* Target Status		: Select the status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
+* Blocked Reason	: Specify the block reason, if you are setting the target status as Blocked. This field will be ignored, if target status is not specified as Blocked.
 * Sudo Password         : The password for the sudo command.
 * Options              	: Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

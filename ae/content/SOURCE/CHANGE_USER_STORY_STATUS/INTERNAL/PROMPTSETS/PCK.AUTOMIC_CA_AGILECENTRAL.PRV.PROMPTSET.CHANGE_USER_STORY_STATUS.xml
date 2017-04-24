@@ -66,7 +66,7 @@
         <entry name="resetable">1</entry>
       <entry name="initvalue"/>
          </properties>
-    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" nl="1" strict="1" text="New Status" tooltip="Select the status for the user story. E.g. Blocked." vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
+    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_AC_ITEM_STATUSs.00" nl="1" strict="1" text="Target Status" tooltip="Select the status for the user story. E.g. Blocked." vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
          
          
          
@@ -74,7 +74,7 @@
         <entry listparam="" name="reference" reftype="STATIC">PCK.AUTOMIC_CA_AGILECENTRAL.PRV.VARA.STATUS_CHOICE</entry>
         <entry name="xmlkey"/>
         <entry name="xmlpath"/>
-        <entry name="text">New Status</entry>
+        <entry name="text">Target Status</entry>
         <entry name="quotes"/>
         <entry name="id">UC4RB_AC_ITEM_STATUSs.00</entry>
         <entry name="dynamic">0</entry>

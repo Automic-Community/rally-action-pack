@@ -390,7 +390,7 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EDIT_USER_STORY
 
 = General description =
-This action use to edit the specified user story. One can edit the following fields in the story : Project name, story name, Description, Schedule State.
+This action use to edit the specified user story. One can edit the following fields in the story : Project name, User story name, Description, Schedule State.
 Apart from these user can also provide the custom fields in the appropriate manner to edit their values.
 
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
@@ -400,7 +400,7 @@ Note: Agile Central provides two different Ids for each work item.
 2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
 
 = Failure Conditions =
-* If user doesn't provide any of the fields : Project name, Work Item name, Description, Schedule State, Custom Fields.
+* If user doesn't provide any of the fields : Project name, User Story name, Description, Schedule State, Custom Fields.
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
@@ -410,10 +410,10 @@ Note: Agile Central provides two different Ids for each work item.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Provide workspace name in which your user story is located. E.g. Acme
 * User Story Id		: Provide Formatted ID of the user story you want to edit. E.g US121 
-* Project name 		: Specify new project name to the work item. E.g. Customer Site
+* Project name 		: Specify new project name to the user story. E.g. Customer Site
 * User Story name 	: Specify new user story name to edit. E.g. User story
-* Description 		: Provide new description to your work item. E.g. Edit a story
-* Schedule State 	: Provide new schedule state to the work item. E.g. Idea
+* Description 		: Provide new description to your user story. E.g. Edit a story
+* Schedule State 	: Provide new schedule state to the user story. E.g. Idea
 * Custom Fields 	: Provide list of other fields with values that you want to set. Field and values must be provided in the format <Field Name>=<Field Value>. 
 Every field must be specified in the new line.
 			E.g. Name2=Value2

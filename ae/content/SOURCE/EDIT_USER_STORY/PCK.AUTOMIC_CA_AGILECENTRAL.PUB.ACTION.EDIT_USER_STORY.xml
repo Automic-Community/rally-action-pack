@@ -404,7 +404,7 @@ Note: Agile Central provides two different Ids for each work item.
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
-* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.

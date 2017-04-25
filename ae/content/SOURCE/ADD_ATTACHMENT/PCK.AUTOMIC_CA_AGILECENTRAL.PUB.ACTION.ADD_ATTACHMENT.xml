@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT">
 <XHEADER state="1">
-<Title>Add attachment</Title>
+<Title>Add Attachment</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -352,15 +352,15 @@ If specified file size is 0.
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
-* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Provide workspace name in which your work item is located. E.g. Acme.
-* Work Item type	: Specify type of Work Item to which you are adding an attachment. E.g. User Story
+* Work Item type	: Specify type of work item to which you are adding an attachment. E.g. User Story
 * Work Item Id 		: Provide formatted ID of the work item you want to edit. E.g. US126
-* File Path 		: Full path of the file that you want to attach to the Work item. E.g. C:/Temp/MyFile.zip
-* Description 		: Specify the attachment description.
+* File Path 		: Full path of the file that you want to attach to the work item. E.g. C:/Temp/MyFile.zip
+* Description 		: Provide description to the attachment.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

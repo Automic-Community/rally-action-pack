@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
 <JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.BULK_EDIT_USER_STORIES">
 <XHEADER state="1">
-<Title>Bulk edit user stories</Title>
+<Title>Bulk Edit User Stories</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -402,7 +402,7 @@ This action will throw an error and quit as soon as an error occurred while upda
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
-* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
@@ -411,8 +411,7 @@ This action will throw an error and quit as soon as an error occurred while upda
 * Project name 		: Specify new project name to the user story. E.g. Customer Site
 * Description 		: Provide new description to your user story. E.g. Edit a story
 * Schedule State 	: Provide new schedule state to the user story. E.g. Idea
-* Custom Fields 	: Provide list of other fields with values that you want to set. Field and values must be provided in the format <Field Name>=<Field Value>. 
-Every field must be specified in the new line.
+* Custom Fields 	: Provide list of other fields with values you want to set in format Name1=Value1. For multiple values use new line as a separator.
 			E.g. Name2=Value2
 			     Name3=Value3	
 * Sudo Password         : The password for the sudo command.

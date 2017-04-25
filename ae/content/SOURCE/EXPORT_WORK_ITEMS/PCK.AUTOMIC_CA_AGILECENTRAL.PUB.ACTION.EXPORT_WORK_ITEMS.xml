@@ -350,7 +350,8 @@ This action used to export work items in csv format and saves csv file to provid
 * If Provided Path for Export are invalid. E.g. E:/dir
 
 = Inputs =
-* Base API URL		: Specify Agile Central Base API URL. E.g. https://rally1.rallydev.com
+* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
+* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
 * Username		: Specify username for authentication.
 * Password		: Specify password for authentication.
 * Skip SSL Validation	: Skips SSL validation if 'YES' is selected.

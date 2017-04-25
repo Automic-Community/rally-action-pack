@@ -342,30 +342,65 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
 
 = General description =
-This action used to export work items in csv format and saves csv file to provided path(If Path to Export is not provided, default is Agent's Temp directory). If Maximum Items fields provided value is 0, all the satisfied records will be fetched.  
+This action is used to export the work items in csv format. Optionally, you can also specify the fields and filters to export the work items.
+If you specify "Maximum Items" value as 0 then it will export all the work items which satisfies the specified filter.
+If you do not specify the Path For export, csv file will be created on Agent OS temp directory. 
+
+This action will not fail, if there are no records to be exported. Moreover, CSV file will not be created as well.
+
+=Filters Syntax=
+A query is composed of a left-hand-side (LHS), an operator and a right-hand-side value (RHS). The LHS can either be the name of an object attribute ("Name" for example) or it can be another query. If the LHS of a query is an attribute name, the RHS must be a value.
+The following are examples of valid queries:
+
+* (Name contains "foo")
+* (LastUpdateDate = "today")
+* ((Name contains "foo") and (LastUpdateDate = "12345"))
+
+Invalid Example : ((Name contains "foo") AND (Notes contains "bar") AND (Description contains "baz"))
+Valid Example   : (((Name contains "foo") AND (Notes contains "bar")) AND (Description contains "baz"))
+
+Rules and operators for queries:
+QueryString	 :  ( AttributeName SPACE AttributeOperator SPACE AttributeValue )
+                    ( AttributePath SPACE AttributeOperator SPACE AttributeValue )
+                    ( QueryString SPACE BooleanOperator SPACE QueryString )
+AttributeOperator :  
+		    = 
+                    !=
+                    >
+                    <
+                    >=
+                    <=
+                    contains
+                    !contains
+BooleanOperator	 :  AND
+                    OR
+AttributeName	 :  The name of the attribute being queried. Name, Notes, etc.
+AttributePath	 :  The path to an attribute. For instance, when querying for user stories for the specified project, use the path "Project.Name".
+AttributeValue	 :  The value of the attribute. Strings with spaces must use double-quotes, not single-quotes. Use "null" (double quotations optional) to query for a null value in an object reference, integer, decimal or date attribute. Arguments are not case sensitive.
+For more information on queries, please refer the https://help.rallydev.com/use-grid-app-queries.
 
 = Failure Conditions =
 * If provided Fields to Export does not exist.
 * If provided Fields to Export are invalid.E.g. , , , 
-* If Provided Path for Export are invalid. E.g. E:/dir
 
 = Inputs =
-* Base URL		: Specify Agile Central Base URL. E.g. https://rally1.rallydev.com
-* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
-* Username		: Specify username for authentication.
-* Password		: Specify password for authentication.
-* Skip SSL Validation	: Skips SSL validation if 'YES' is selected.
+* Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* Username		: Specify username for authentication. Required if you do not specify API Token.
+* Password		: Specify password for authentication. Required if you do not specify API Token.
+* Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Specify workspace name for which you want to export work items. E.g. Acme
 * Work Item type	: Specify type of work items you are going to export. E.g. User Story
-* Filters		: Define filters you want consider in export. 
+* Filters		: Define filters you want to consider in export. 
      			  Filter consists of three parts
 				1. Field on which filter will be applied
 				2. Operator for comparison
 				3. Value to which comparison will be made to 
 				E.g. (Blocked = False). For more information follow example section.
-* Fields to Export 	: Provide field names you want to export as comma separated. E.g. FormattedID,Name,State,Priority
-* Path for Export 	: PProvide full path in which work items will be exported. E.g. /Users/AE/csv/developer.csv
-* Maximum Items         : Specify maximum number of work items to be exported. Zero (0) means no limitation.
+* Fields to Export 	: Provide field names you want to export. Multiple fields can be specified using , (comma) separator. E.g. FormattedID,Name
+			  Field name(s) are case insensitive.
+* Path for Export 	: Provide the full path in which work items will be exported. E.g. /Users/AE/csv/developer.csv
+* Maximum Items         : Specify maximum number of work items to be exported. ZERO (0) means no limit.
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
@@ -375,9 +410,9 @@ This action used to export work items in csv format and saves csv file to provid
 = Behavior =
 (none)
 
-=Return Value=
-* UC4RB_AC_EXPORT_FILE_PATH : Exported CSV file full path.
-* UC4RB_AC_TOTAL_RESULT_COUNT : Count of fetched result
+= Return Value =
+* UC4RB_AC_EXPORT_FILE_PATH : Exported CSV file full path. This variable will be empty, if there are no records.
+* UC4RB_AC_TOTAL_RESULT_COUNT : Count of toal results which satisfies the specified filter.
 
 = Outputs =
 * Return code is 0 in case of success.
@@ -387,19 +422,16 @@ This action used to export work items in csv format and saves csv file to provid
 (none)
 
 = Logging =
-AE logs will be displayed in the AE report.
+Logs will be displayed in the AE report.
 
 = Example =
-* Work Items With Specific Text In The Name :
- (Name contains "Technical Debt")
-* User Stories That Have Parents, But They Are Not Portfolio Items :
- ((PortfolioItem = null) AND (Parent != null))
-* User Stories Without Parent User Stories
- (Parent = null)
-* User Stories With A Schedule State Value Between Defined And Accepted :
- ((ScheduleState > "Defined") AND (ScheduleState < "Accepted"))
-* User Stories Without Defects
-  (Defects.ObjectID = null)
+Filters examples.
+* Work Items with Specific text in the name :  (Name contains "Technical Debt")
+* User Stories that have parents, but they are not portfolio items :  ((PortfolioItem = null) AND (Parent != null))
+* User Stories without parent user story :  (Parent = null)
+* User Stories with a schedule state value between defined and accepted : ((ScheduleState > "Defined") AND (ScheduleState < "Accepted"))
+* User Stories without defects : (Defects.ObjectID = null)
+* To filter the user stories that were modified at any time today in the timezone associated with your user account : (LastUpdateDate = "today")
 * For further information follow the link :https://help.rallydev.com/grid-queries
 ]]></DOC>
 </DOCU_Docu>

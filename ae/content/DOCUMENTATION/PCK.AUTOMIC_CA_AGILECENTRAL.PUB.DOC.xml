@@ -14,8 +14,8 @@ CA Agile Central is an enterprise-class platform that's purpose-built for scalin
 * Add attachment/comment to the work item.
 * Export the work items
 
-=Supported CA Agile Central versions=
-v2.0
+=Supported CA Agile Central version=
+This action pack supports CA Agile Central REST API version v2.0.
 
 =Setup=
 * This action pack supports Windows as well as UNIX Agent OS.

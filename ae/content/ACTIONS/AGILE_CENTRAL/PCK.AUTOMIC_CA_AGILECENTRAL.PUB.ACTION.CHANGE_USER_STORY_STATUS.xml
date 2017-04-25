@@ -343,8 +343,8 @@ Note: A user cannot block or unblock a parent user story. Parent user stories ca
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
 Note: Agile Central provides two different Ids for each work item.
-1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
-2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
+1. Formatted ID which is unique in a workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Agile Central stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 (none)

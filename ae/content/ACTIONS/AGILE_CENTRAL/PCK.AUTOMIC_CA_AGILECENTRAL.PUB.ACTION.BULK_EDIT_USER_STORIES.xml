@@ -396,8 +396,8 @@ This action is used to edit one or more user stories. Multiple story formatted I
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
 Note: Agile Central provides two different Ids for each work item.
-1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
-2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
+1. Formatted ID which is unique in a workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Agile Central stack. This action accepts only formatted ID.
 
 This action will throw an error and quit as soon as an error occurred while updating the fields of a particular user story. This might result in partial updation of the user stories.
 

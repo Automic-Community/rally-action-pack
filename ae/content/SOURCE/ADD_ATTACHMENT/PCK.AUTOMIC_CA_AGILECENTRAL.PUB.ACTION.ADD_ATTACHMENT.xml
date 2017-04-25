@@ -344,8 +344,8 @@ This action is used to add the file attachment for the provided work Item. Optio
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
 Note: Agile Central provides two different Ids for each work item.
-1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
-2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
+1. Formatted ID which is unique in a workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Agile Central stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 If specified file size is 0.

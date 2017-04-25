@@ -77,8 +77,8 @@ public class BulkEditWorkItemAction extends AbstractHttpAction {
         String customFilePath = getOptionValue("customfilepath");
         String descFilePath = getOptionValue("descriptionfilepath");
 
-        if (CommonUtil.checkNotEmpty(project) && CommonUtil.checkNotEmpty(scheduleState)
-                && CommonUtil.checkNotEmpty(customFilePath) && CommonUtil.checkNotEmpty(descFilePath)) {
+        if (!CommonUtil.checkNotEmpty(project) && !CommonUtil.checkNotEmpty(scheduleState)
+                && !CommonUtil.checkNotEmpty(customFilePath) && !CommonUtil.checkNotEmpty(descFilePath)) {
             throw new AutomicException("Please provide atleast one of the following: Project Name,Description,"
                     + "Schedule State or Custom Fields");
         }

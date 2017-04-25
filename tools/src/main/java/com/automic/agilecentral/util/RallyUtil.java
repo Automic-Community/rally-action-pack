@@ -64,8 +64,8 @@ public class RallyUtil {
      */
     public static String getWorspaceRef(RallyRestApi restApi, String workspaceName) throws AutomicException {
         QueryRequest queryRequest = new QueryRequest(Constants.WORKSPACE);
-        queryRequest.setQueryFilter(new QueryFilter("Name", "=", workspaceName));
-
+        queryRequest.setQueryFilter(new QueryFilter(Constants.NAME, Constants.EQUALS_OPERATOR, workspaceName));
+        queryRequest.setFetch(new Fetch(new String[] { Constants.REFERENCE }));
         QueryResponse workspaceQueryResponse;
         try {
             workspaceQueryResponse = restApi.query(queryRequest);
@@ -75,16 +75,17 @@ public class RallyUtil {
         }
 
         if (!workspaceQueryResponse.wasSuccessful()) {
-            throw new AutomicException(workspaceQueryResponse.getErrors()[0]);
+            ConsoleWriter.writeln(Arrays.toString(workspaceQueryResponse.getErrors()));
+            throw new AutomicException(String.format("Unable to get the the workspace[%s] reference", workspaceName));
         }
 
         int totalResultCount = workspaceQueryResponse.getTotalResultCount();
 
         if (totalResultCount != 1) {
-            throw new AutomicException(
-                    String.format("Workspace named %s found %s ,expected 1", workspaceName, totalResultCount));
+            throw new AutomicException(String.format("Workspace named %s found %s ,expected 1", workspaceName,
+                    totalResultCount));
         }
-        return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+        return workspaceQueryResponse.getResults().get(0).getAsJsonObject().get(Constants.REFERENCE).getAsString();
     }
 
     /**
@@ -101,8 +102,8 @@ public class RallyUtil {
     public static String getProjectRef(RallyRestApi restApi, String projectName, String workspaceRef)
             throws AutomicException {
         QueryRequest queryRequest = new QueryRequest(Constants.PROJECT);
-        queryRequest.setQueryFilter(new QueryFilter("Name", "=", projectName));
-
+        queryRequest.setQueryFilter(new QueryFilter(Constants.NAME, Constants.EQUALS_OPERATOR, projectName));
+        queryRequest.setFetch(new Fetch(new String[] { Constants.REFERENCE }));
         if (CommonUtil.checkNotEmpty(workspaceRef)) {
             queryRequest.setWorkspace(workspaceRef);
         }
@@ -116,16 +117,17 @@ public class RallyUtil {
         }
 
         if (!projectQueryResponse.wasSuccessful()) {
-            throw new AutomicException(projectQueryResponse.getErrors()[0]);
+            ConsoleWriter.writeln(Arrays.toString(projectQueryResponse.getErrors()));
+            throw new AutomicException(String.format("Unable to get the the project[%s] reference", projectName));
         }
 
         int totalResultCount = projectQueryResponse.getTotalResultCount();
 
         if (totalResultCount != 1) {
-            throw new AutomicException(
-                    String.format("Project named %s found %s ,expected 1", projectName, totalResultCount));
+            throw new AutomicException(String.format("Project named %s found %s ,expected 1", projectName,
+                    totalResultCount));
         }
-        return projectQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+        return projectQueryResponse.getResults().get(0).getAsJsonObject().get(Constants.REFERENCE).getAsString();
     }
 
     /**
@@ -144,7 +146,8 @@ public class RallyUtil {
     public static String getWorkItemRef(RallyRestApi restApi, String formattedId, String workspaceRef, String type)
             throws AutomicException {
         QueryRequest queryRequest = new QueryRequest(type);
-        queryRequest.setQueryFilter(new QueryFilter("FormattedID", "=", formattedId));
+        queryRequest.setQueryFilter(new QueryFilter(Constants.FORMATTED_ID, Constants.EQUALS_OPERATOR, formattedId));
+        queryRequest.setFetch(new Fetch(new String[] { Constants.REFERENCE }));
         if (CommonUtil.checkNotEmpty(workspaceRef)) {
             queryRequest.setWorkspace(workspaceRef);
         }
@@ -158,16 +161,17 @@ public class RallyUtil {
         }
 
         if (!storyQueryResponse.wasSuccessful()) {
-            throw new AutomicException(storyQueryResponse.getErrors()[0]);
+            ConsoleWriter.writeln(Arrays.toString(storyQueryResponse.getErrors()));
+            throw new AutomicException(String.format("Unable to get the the work item[%s] reference", formattedId));
         }
 
         int totalResultCount = storyQueryResponse.getTotalResultCount();
 
         if (totalResultCount != 1) {
-            throw new AutomicException(
-                    String.format("User story id %s found %s ,expected 1", formattedId, totalResultCount));
+            throw new AutomicException(String.format("User story id %s found %s ,expected 1", formattedId,
+                    totalResultCount));
         }
-        return storyQueryResponse.getResults().get(0).getAsJsonObject().get("_ref").getAsString();
+        return storyQueryResponse.getResults().get(0).getAsJsonObject().get(Constants.REFERENCE).getAsString();
     }
 
     public static QueryResponse queryOR(RallyRestApi restApi, String type, String workspaceRef,
@@ -179,30 +183,8 @@ public class RallyUtil {
             for (Map.Entry<String, List<String>> filter : queryFilter.entrySet()) {
                 List<String> values = filter.getValue();
                 for (String val : values) {
-                    qf = qf == null ? new QueryFilter(filter.getKey(), "=", val)
-                            : qf.or(new QueryFilter(filter.getKey(), "=", val));
-                }
-
-            }
-
-        }
-
-        return query(restApi, type, workspaceRef, qf, fetch, queryParam);
-
-    }
-
-    public static QueryResponse queryAND(RallyRestApi restApi, String type, String workspaceRef,
-            Map<String, List<String>> queryFilter, List<String> fetch, Map<String, String> queryParam)
-            throws IOException, AutomicException {
-
-        QueryFilter qf = null;
-        if (null != queryFilter && queryFilter.size() > 0) {
-
-            for (Map.Entry<String, List<String>> filter : queryFilter.entrySet()) {
-                List<String> values = filter.getValue();
-                for (String val : values) {
-                    qf = qf == null ? new QueryFilter(filter.getKey(), "=", val)
-                            : qf.and(new QueryFilter(filter.getKey(), "=", val));
+                    qf = qf == null ? new QueryFilter(filter.getKey(), Constants.EQUALS_OPERATOR, val) : qf
+                            .or(new QueryFilter(filter.getKey(), Constants.EQUALS_OPERATOR, val));
                 }
 
             }
@@ -237,7 +219,8 @@ public class RallyUtil {
         QueryResponse queryResponse = restApi.query(queryRequest);
 
         if (!queryResponse.wasSuccessful()) {
-            throw new AutomicException(Arrays.toString(queryResponse.getErrors()));
+            ConsoleWriter.writeln(Arrays.toString(queryResponse.getErrors()));
+            throw new AutomicException("Unable to query");
         }
         return queryResponse;
 

@@ -43,14 +43,16 @@ Following actions are supported for CA AGILE CENTRAL.
 * Action Description: This action edits one or more user stories.
 
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
-* Action Description: This action adds the comment to provided work Item.
+* Action Description: This action adds the comment to provided work item.
 
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
 * Action Description: This action changes the status of provided user story.
 
 * Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_ATTACHMENT
-* Action Description: This action adds file attachment to provided work Item.
+* Action Description: This action adds file attachment to provided work item.
 
+* Action Name:  PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
+* Action Description: This action used to export work items in csv format and saves to provided path. 
 ]]></DOC>
 </DOCU_Docu>
 </DOCU>

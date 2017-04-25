@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS">
 <XHEADER state="1">
-<Title>Change User Story Status</Title>
+<Title>Export Work Items</Title>
 <ArchiveKey1/>
 <ArchiveKey2/>
 <Active>1</Active>
@@ -63,13 +63,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
-<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -100,7 +102,7 @@
 </PostCon>
 </postconditions>
 </task>
-<task Alias="CHANGE_USER_STORY_STATUS" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.CHANGE_USER_STORY_STATUS@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
+<task Alias="EXPORT_WORK_ITEMS" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.JOB.EXPORT_WORK_ITEMS@GENERIC" ParentAlias="" ParentObject="" Row="1" Text2="">
 <checkpoint RollbackFlag="1" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
 <after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
 <when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
@@ -141,13 +143,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
-<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -205,13 +209,15 @@
 </PRPTBOX>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PPRPTS" type="PPROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">
-<UC4RB_AC_ITEM_IDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_ID#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_ITEM_STATUSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_STATUS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS">None</UC4RB_AC_ITEM_STATUSs.00>
-<UC4RB_AC_REASONs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_REASON#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
-<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">
+<UC4RB_AC_EXPORT_PATHs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_EXPORT_PATH#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FIELDSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FIELDS#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_FILTERs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_FILTER#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
+<UC4RB_AC_ITEM_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEM_TYPE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">User Story</UC4RB_AC_ITEM_TYPEs.00>
+<UC4RB_AC_ITEMS_LIMITs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_ITEMS_LIMIT#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS">500</UC4RB_AC_ITEMS_LIMITs.00>
+<UC4RB_AC_WORKSPACEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AC_WORKSPACE#" promptsetname="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS"/>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -292,9 +298,9 @@
 <PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.PROMPTSET.CONNECTION_DETAILS" prptmode="1"/>
 </PROMPTSET>
 </node>
-<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" parent="PRPTS" type="PROMPTSET">
-<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.CHANGE_USER_STORY_STATUS" prptmode="1"/>
+<node content="1" id="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_CA_AGILECENTRAL.PRV.PROMPTSET.EXPORT_WORK_ITEMS" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
@@ -333,49 +339,84 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.CHANGE_USER_STORY_STATUS
+PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.EXPORT_WORK_ITEMS
 
 = General description =
-This action is used to change the status of provided user story using its Formatted Id.
+This action is used to export the work items in csv format. Optionally, you can also specify the fields and filters to export the work items.
+If you specify "Maximum Items" value as 0 then it will export all the work items which satisfies the specified filter.
+If you do not specify the Path For export, csv file will be created on Agent OS temp directory. 
 
-Note: A user cannot block or unblock a parent user story. Parent user stories can only be blocked or unblocked through one of its children. E.g. If a user story exist say US1 and it has 2 child stories, US2 and US3. User cannot set or unset the parent story(US1) to blocked or unblocked state.
+This action will not fail, if there are no records to be exported. Moreover, CSV file will not be created as well.
 
-If you provide API Token as well as Username/Password, API Token will be used for authentication.
+=Filters Syntax=
+A query is composed of a left-hand-side (LHS), an operator and a right-hand-side value (RHS). The LHS can either be the name of an object attribute ("Name" for example) or it can be another query. If the LHS of a query is an attribute name, the RHS must be a value.
+The following are examples of valid queries:
 
-Note: Agile Central provides two different Ids for each work item.
-1. Formatted ID which is unique in a workspace. E.g. US126, US127 etc. 
-2. Object Id which is unique across Agile Central stack. This action accepts only formatted ID.
+* (Name contains "foo")
+* (LastUpdateDate = "today")
+* ((Name contains "foo") and (LastUpdateDate = "12345"))
+
+Invalid Example : ((Name contains "foo") AND (Notes contains "bar") AND (Description contains "baz"))
+Valid Example   : (((Name contains "foo") AND (Notes contains "bar")) AND (Description contains "baz"))
+
+Rules and operators for queries:
+QueryString	 :  ( AttributeName SPACE AttributeOperator SPACE AttributeValue )
+                    ( AttributePath SPACE AttributeOperator SPACE AttributeValue )
+                    ( QueryString SPACE BooleanOperator SPACE QueryString )
+AttributeOperator :  
+		    = 
+                    !=
+                    >
+                    <
+                    >=
+                    <=
+                    contains
+                    !contains
+BooleanOperator	 :  AND
+                    OR
+AttributeName	 :  The name of the attribute being queried. Name, Notes, etc.
+AttributePath	 :  The path to an attribute. For instance, when querying for user stories for the specified project, use the path "Project.Name".
+AttributeValue	 :  The value of the attribute. Strings with spaces must use double-quotes, not single-quotes. Use "null" (double quotations optional) to query for a null value in an object reference, integer, decimal or date attribute. Arguments are not case sensitive.
+For more information on queries, please refer the https://help.rallydev.com/use-grid-app-queries.
 
 = Failure Conditions =
-(none)
+* If provided Fields to Export does not exist.
+* If provided Fields to Export are invalid.E.g. , , , 
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
-* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
+* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
-* Workspace Name	: Provide workspace name in which your user story is located. E.g. Acme
-* User Story Id 	: Provide Formatted ID of the user story for which you want to change status. E.g. US11	
-* New Status		: Select a new status for the user story. Possible values are None, Blocked, Ready. If you want to reset the status, select "None".
-* Blocked Reason	: Specify if you are setting the new status as Blocked. This field will be ignored, if target status is not specified as Blocked.
+* Workspace name	: Specify workspace name for which you want to export work items. E.g. Acme
+* Work Item type	: Specify type of work items you are going to export. E.g. User Story
+* Filters		: Define filters you want to consider in export. 
+     			  Filter consists of three parts
+				1. Field on which filter will be applied
+				2. Operator for comparison
+				3. Value to which comparison will be made to 
+				E.g. (Blocked = False). For more information follow example section.
+* Fields to Export 	: Provide field names you want to export. Multiple fields can be specified using , (comma) separator. E.g. FormattedID,Name
+			  Field name(s) are case insensitive.
+* Path for Export 	: Provide the full path in which work items will be exported. E.g. /Users/AE/csv/developer.csv
+* Maximum Items         : Specify maximum number of work items to be exported. ZERO (0) means no limit.
 * Sudo Password         : The password for the sudo command.
-* Options              	: Run using sudo password (and sudo username if specified).
+* Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	
 * Overwrite Agent	: Overwrites the default agent
 * Overwrite Login	: Overwrites the default login
-
-Note : Provide either API Token or Username-Password. If both are provided API Token is used.
 
 = Behavior =
 (none)
 
 = Return Value =
-(none)
+* UC4RB_AC_EXPORT_FILE_PATH : Exported CSV file full path. This variable will be empty, if there are no records.
+* UC4RB_AC_TOTAL_RESULT_COUNT : Count of toal results which satisfies the specified filter.
 
 = Outputs =
 * Return code is 0 in case of success.
-* Return code is non zero in case of failure.
+* Return code is 1 in case of failure.
 
 = Rollback =
 (none)
@@ -384,7 +425,15 @@ Note : Provide either API Token or Username-Password. If both are provided API T
 Logs will be displayed in the AE report.
 
 = Example =
-(none)]]></DOC>
+Filters examples.
+* Work Items with Specific text in the name :  (Name contains "Technical Debt")
+* User Stories that have parents, but they are not portfolio items :  ((PortfolioItem = null) AND (Parent != null))
+* User Stories without parent user story :  (Parent = null)
+* User Stories with a schedule state value between defined and accepted : ((ScheduleState > "Defined") AND (ScheduleState < "Accepted"))
+* User Stories without defects : (Defects.ObjectID = null)
+* To filter the user stories that were modified at any time today in the timezone associated with your user account : (LastUpdateDate = "today")
+* For further information follow the link :https://help.rallydev.com/grid-queries
+]]></DOC>
 </DOCU_Docu>
 </JOBP>
 </uc-export>

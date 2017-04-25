@@ -131,4 +131,24 @@ public class CommonUtil {
                     filePath, e.getMessage()));
         }
     }
+
+    /**
+     * Method to validate provided file is Writable
+     * 
+     * @param file
+     * @return boolean
+     */
+    public static boolean isWritable(File file) {
+        boolean flag = false;
+        try {
+            if (!file.isDirectory()) {
+                file.createNewFile();
+                file.delete();
+                flag = true;
+            }
+            return flag;
+        } catch (IOException e) {
+            return flag;
+        }
+    }
 }

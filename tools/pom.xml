@@ -111,7 +111,7 @@
 					<serverId>com.automic.nexusvie</serverId>
 					<!-- The Base URL of Nexus instance where we want to stage -->
 					<nexusUrl>https://nexusvie.automic.com/nexus</nexusUrl>
-					<stagingProfileId>120e04047ef140</stagingProfileId>
+					<stagingProfileId>160850c3b83401</stagingProfileId>
 					<!-- do NOT auto release after close as we need to retrieve CLM base 
 						url as long the staged repo exists -->
 					<!-- explicit release step in build script required (outside of POM) -->

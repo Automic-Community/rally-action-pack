@@ -350,27 +350,27 @@
 PCK.AUTOMIC_CA_AGILECENTRAL.PUB.ACTION.ADD_COMMENT
 
 = General description =
-This action adds the comment to provided work Item using work item's formatted id.
+This action adds the comment to provided work item using work item's formatted id.
 
 If you provide API Token as well as Username/Password, API Token will be used for authentication.
 
 Note: Agile Central provides two different Ids for each work item.
-1. Formatted ID which is unique across Workspace. E.g. US126, US127 etc. 
-2. Object Id which is unique across Rally stack. This action accepts only formatted ID.
+1. Formatted ID which is unique in a workspace. E.g. US126, US127 etc. 
+2. Object Id which is unique across Agile Central stack. This action accepts only formatted ID.
 
 = Failure Conditions =
 (none)
 
 = Inputs =
 * Base URL		: Specify Agile Central Base URL. E.g. https://demo-rally.rallydev.com
-* API Token             : Specify API Token for authentication. Required if you do not specify Username/Password.
+* API Token             : Specify API token for authentication. Required if you do not specify Username and Password.
 * Username		: Specify username for authentication. Required if you do not specify API Token.
 * Password		: Specify password for authentication. Required if you do not specify API Token.
 * Skip SSL Validation	: Specify yes, if you want to skip SSL validation.
 * Workspace name	: Provide workspace name in which your work item is located. E.g. Acme
-* Work Item type	: Specify type of Work Item for which you want to add the comment. E.g. User Story
-* Work Item Id 		: Specify workitem Formatted ID for which you want to add comment. E.g. US126
-* Comment 		: Provide comment to the Work Item. E.g. User story updated
+* Work Item type	: Specify type of work item for which you want to add the comment. E.g. User Story
+* Work Item Id 		: Specify work item's Formatted ID for which you want to add comment. E.g. US126
+* Comment 		: Provide comment to the work item. E.g. User story updated
 * Sudo Password         : The password for the sudo command.
 * Options               : Run using sudo password (and sudo username if specified).
 * Sudo Username         : The username to be used for the sudo command. 	

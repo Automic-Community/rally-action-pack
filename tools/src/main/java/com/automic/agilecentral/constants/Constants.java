@@ -31,6 +31,15 @@ public class Constants {
     public static final String WORKSPACE = "WORKSPACE";
     public static final String PROJECT = "PROJECT";
     public static final String CONVERSATION_POST = "ConversationPost";
+    public static final String REFERENCE = "_ref";
+    public static final String NAME = "Name";
+    public static final String DESCRIPTION = "Description";
+    public static final String FORMATTED_ID = "FormattedID";
+    public static final String EQUALS_OPERATOR = "=";
+    public static final String CONTENT = "Content";
+    public static final String ARTIFACT = "Artifact";
+    public static final String SCHEDULE_STATE = "ScheduleState";
+  
 
     private Constants() {
     }

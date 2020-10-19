@@ -1,0 +1,110 @@
+*** Settings ***
+Resource          variables.txt
+
+*** Keywords ***
+Connect AE
+    Action Connect    ${_AE_HOST}    ${_AE_PORT}    ${_AE_USER}    ${_AE_PASS}    ${_AE_TEMP_FOLD}
+
+Set Overwrite Agent
+    Run Keyword If    '${ENV}' == 'WIN'    Set Overwrite Agent WIN
+    Run Keyword If    '${ENV}' == 'UNIX'    Set Overwrite Agent UNIX
+
+Set Overwrite Agent WIN
+    Action Set    &AGENT#    ${_PROMPTSET_AGENT_WIN}
+    Action Set    &LOGIN#    ${_PROMPTSET_LOGIN_WIN}
+
+Set Overwrite Agent UNIX
+    Action Set    &AGENT#    ${_PROMPTSET_AGENT_UNIX}
+    Action Set    &LOGIN#    ${_PROMPTSET_LOGIN_UNIX}
+
+Action Report Should Contain
+    [Arguments]    ${text}
+    ${report} =    Action Get Report
+    Should Contain    ${report}    ${text}
+
+Action Report Should Be Found
+    ${report} =    Action Get Report
+    Should Not Be Empty    ${report}
+
+Action Report Should Not Be Found
+    ${report} =    Action Get Report
+    Should Be Empty    ${report}
+
+Action Return Code Should Be
+    [Arguments]    ${code}
+    ${returnCode}=    Action Get Variable    Return code
+    Should Be Equal    ${returnCode}    ${code}
+
+Action Return Code Should Not Equal
+    [Arguments]    ${code}
+    ${returnCode}=    Action Get Variable    Return code
+    Should Not Be Equal    ${returnCode}    ${code}
+
+Assert Equal
+    [Arguments]    ${ExpectedValue}    ${ActualValue}
+    ${ExpectedVal}=    Action Get Variable    ${ExpectedValue}
+    Should Be Equal    ${ExpectedVal}    ${ActualValue}
+
+Assert Not Equal
+    [Arguments]    ${ExpectedValue}    ${ActualValue}
+    ${ExpectedVal}=    Action Get Variable    ${ExpectedValue}
+    Should Not Be Equal    ${ExpectedVal}    ${ActualValue}
+
+Action Return Status Should Be
+    [Arguments]    ${status}
+    ${returnStatus}=    Action Get Variable    Status
+    Should Be Equal    ${returnStatus}    ${status}
+
+Action Object Variable File Path Should Be
+    [Arguments]    ${Variable_Name}    ${File_name}
+    ${File_path}=    Action Get Variable    ${Variable_Name}
+    Should Contain    ${File_path}    ${File_name}
+    Set Global Variable    ${File_path}
+
+Action Object Variable Count Value Should Be
+    [Arguments]    ${Variable_Name}
+    ${Count_Value}=    Action Get Variable    ${Variable_Name}
+    Should Be True    ${Count_Value} >= 0
+
+Action Object Variable Should Be Found
+    [Arguments]    ${Object_Variable}
+    ${objectVariable}=    Action Get Variable    ${Object_Variable}
+    Should Not Be Empty    ${objectVariable}
+    Set Global Variable    ${objectVariable}
+
+Action Object Variable Should Not Be Found
+    [Arguments]    ${Object_Variable}
+    ${objectVariable}=    Action Get Variable    ${Object_Variable}
+    Should Be Empty    ${objectVariable}
+
+Assert Success
+    Action Report Should Be Found
+    Action Report Should Contain    EXECUTED SUCCESSFULLY
+    Action Return Status Should Be    ${ENDED_OK}
+    Action Return Code Should Be    ${RETURN_CODE_SUCCESS}
+
+Assert Failure
+    ${report} =    Action Get Report
+    ${length} =    Get Length    ${report}
+    Run Keyword If    '${length}' > '4'    Action Return Status Should Be    ${ENDED_NOT_OK}
+    Run Keyword If    '${length}' > '4'    Action Return Code Should Not Equal    ${RETURN_CODE_SUCCESS}
+    Run Keyword If    '${length}' > '4'    Action Report Should Contain    ACTION FAILED
+    Run Keyword If    '${length}' == '0' or '${length}' == '4'    Log    "------AE Report is not generated------"
+
+Generate String
+    ${Generated_Name}    Generate Random String    8    [LOWER]
+    ${Time}    Get Time
+    Set Global Variable    ${Generated_Name}
+    Set Global Variable    ${Time}
+
+Init Action
+    [Arguments]    ${actionName}
+    Action Create    ${actionName}
+    Set Overwrite Agent
+
+Connect To AgileCentral
+    Action Set    &UC4RB_AC_BASE_URL#    ${AgileCentral_URL }
+    Action Set    &UC4RB_AC_USERNAME#    ${Username}
+    Action Set    &UC4RB_AC_PASSWORD#    ${Password}
+    Action Set    &UC4RB_AC_TOKEN#    ${API_Token}
+    Action Set    &UC4RB_AC_SSL_VALIDATION#    ${SkipSSL}

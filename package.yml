@@ -1,0 +1,15 @@
+# Package Build Configuration 
+name: PCK.AUTOMIC_CA_AGILECENTRAL
+
+source: ae/content
+appdata: ae/appdata
+  
+# binary object resource mapping will be defined here
+binaries:
+  
+  - object: RESOURCES/LIBS/AUTOMIC_CA_AGILECENTRAL.PRV.STORE
+    resources: 
+      - name: AGILECENTRALTOOL
+        type: BINARY
+        path: tools/target/agilecentral-tool.jar
+        version: 1.0.0

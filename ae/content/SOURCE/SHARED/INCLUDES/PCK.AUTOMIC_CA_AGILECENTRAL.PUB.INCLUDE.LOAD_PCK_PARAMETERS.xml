@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_CA_AGILECENTRAL.PUB.INCLUDE.LOAD_PCK_PARAMETERS">
+<HEADER state="1">
+<Title>Load the package parameters from VARA object</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:SET &VARA_OBJ_CONFIG# = "PCK.AUTOMIC_CA_AGILECENTRAL.PUB.VARA.PACKAGE_PARAMETERS"
+:SET &UC4RB_AC_API_VERSION# = GET_VAR(&VARA_OBJ_CONFIG#, "API_VERSION")
+:SET &UC4RB_AC_PORT# = GET_VAR(&VARA_OBJ_CONFIG#, "PORT")
+
+: IF &$PLATFORM# EQ "WINDOWS"
+    SET ENV_API_VERSION=&UC4RB_AC_API_VERSION#
+    SET ENV_PORT=&UC4RB_AC_PORT#
+: ELSE
+    export ENV_API_VERSION="&UC4RB_AC_API_VERSION#"
+    export ENV_PORT="&UC4RB_AC_PORT#"
+: ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[This include is used to load two paramaters mainly connection time out and read time out form the VARA PCK.AUTOMIC_CA_SV.PUB.VARA.PACKAGE_PARAMETERS and set the values into two paramters UC4RB_SV_CONNECTION_TIMEOUT and UC4RB_SV_READ_TIMEOUT
+It can be used for both Windows and Unix environment]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

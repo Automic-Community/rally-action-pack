@@ -1,0 +1,81 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        edit_user_story
+Test Template     Edit User Story Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/messages.txt
+Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/actions.txt
+
+*** Test Cases ***    OK_NOK    WorkspaceName        UserStoryId        ProjectName        UserStoryName        Description       ScheduleState        CustomFields
+Edit user story with providing valid inputs
+                      [Tags]    main_scenarios
+                      OK        ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Edit user story with providing UserStoryId,Project name,UserStoryName & Schedule state
+                      OK        ${Empty}             ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Empty}          ${Schedule_State}    ${Empty}
+
+Assertion with invalid Custom fields
+                      OK        ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    Invalid
+
+Assertion without providing Project name,User story name,Description,Schedule state & Custom fields
+                      NOK       ${Workspace_Name}    ${UserStory_Id}    ${Empty}           ${Empty}             ${Empty}          ${Empty}             ${Empty}
+
+Assertion with invalid workspace name
+                      NOK       Invalid              ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid Userstory Id
+                      NOK       ${Workspace_Name}    Invalid            ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid project name
+                      NOK       ${Workspace_Name}    ${UserStory_Id}    Invalid            ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+Assertion with invalid Schedule state
+                      NOK       ${Workspace_Name}    ${UserStory_Id}    ${Project_Name}    ${UserStory_Name}    ${Description}    Invalid              ${Custom_Fields}
+
+Assert Userstory Id as mandatory field
+                      NOK       ${Workspace_Name}    ${Empty}           ${Project_Name}    ${UserStory_Name}    ${Description}    ${Schedule_State}    ${Custom_Fields}
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "Edit User Story"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Edit User Story Template
+    [Arguments]    ${OK_NOK}    ${WorkspaceName}    ${UserStoryId}    ${ProjectName}    ${UserStoryName}    ${Description}
+    ...    ${ScheduleState}    ${CustomFields}
+    [Documentation]    This action edits the fields of a given user story.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK/FAULT_OTHER. Value of this variable should be OK, NOK.
+    ...    -${WorkspaceName}: This field specifies workspace name in which your project is located.
+    ...    -${UserStoryId}: This field specifies ID of the user story you want to edit.
+    ...    -${ProjectName}: This field specifies a new project name to the user story.
+    ...    -${UserStoryName}: This field specifies a new user story name.
+    ...    -${Description}: This field specifies new description to your user story.
+    ...    -${ScheduleState}: This field specifies new schedule state to the user story.
+    ...    -${CustomFields}: This field specifies list of other fields with values you want to set.
+    Generate String
+    Init Action    ${_EDIT_USER_STORY_ACTION}
+    Connect To AgileCentral
+    Run Keyword If    '${WorkspaceName}' == 'Invalid'    Action Set    &UC4RB_AC_WORKSPACE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORKSPACE#    ${WorkspaceName}
+    Run Keyword If    '${UserStoryId}' == 'Invalid'    Action Set    &UC4RB_AC_WORK_ITEM_ID#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_WORK_ITEM_ID#    ${UserStoryId}
+    Run Keyword If    '${ProjectName}' == 'Invalid'    Action Set    &UC4RB_AC_PROJECT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_PROJECT#    ${ProjectName}
+    Run Keyword If    '${UserStoryName}' == 'Invalid'    Action Set    &UC4RB_AC_ITEM_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_ITEM_NAME#    ${UserStoryName}
+    Action Set    &UC4RB_AC_DESCRIPTION#    ${Description}
+    Run Keyword If    '${ScheduleState}' == 'Invalid'    Action Set    &UC4RB_AC_SCHEDULE_STATE#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_SCHEDULE_STATE#    ${ScheduleState}
+    Run Keyword If    '${CustomFields}' == 'Invalid'    Action Set    &UC4RB_AC_CUSTOM_FIELDS#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AC_CUSTOM_FIELDS#    ${CustomFields}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE IF    '${OK_NOK}' == 'NOK'    Assert Failure
+
+Teardown
+    Log    *******End Test "Edit User Story"*******

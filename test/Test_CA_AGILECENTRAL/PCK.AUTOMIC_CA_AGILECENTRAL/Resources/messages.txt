@@ -1,8 +1,0 @@
-*** Settings ***
-Resource          variables.txt
-
-*** Variables ***
-#---- AE status ---------------------
-${ENDED_OK}       ENDED_OK - ended normally
-${ENDED_NOT_OK}    ENDED_NOT_OK - aborted
-${RETURN_CODE_SUCCESS}    0
